@@ -37,6 +37,7 @@ $requestData = json_decode($requestJSON, true);
 
 
 $favorite = $requestData["drinkId"];
+$userId = $requestData["userId"];
 
 if(!isset($favorite)) {
     applyJSON([
@@ -63,7 +64,7 @@ forEach($favorites as $fave) {
 
 $highestId = $currentId + 1;
 
-$newFavorite = ["favoriteId" => $highestId, "drinkId" => $favorite];
+$newFavorite = ["favoriteId" => $highestId, "drinkId" => $favorite, "userId" => $userId];
 
 $favorites[] = $newFavorite;
 
