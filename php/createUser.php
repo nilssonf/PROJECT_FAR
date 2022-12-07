@@ -65,8 +65,6 @@ if ($requestMethod == "POST") {
         );
     }
 
-    //TODO: password & email character handling
-
     $currentId = 0;
 
     forEach($users as $user) {
@@ -88,5 +86,11 @@ $json = file_get_contents($filename);
 $data = json_decode($json, true);
 
 applyJSON($newUser);
+
+//TODO: add handling for: 
+// - password length
+// - @ sign in email
+// - special characters in PW
+// - email already exists
 
 ?>
