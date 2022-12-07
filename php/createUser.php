@@ -77,7 +77,7 @@ if ($requestMethod == "POST") {
 
     $highestId = $currentId + 1;
     
-    $newUser = ["id" => $highestId, "email" => $email, "password" => $password, "name" => $name, "age" => $age, "occupation" => $occupation, "picture" => "standard_picture"];
+    $newUser = ["id" => $highestId, "email" => $email, "password" => $password, "name" => $name, "age" => $age, "occupation" => $occupation, "picture" => "profiles/standard_picture"];
 
     $users[] = $newUser;
 }
