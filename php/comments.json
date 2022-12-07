@@ -1,0 +1,30 @@
+[
+    {
+        "drinkId": "11000",
+        "commentId": 1,
+        "userId": 2,
+        "comment": "Love it!",
+        "date": "2022-12-07"
+    },
+    {
+        "drinkId": "110",
+        "commentId": 2,
+        "userId": 5,
+        "comment": "worst drink ever... :(",
+        "date": "2022-12-07"
+    },
+    {
+        "drinkId": "110",
+        "commentId": 3,
+        "userId": 5,
+        "comment": "changed my mind. it sucks.",
+        "date": "2022-12-07"
+    },
+    {
+        "drinkId": "11000",
+        "commentId": 4,
+        "userId": 3,
+        "comment": "best drink!",
+        "date": "2022-12-07"
+    }
+]
