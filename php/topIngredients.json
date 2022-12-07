@@ -1,0 +1,62 @@
+[
+    {
+        "ingId": "1",
+        "ingName": "Vodka",
+        "ingImg": "ingredients/vodka.png"
+    },
+    {
+        "ingId": "2",
+        "ingName": "Gin",
+        "ingImg": "ingredients/gin.png"
+    },
+    {
+        "ingId": "3",
+        "ingName": "Rum",
+        "ingImg": "ingredients/rum.png"
+    },
+    {
+        "ingId": "4",
+        "ingName": "Tequila",
+        "ingImg": "ingredients/tequila.png"
+    },
+    {
+        "ingId": "59",
+        "ingName": "Black Sambuca",
+        "ingImg": "ingredients/lemon_peel.png"
+    },
+    {
+        "ingId": "31",
+        "ingName": "Applejack",
+        "ingImg": "ingredients/applejack.png"
+    },
+    {
+        "ingId": "299",
+        "ingName": "Lemon",
+        "ingImg": "ingredients/lemon.png"
+    },
+    {
+        "ingId": "600",
+        "ingName": "Whiskey",
+        "ingImg": "ingredients/whiskey.png"
+    },
+    {
+        "ingId": "542",
+        "ingName": "Prosecco",
+        "ingImg": "ingredients/prosecco.png"
+    },
+    {
+        "ingId": "312",
+        "ingName": "Lime",
+        "ingImg": "ingredients/lime.png"
+    },
+    {
+        "ingId": "470",
+        "ingName": "Strawberries",
+        "ingImg": "ingredients/strawberries.png"
+    },
+    {
+        "ingId": "337",
+        "ingName": "Mint",
+        "ingImg": "ingredients/mint.png"
+    }
+]
