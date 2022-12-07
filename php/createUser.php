@@ -1,7 +1,5 @@
 <?php
 
-//if 
-
 require_once "functions.php";
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];

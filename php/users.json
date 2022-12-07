@@ -6,7 +6,7 @@
         "name": "Anna",
         "age": 26,
         "occupation": "Student",
-        "picture": "profiles\/202212140041.jpg"
+        "picture": "profiles/202212140041.jpg"
     },
     {
         "id": 2,
@@ -15,16 +15,16 @@
         "name": "Fanny",
         "age": 29,
         "occupation": "Student",
-        "picture": "profiles\/202212191506.jpeg"
+        "picture": "profiles/202212191506.jpeg"
     },
     {
         "id": 3,
         "email": "rebecca@gmail.com",
-        "password": "uwryegt\/\/hJe5%?+b",
+        "password": "uwryegthJe5%?+b",
         "name": "Rebecca",
         "age": 20,
         "occupation": "Student",
-        "picture": "profiles\/202212151317.png"
+        "picture": "profiles/202212151317.png"
     },
     {
         "id": 4,
@@ -33,6 +33,6 @@
         "name": "Erik",
         "age": 51,
         "occupation": "Teacher",
-        "picture": "standard_picture"
+        "picture": "profiles/standard_picture"
     }
 ]
