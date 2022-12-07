@@ -36,10 +36,10 @@ fetch(new Request("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=marg
 
 // ** EXAMPLE: FIlter drink by Specific ingredient
 
-fetch(new Request("../php/addFavorites.json"))
+fetch(new Request("../php/favorites.json"))
     .then(r => r.json())
     .then(rsc => {
-        let id = rsc[1].drinkId;
+        let id = rsc[2].drinkId;
 
         fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
             .then(r => r.json())
