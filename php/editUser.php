@@ -61,4 +61,12 @@
     ], 404
     );
 
+
+    //TODO: add handling for: 
+// - password length
+// - @ sign in email
+// - special characters in PW
+// - email already exists
+// - uploading image + image name
+
 ?>
