@@ -1,0 +1,1 @@
+This is the folder where we put out pictures that are used on the static views of the application
