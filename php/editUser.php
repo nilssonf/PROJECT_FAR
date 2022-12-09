@@ -23,12 +23,12 @@
     $occupation = $requestData["occupation"];
     $picture = $requestData["picture"];
 
-    // if(!isset($email) || !isset($password) || !isset($name) || !isset($age) || !isset($occupation) || !isset($picture)) {
-    //     applyJSON([
-    //         "message" => "Required keys missing"
-    //     ], 400
-    //     );
-    // }
+    if(!isset($email) || !isset($password) || !isset($name) || !isset($age) || !isset($occupation) || !isset($picture)) {
+        applyJSON([
+            "message" => "Required keys missing"
+        ], 400
+        );
+    }
 
     if (empty($email) || empty($password) || empty($name) || empty($age) || empty($occupation) || empty($picture)) {
 
@@ -45,6 +45,27 @@
         );
     }
 
+    if(!strpos($email, "@") || !strpos($email, ".") ){
+        applyJSON([
+            "message" => "You need to write a correct emailadress"
+        ], 403
+        );
+    }
+
+    if(strlen($password) < 6){
+        applyJSON([
+            "message" => "Password is too short"
+        ], 403
+        );
+    }
+
+    if (!preg_match('/[\'^£$%&*()}{@#~?!><>,|=_+¬-]/', $password)){
+        applyJSON([
+            "message" => "Password need to contain atleast one special character"
+        ], 403
+        );
+    }
+
     $updateUser = [["id" => $id, "email" => $email, "password" => $password, "name" => $name, "age" => $age, "occupation" => $occupation, "picture" => $picture]];
 
     forEach($existingUsers as $index => $user) {
@@ -55,6 +76,14 @@
             file_put_contents($filename, $json);
             applyJSON($updateUser[0]);
         } 
+
+        // NOTE: Fråga i frågedokumentet till hjälptillfälle
+        if($email == $user["email"]){
+            applyJSON([
+                "message" => "Email already exist"
+            ], 403
+            );
+        }
     } 
     applyJSON([
         "message" => "User not found"
@@ -62,11 +91,5 @@
     );
 
 
-    //TODO: add handling for: 
-// - password length
-// - @ sign in email
-// - special characters in PW
-// - email already exists
-// - uploading image + image name
 
 ?>

@@ -1,8 +1,5 @@
 <?php
-//TODO: data to be added in favorites.json needs to be connected to the API. how?
 
-//Method: POST
-//only drink ID? 
 require_once "functions.php";
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
