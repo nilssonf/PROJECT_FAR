@@ -27,6 +27,11 @@ body {
     grid-column: 3/3;
 }
 
-.signIn {
+.signIn,
+.signOut {
     grid-column: 8/8;
+}
+
+.favourites {
+    grid-column: 4/4;
 }
