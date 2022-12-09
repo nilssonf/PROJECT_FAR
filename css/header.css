@@ -30,8 +30,17 @@ body {
 .signIn,
 .signOut {
     grid-column: 8/8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .favourites {
     grid-column: 4/4;
+}
+
+.circle,
+.standard {
+    height: 30px;
 }
