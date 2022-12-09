@@ -6,65 +6,27 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px;
+    height: 60px;
     z-index: 2;
     background-color: wheat;
-}
-
-.introduction {
-    padding-top: 60px;
-    z-index: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    height: 350px;
-}
-
-.introduction div {
-    height: 350px;
-    display: flex;
-    justify-content: center;
+    grid-template-columns: repeat(8, 1fr);
     align-items: center;
-    flex-direction: column;
-}
-
-img {
-    height: 100%;
-}
-
-.footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: wheat;
-}
-
-#topDrink,
-#topIngredients {
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 350px;
-}
-
-#topDrink div,
-#topIngredients div {
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#topDrink img,
-#topIngredients img {
-    height: 50%;
-}
-
-#drinkHeader,
-#drinkIngredients {
-    margin: 0;
-    padding-top: 80px;
     text-align: center;
+}
+
+.logga {
+    grid-column: 1/1;
+}
+
+.scroll {
+    grid-column: 2/2;
+}
+
+.about {
+    grid-column: 3/3;
+}
+
+.signIn {
+    grid-column: 8/8;
 }
