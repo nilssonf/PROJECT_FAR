@@ -1,0 +1,79 @@
+.aboutWrapper {
+    padding-top: 60px;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    height: 350px;
+}
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('../fonts/MinyaDemo-qZndd.otf');
+
+}
+
+h1{
+    font-family: "MyFont";
+    font-size: xxx-large;
+
+}
+
+p{
+  
+}
+
+#aboutPictures {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 350px;
+    align-items: center;
+    justify-items: center;  
+}
+
+.aboutContent {
+    margin: 0;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.roundPicture {
+    border-radius: 50%; 
+    height: 250px;
+    width: 250px;
+    background-repeat: no-repeat;
+}
+
+img{
+    z-index: 0;
+    position: relative;
+}
+
+#aboutPictures div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fanny{
+    z-index: 99;
+    background-image: url("../images/fanny.jpeg");
+    background-position: right;
+    position: absolute;
+}
+
+#rebecca{
+    z-index: 99;
+
+    background-image: url("../images/rebecca.jpeg");
+    background-position: center;
+    position: absolute;
+}
+
+#anna{
+    z-index: 99;
+
+    background-image: url("../images/anna.jpeg");
+    background-size: contain;
+    position: absolute;
+}
