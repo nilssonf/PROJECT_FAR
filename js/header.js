@@ -1,6 +1,6 @@
 "use strict";
 
-function createHeader() {
+function header() {
     let header = document.querySelector("#header");
     header.classList.add("header");
 
@@ -16,11 +16,27 @@ function createHeader() {
     about.innerText = "About"
     about.classList.add("about");
 
-    let signIn = document.createElement("p");
-    signIn.innerText = "Sign in"
-    signIn.classList.add("signIn");
+    if (user == 0) {
+        let signIn = document.createElement("p");
+        signIn.innerText = "Sign in"
+        signIn.classList.add("signIn");
+        header.append(logga, scroll, about, signIn)
+    } else {
 
-    header.append(logga, scroll, about, signIn)
+        let favourites = document.createElement("p");
+        favourites.innerText = "Favourite drinks"
+        favourites.classList.add("favourites")
+
+        let signOut = document.createElement("p");
+        signOut.innerText = "Sign out"
+        signOut.classList.add("signOut");
+
+        header.append(logga, scroll, about, favourites, signOut)
+    }
+
+
+
+
 
 
     logga.onclick = function() {
@@ -34,6 +50,10 @@ function createHeader() {
     about.onclick = function() {
         location.href = '../html/about.html'
     }
+
+
 }
 
-createHeader()
+
+
+header()
