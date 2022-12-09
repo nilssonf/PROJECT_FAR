@@ -41,9 +41,8 @@ if ($requestMethod == "POST") {
     $age = $requestData["age"];
     $occupation = $requestData["occupation"];
 
-    //TODO: check isset keys, gives "key missing values" RN
 
-    if(!isset($email) && !isset($password) && !isset($name) && !isset($age) && !isset($occupation)) {
+    if(!isset($email) || !isset($password) ||  !isset($name) || !isset($age) ||  !isset($occupation)) {
         applyJSON([
             "message" => "Required keys missing"
         ], 400
@@ -64,6 +63,27 @@ if ($requestMethod == "POST") {
         ], 406
         );
     }
+    
+    if(!strpos($email, "@") || !strpos($email, ".") ){
+        applyJSON([
+            "message" => "You need to write a correct emailadress"
+        ], 403
+        );
+    }
+
+    if(strlen($password) < 6){
+        applyJSON([
+            "message" => "Password is too short"
+        ], 403
+        );
+    }
+
+    if (!preg_match('/[\'^£$%&*()}{@#~?!><>,|=_+¬-]/', $password)){
+        applyJSON([
+            "message" => "Password need to contain atleast one special character"
+        ], 403
+        );
+    }
 
     $currentId = 0;
 
@@ -71,8 +91,14 @@ if ($requestMethod == "POST") {
         if($user["id"] > $currentId) {
             $currentId = $user["id"];
         }
+        if($email == $user["email"]){
+            applyJSON([
+                "message" => "Email already exist"
+            ], 403
+            );
+        }
     }
-
+    
     $highestId = $currentId + 1;
     
     $newUser = ["id" => $highestId, "email" => $email, "password" => $password, "name" => $name, "age" => $age, "occupation" => $occupation, "picture" => "profiles/standard_picture"];
@@ -87,10 +113,6 @@ $data = json_decode($json, true);
 
 applyJSON($newUser);
 
-//TODO: add handling for: 
-// - password length
-// - @ sign in email
-// - special characters in PW
-// - email already exists
+
 
 ?>

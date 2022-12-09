@@ -16,7 +16,6 @@ $requestJSON = file_get_contents("php://input");
 $requestData = json_decode($requestJSON, true);
 $existingComments = json_decode(file_get_contents($filename), true);
 
-//USE LATER
 
 $id = $requestData["commentId"];
 
