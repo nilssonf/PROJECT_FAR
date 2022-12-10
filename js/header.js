@@ -31,25 +31,25 @@ function header() {
         signOut.innerText = "Sign out"
         signOut.classList.add("signOut");
 
-        header.append(logga, scroll, about, favourites, signOut)
+        header.append(logga, scroll, about, favourites, signOut);
+
+        favourites.onclick = function() {
+            location.href = '../html/favorites.html';
+        };
     }
-
-
-
-
 
 
     logga.onclick = function() {
-        location.href = 'index.html'
-    }
+        location.href = 'index.html';
+    };
 
     scroll.onclick = function() {
-        location.href = '../html/search.html'
-    }
+        location.href = '../html/search.html';
+    };
 
     about.onclick = function() {
-        location.href = '../html/about.html'
-    }
+        location.href = '../html/about.html';
+    };
 
 
 }
