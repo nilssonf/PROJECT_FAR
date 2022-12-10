@@ -33,11 +33,12 @@ function header() {
         signOut.classList.add("signOut");
 
         header.append(logga, scroll, about, favourites, signOut);
+
+
+        favourites.onclick = function() {
+            location.href = '../html/favorites.html';
+        };
     }
-
-
-
-
 
 
     logga.onclick = function () {
@@ -51,7 +52,6 @@ function header() {
     about.onclick = function () {
         location.href = '../html/about.html';
     };
-
 
 }
 
