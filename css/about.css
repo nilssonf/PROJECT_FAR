@@ -1,0 +1,125 @@
+.aboutWrapper {
+    padding-top: 60px;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+  
+}
+
+@font-face {
+    font-family: 'BottledFont';
+    src: url('../fonts/MinyaDemo-qZndd.otf');
+
+}
+
+@font-face {
+    font-family: 'pFont';
+    src: url('../fonts/TiemposHeadline-Regular.otf');
+
+}
+
+h1{
+    font-family: "BottledFont";
+    font-size: xxx-large;
+
+}
+
+.aboutText{
+    font-family: "pFont";
+  
+}
+
+#aboutPictures {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 350px;
+    align-items: center;
+    justify-items: center;  
+
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 90px;
+}
+
+.aboutContent {
+    margin: 0px 250px 0px 250px;
+    padding-bottom: 0px;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.roundPicture {
+    border-radius: 50%; 
+    height: 250px;
+    width: 250px;
+    background-repeat: no-repeat;
+}
+
+img{
+    z-index: 0;
+    position: relative;
+}
+
+#aboutPictures div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fanny{
+    z-index: 99;
+    background-image: url("../images/fanny.jpeg");
+    background-position: right;
+    position: absolute;
+}
+
+#rebecca{
+    z-index: 99;
+    background-image: url("../images/rebecca.jpeg");
+    background-position: center;
+    position: absolute;
+}
+
+#anna{
+    z-index: 99;
+    background-image: url("../images/anna.jpeg");
+    background-size: contain;
+    position: absolute;
+}
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+}
+  
+.flip-card-inner {
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+  
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+  
+.flip-card-front, .flip-card-back {
+    width: 250px;
+    height: 250px;
+    backface-visibility: hidden;
+}
+  
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+    
+}
+  
+.flip-card-back {
+    background-color: #EC6542;
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: 50%;
+}

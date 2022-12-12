@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#wrapper {
+    width: 50vw;
+    padding-bottom: 100px;
+}
+
+h1 {
+    padding-top: 100px;
+    z-index: 1;
+}
+
+.favoriteBox {
+    margin: 20px 0px 20px 0px;
+    background-color: whitesmoke;
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 4fr 6fr 1fr;
+}
+
+.favoriteImg {
+    height: 200px;
+}
+
+.heartImg {
+    height: 50px;
+    padding-top: 10px;
+}

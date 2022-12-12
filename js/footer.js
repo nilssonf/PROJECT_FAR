@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 "use strict";
 
 function buildFooter() {
@@ -9,4 +7,3 @@ function buildFooter() {
 }
 
 buildFooter()
->>>>>>> Stashed changes
