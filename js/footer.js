@@ -3,7 +3,7 @@
 function buildFooter() {
     let footer = document.querySelector("#footer");
     footer.classList.add("footer");
-    footer.innerText = "footer";
+    footer.innerText = "Bottled";
 }
 
 buildFooter()

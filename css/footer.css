@@ -1,4 +1,12 @@
+
+@font-face {
+    font-family: 'BottledFontOutlined';
+    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+
+}
+
 .footer {
+    font-family: 'BottledFontOutlined';
     position: absolute;
     left: 0;
     bottom: 0;
