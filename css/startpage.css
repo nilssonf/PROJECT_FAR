@@ -1,12 +1,29 @@
+@font-face {
+    font-family: 'BottledFontOutlined';
+    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+}
+
+@font-face {
+    font-family: 'pFont';
+    src: url('../fonts/TiemposHeadline-Regular.otf');
+}
+
 .introduction {
-    z-index: 1;
+    z-index: 10;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 175px;
     place-items: center;
+
+
+    /* Needs to be fixed */
+    background-image: url("../images/lines.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 .drinkIndexContainer {
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +34,21 @@
     display: flex;
     
     flex-direction: column;
-
+    padding-top: 200px
+    ;
     width: 80%;
     height: 100%;
 }
 
+h1{
+    font-family: "BottledFontOutlined";
+    color: #EC6542BD;
+    font-size: 70px;
+}
+
+p{
+    font-family: "pFont";
+}
 
 #topDrink,
 #topIngredients {
