@@ -1,0 +1,17 @@
+[
+    {
+        "favoriteId": 1,
+        "drinkId": "11007",
+        "userId": 1
+    },
+    {
+        "favoriteId": 2,
+        "drinkId": "11000",
+        "userId": 1
+    },
+    {
+        "favoriteId": 3,
+        "drinkId": "11006",
+        "userId": 1
+    }
+]

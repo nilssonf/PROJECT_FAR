@@ -36,11 +36,12 @@ fetch(new Request("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=marg
 
 // ** EXAMPLE: FIlter drink by Specific ingredient
 
-fetch(new Request("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"))
+fetch(new Request("../php/favorites.json"))
     .then(r => r.json())
-    .then(rsc => console.log(rsc));
+    .then(rsc => {
+        let id = rsc[2].drinkId;
 
-let header = header();
-let footer = footer();
-
-let wrapper = "";
+        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+            .then(r => r.json())
+            .then(rsc => console.log(rsc));
+    });

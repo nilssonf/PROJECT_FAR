@@ -1,4 +1,5 @@
 <?php
+
 require_once "functions.php";
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -18,12 +19,12 @@ if ($contentType != "application/json") {
     );
 }
 
-$filename = "comments.json";
-$comments = [];
+$filename = "favorites.json";
+$favorites = [];
 
 if (file_exists($filename)) {
     $json = file_get_contents($filename);
-    $comments = json_decode($json, true);
+    $favorites = json_decode($json, true);
 } else {
     stop();
 }
@@ -32,20 +33,17 @@ $requestJSON = file_get_contents("php://input");
 $requestData = json_decode($requestJSON, true);
 
 
-$addedComment = $requestData["comment"];
-//TODO: this will be set from the active user and active drink in JS
-$drinkId = $requestData["drinkId"];
+$favorite = $requestData["drinkId"];
 $userId = $requestData["userId"];
-$date = date("Y-m-d");
 
-if(!isset($addedComment) && !isset($drinkId) && !isset($userId)) {
+if(!isset($favorite)) {
     applyJSON([
         "message" => "Required key missing"
     ], 400
     );
 }
 
-if (empty($addedComment) || empty($drinkId) || empty($userId)) {
+if (empty($favorite)) {
 
     applyJSON([
         "message" => "Key missing value"
@@ -55,23 +53,23 @@ if (empty($addedComment) || empty($drinkId) || empty($userId)) {
 
 $currentId = 0;
 
-forEach($comments as $comment) {
-    if($comment["commentId"] > $currentId) {
-        $currentId = $comment["commentId"];
+forEach($favorites as $fave) {
+    if($fave["favoriteId"] > $currentId) {
+        $currentId = $fave["favoriteId"];
     }
 }
 
 $highestId = $currentId + 1;
 
-$newComment = ["drinkId" => $drinkId, "commentId" => $highestId, "userId" => $userId, "comment" => $addedComment, "date" => $date];
+$newFavorite = ["favoriteId" => $highestId, "drinkId" => $favorite, "userId" => $userId];
 
-$comments[] = $newComment;
+$favorites[] = $newFavorite;
 
 
-file_put_contents($filename, json_encode($comments, JSON_PRETTY_PRINT));
+file_put_contents($filename, json_encode($favorites, JSON_PRETTY_PRINT));
 $json = file_get_contents($filename);
 $data = json_decode($json, true);
 
-applyJSON($newComment);
+applyJSON($newFavorite);
 
 ?>

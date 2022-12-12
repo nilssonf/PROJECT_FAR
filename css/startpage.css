@@ -1,0 +1,48 @@
+.introduction {
+    padding-top: 60px;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 350px;
+}
+
+.introduction div {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+img {
+    height: 100%;
+}
+
+#topDrink,
+#topIngredients {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 350px;
+}
+
+#topDrink div,
+#topIngredients div {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#topDrink img,
+#topIngredients img {
+    height: 50%;
+}
+
+#drinkHeader,
+#drinkIngredients {
+    margin: 0;
+    padding-top: 80px;
+    text-align: center;
+}

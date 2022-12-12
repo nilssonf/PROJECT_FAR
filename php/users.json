@@ -20,7 +20,7 @@
     {
         "id": 3,
         "email": "rebecca@gmail.com",
-        "password": "uwryegthJe5%?+b",
+        "password": "abc1vnerue!",
         "name": "Rebecca",
         "age": 20,
         "occupation": "Student",
@@ -33,6 +33,15 @@
         "name": "Sebbe",
         "age": 34,
         "occupation": "Teacher",
+        "picture": "profiles\/standard_picture.png"
+    },
+    {
+        "id": 5,
+        "email": "mallan@gmail.com",
+        "password": "arug56sg!",
+        "name": "Malin",
+        "age": 28,
+        "occupation": "Graphic designer",
         "picture": "profiles\/standard_picture"
     }
 ]

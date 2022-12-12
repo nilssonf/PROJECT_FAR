@@ -8,4 +8,6 @@ function applyJSON ($data, $statusCode = 200) {
     exit();
 }
 
+
+
 ?>
