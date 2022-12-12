@@ -55,7 +55,18 @@
             file_put_contents($filename, $json);
             applyJSON($updateUser[0]);
         } 
+<<<<<<< Updated upstream
     } 
+=======
+
+        if($email == $user["email"] && $id != $user["id"]){
+                applyJSON([
+                    "message" => "Email already exist"
+                ], 403
+                );
+            }
+        }
+>>>>>>> Stashed changes
     applyJSON([
         "message" => "User not found"
     ], 404
