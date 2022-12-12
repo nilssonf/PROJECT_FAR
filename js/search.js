@@ -14,14 +14,35 @@ function createAllDrinks() {
 
 function createAlphabet() {
 
-    let alphabet = [...
-        'abcdefghijklmnopqrstuvwxyz'
+    let alphabetOne = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', ];
+
+    let alphabetTwo = [
+        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'
     ];
 
-    alphabet.forEach(letter => {
-        let text = document.createElement("p")
-        text.innerHTML = letter.toUpperCase()
-        let aDiv = document.querySelector(".alphabet");
+    let alphabetThree = ['U', 'V', 'W', 'X',
+        'Y', 'Z'
+    ];
+
+
+    alphabetOne.forEach(letter => {
+        let text = document.createElement("p");
+        text.innerHTML = letter;
+        let aDiv = document.querySelector(".alphabetOne");
+        aDiv.append(text)
+    })
+
+    alphabetTwo.forEach(letter => {
+        let text = document.createElement("p");
+        text.innerHTML = letter;
+        let aDiv = document.querySelector(".alphabetTwo");
+        aDiv.append(text)
+    })
+
+    alphabetThree.forEach(letter => {
+        let text = document.createElement("p");
+        text.innerHTML = letter;
+        let aDiv = document.querySelector(".alphabetThree");
         aDiv.append(text)
     })
 }
