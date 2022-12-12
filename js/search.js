@@ -1,21 +1,39 @@
 "use strict";
 
-function createAllDrinks(letter) {
+function getDrinksByLetter(letter) {
 
     document.querySelector("#wrapper").innerHTML = " "
 
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`))
         .then(r => r.json())
         .then(rsc => {
-            rsc.drinks.forEach(drink => {
-                let oneDrink = drink.strDrink
-                let drinkImg = drink.strDrinkThumb
-                let drinkAlcoholic = drink.strAlcoholic
-                let drinkCategory = drink.strCategory
-                let drinkGlass = drink.strGlass
+            createDrinks(rsc)
 
-                let drinkBox = document.createElement("div");
-                drinkBox.innerHTML = `
+        })
+}
+
+function getDrinksByName(name) {
+
+    document.querySelector("#wrapper").innerHTML = " "
+
+    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`))
+        .then(r => r.json())
+        .then(rsc => {
+            createDrinks(rsc)
+
+        })
+}
+
+function createDrinks(rsc) {
+    rsc.drinks.forEach(drink => {
+        let oneDrink = drink.strDrink
+        let drinkImg = drink.strDrinkThumb
+        let drinkAlcoholic = drink.strAlcoholic
+        let drinkCategory = drink.strCategory
+        let drinkGlass = drink.strGlass
+
+        let drinkBox = document.createElement("div");
+        drinkBox.innerHTML = `
                 <div class="imgWrap">
                     <img src="${drinkImg}" class="drinkImg">
                 </div>
@@ -24,19 +42,31 @@ function createAllDrinks(letter) {
                     <div class="tags">
                         <p> ${drinkAlcoholic} </p>
                         <p>${drinkCategory} </p>
-                        <br>
+        
                         <p>${drinkGlass} </p> 
                     </div>
                 </div>
                  <img src="../images/gilla.png" class="heartImg">
                 `;
 
-                drinkBox.classList.add("drinkBox");
-                document.querySelector("#wrapper").append(drinkBox);
+        drinkBox.classList.add("drinkBox");
+        document.querySelector("#wrapper").append(drinkBox);
 
 
-            })
-        })
+
+    })
+}
+
+
+function getsearchedDrink() {
+    document.getElementById("click").addEventListener("click", function() {
+        let search = document.getElementById("drinkName").value
+        getDrinksByName(search)
+
+    })
+
+
+
 }
 
 function createAlphabet() {
@@ -61,7 +91,7 @@ function createAlphabet() {
         text.addEventListener("click", function(e) {
             let clickedLetter = e.target.innerHTML
             clickedLetter = clickedLetter.toLowerCase()
-            createAllDrinks(clickedLetter)
+            getDrinksByLetter(clickedLetter)
         })
     })
 
@@ -74,7 +104,7 @@ function createAlphabet() {
         text.addEventListener("click", function(e) {
             let clickedLetter = e.target.innerHTML
             clickedLetter = clickedLetter.toLowerCase()
-            createAllDrinks(clickedLetter)
+            getDrinksByLetter(clickedLetter)
         })
     })
 
@@ -87,12 +117,13 @@ function createAlphabet() {
         text.addEventListener("click", function(e) {
             let clickedLetter = e.target.innerHTML
             clickedLetter = clickedLetter.toLowerCase()
-            createAllDrinks(clickedLetter)
+            getDrinksByLetter(clickedLetter)
         })
     })
 
 }
 
 
-createAllDrinks("a")
+getDrinksByLetter("a")
+getsearchedDrink()
 createAlphabet()
