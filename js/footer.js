@@ -3,9 +3,6 @@
 function buildFooter() {
     let footer = document.querySelector("#footer");
     footer.classList.add("footer");
-<<<<<<< Updated upstream
-    footer.innerText = "footer";
-=======
 
     let companyInfo = document.createElement("div");
     companyInfo.classList.add("companyInfo");
@@ -18,7 +15,6 @@ function buildFooter() {
     bottled.innerText = "Bottled";
 
     footer.append(bottled);
->>>>>>> Stashed changes
 }
 
 buildFooter()

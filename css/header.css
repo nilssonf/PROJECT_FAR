@@ -2,6 +2,19 @@ body {
     position: relative;
 }
 
+
+@font-face {
+    font-family: 'BottledFont';
+    src: url('../fonts/MinyaDemo-qZndd.otf');
+
+}
+
+@font-face {
+    font-family: 'pFont';
+    src: url('../fonts/TiemposHeadline-Regular.otf');
+
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -21,20 +34,21 @@ body {
 
 .logga {
     grid-column: 1/1;
-<<<<<<< Updated upstream
-=======
     font-family: "BottledFont";
     font-size: 60px;
     margin: 10px 0px 10px 20px;
->>>>>>> Stashed changes
+    font-family: "BottledFont";
+    font-size: xxx-large;
 }
 
 .scroll {
     grid-column: 2/2;
+    font-family: "pFont";
 }
 
 .about {
     grid-column: 3/3;
+    font-family: "pFont";
 }
 
 .signIn,
@@ -44,10 +58,12 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-family: "pFont";
 }
 
 .favourites {
     grid-column: 4/4;
+    font-family: "pFont";
 }
 
 .circle,

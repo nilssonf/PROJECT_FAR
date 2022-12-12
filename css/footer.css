@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-=======
-
 @font-face {
     font-family: 'BottledFontOutlined';
     src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
@@ -13,8 +10,8 @@
 
 }
 
->>>>>>> Stashed changes
 .footer {
+    font-family: 'BottledFontOutlined';
     position: absolute;
     left: 0;
     bottom: 0;
