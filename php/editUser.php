@@ -77,14 +77,13 @@
             applyJSON($updateUser[0]);
         } 
 
-        // NOTE: Fråga i frågedokumentet till hjälptillfälle
-        if($email == $user["email"]){
-            applyJSON([
-                "message" => "Email already exist"
-            ], 403
-            );
+        if($email == $user["email"] && $id != $user["id"]){
+                applyJSON([
+                    "message" => "Email already exist"
+                ], 403
+                );
+            }
         }
-    } 
     applyJSON([
         "message" => "User not found"
     ], 404
