@@ -12,9 +12,10 @@
     z-index: 10;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 175px;
+    margin-top: 100px;
     place-items: center;
 
+    height: 650px;
 
     /* Needs to be fixed */
     background-image: url("../images/lines.png");
@@ -56,6 +57,7 @@ p{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: 350px;
+    margin-top: 30px;
 }
 
 #topDrink div,
@@ -67,14 +69,13 @@ p{
     flex-direction: column;
 }
 
-#topDrink img,
-#topIngredients img {
-    height: 50%;
-}
-
 #drinkHeader,
 #drinkIngredients {
     margin: 0;
     padding-top: 80px;
     text-align: center;
+}
+
+#topIngredients{
+    margin-bottom: 60px;
 }
