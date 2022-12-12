@@ -1,7 +1,12 @@
-
 @font-face {
     font-family: 'BottledFontOutlined';
     src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+
+}
+
+@font-face {
+    font-family: 'pFont';
+    src: url('../fonts/TiemposHeadline-Regular.otf');
 
 }
 
@@ -12,5 +17,24 @@
     bottom: 0;
     width: 100%;
     padding: 20px;
-    background-color: wheat;
+    background-color: #EC6542;
+    /* border-top: grey dashed 2px; */
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+    text-align: center;
+}
+
+.companyInfo{
+    font-family: 'pFont';
+    color: white;
+}
+
+.bottled {
+    font-family: 'BottledFontOutlined';
+    grid-column: 8/8;
+    font-size: xx-large;
+
+    color: white;
 }

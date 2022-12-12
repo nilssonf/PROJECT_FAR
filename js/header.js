@@ -12,7 +12,7 @@ function header() {
 
     let scroll = document.createElement("p");
     scroll.innerText = "Scroll Drinks";
-    scroll.classList.add("sroll");
+    scroll.classList.add("scroll");
 
     let about = document.createElement("p");
     about.innerText = "About";
