@@ -98,7 +98,14 @@
 .alphabetOne p,
 .alphabetTwo p,
 .alphabetThree p {
+    font-family: 'Inter';
     font-size: 30px;
+}
+
+.alphabetOne p:hover,
+.alphabetTwo p:hover,
+.alphabetThree p:hover {
+    cursor: pointer;
 }
 
 .filterContainer {
