@@ -70,3 +70,12 @@ body {
 .standard {
     height: 30px;
 }
+
+.menuElm {
+    transition: 0.3s;
+    font: "Inter";
+}
+.menuElm:hover {
+    color: #EC6543;
+    cursor: pointer;
+}
