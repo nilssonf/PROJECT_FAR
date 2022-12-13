@@ -17,15 +17,25 @@
 
     <div id="searchWrapper">
         <div class="filterContainer">
-            <h2>Filter</h2>
+            <h3>Filter</h3>
 
-            <div class="filterInput">
-                <div><input type="text" id="color" name="color"></div>
-                <div><input type="text" id="ingrediant" name="ingrediant"></div>
-                <div> <input type="text" id="liqour" name="liqour"></div>
-                <input type="submit" value="Reset">
+            <div id="filterAlcohol">
+                <select id="chooseAlcohol" required>
+                    <option value="" selected disabled hidden>Alcohol</option>
+                  </select>
             </div>
 
+            <div id="filterCategory">
+                <select id="chooseCategory" required>
+                    <option value="" selected disabled hidden>Category</option>
+                  </select>
+            </div>
+
+            <div id="filterGlass">
+                <select id="chooseGlass" required>
+                    <option value="" selected disabled hidden>Glass</option>
+                  </select>
+            </div>
         </div>
 
         <div id="container">
@@ -42,8 +52,6 @@
                     <div class="alphabetThree"> </div>
                 </div>
             </div>
-
-
 
             <div id="wrapper">
             </div>
