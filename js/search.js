@@ -1,31 +1,27 @@
 "use strict";
 
 function getDrinksByLetter(letter) {
-
-    document.querySelector("#wrapper").innerHTML = " "
-
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`))
         .then(r => r.json())
         .then(rsc => {
-            createDrinks(rsc)
+            createDrinks(rsc.drinks)
 
         })
 }
 
 function getDrinksByName(name) {
-
-    document.querySelector("#wrapper").innerHTML = " "
-
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`))
         .then(r => r.json())
         .then(rsc => {
-            createDrinks(rsc)
+            createDrinks(rsc.drinks)
 
         })
 }
 
 function createDrinks(rsc) {
-    rsc.drinks.forEach(drink => {
+    document.querySelector("#wrapper").innerHTML = " "
+
+    rsc.forEach(drink => {
         let oneDrink = drink.strDrink
         let drinkImg = drink.strDrinkThumb
         let drinkAlcoholic = drink.strAlcoholic
@@ -119,73 +115,92 @@ function createAlphabet() {
 
 }
 
-function createFilterAlcohol(alcohol) {
-
-    let chooseAlcohol = document.getElementById("chooseAlcohol");
-    let alcoholArray = alcohol.drinks;
-
-    alcoholArray.forEach((a) => {
-        let option = document.createElement("option");
-        option.text = a.strAlcoholic;
-        chooseAlcohol.append(option);
-    })
-
-
-}
-
 function getAlcoholic() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`))
         .then(r => r.json())
         .then(rsc => {
-            createFilterAlcohol(rsc)
+            createFilterAlcohol(rsc.drinks)
         })
 }
-
-function createFilterCategory(category) {
-
-    let chooseCategory = document.getElementById("chooseCategory");
-    let categoryArray = category.drinks;
-
-    categoryArray.forEach((c) => {
-        let option = document.createElement("option");
-        option.text = c.strCategory;
-        chooseCategory.append(option);
-    })
-
-
-}
-
 
 function getCategory() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`))
         .then(r => r.json())
         .then(rsc => {
-            createFilterCategory(rsc)
+            createFilterCategory(rsc.drinks)
         })
 }
-
-function createFilterGlass(glass) {
-
-    let chooseGlass = document.getElementById("chooseGlass");
-    let glassArray = glass.drinks;
-
-    glassArray.forEach((g) => {
-        let option = document.createElement("option");
-        option.text = g.strGlass;
-        chooseGlass.append(option);
-    })
-
-
-}
-
 
 function getGlass() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`))
         .then(r => r.json())
         .then(rsc => {
-            createFilterGlass(rsc)
+            createFilterGlass(rsc.drinks)
         })
 }
+
+function createFilterAlcohol(alcohol) {
+
+    let chooseAlcohol = document.getElementById("chooseAlcohol");
+
+    alcohol.forEach((a) => {
+        let option = document.createElement("option");
+        option.text = a.strAlcoholic;
+        chooseAlcohol.append(option);
+
+        option.addEventListener("click", function() {
+            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${option.value}`))
+                .then(r => r.json())
+                .then(rsc => {
+                    createDrinks(rsc.drinks)
+                })
+        })
+
+    })
+
+
+}
+
+function createFilterCategory(category) {
+
+    let chooseCategory = document.getElementById("chooseCategory");
+
+    category.forEach((c) => {
+        let option = document.createElement("option");
+        option.text = c.strCategory;
+        chooseCategory.append(option);
+
+        option.addEventListener("click", function() {
+            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${option.value}`))
+                .then(r => r.json())
+                .then(rsc => {
+                    createDrinks(rsc.drinks)
+                })
+        })
+    })
+}
+
+function createFilterGlass(glass) {
+
+    let chooseGlass = document.getElementById("chooseGlass");
+
+    glass.forEach((g) => {
+        let option = document.createElement("option");
+        option.text = g.strGlass;
+        chooseGlass.append(option);
+
+        option.addEventListener("click", function() {
+
+            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${option.value}`))
+                .then(r => r.json())
+                .then(rsc => {
+                    console.log(rsc.drinks)
+                    createDrinks(rsc.drinks)
+                })
+        })
+    })
+}
+
 
 
 
