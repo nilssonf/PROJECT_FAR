@@ -5,9 +5,8 @@
 }
 
 @font-face {
-    font-family: 'pFont';
-    src: url('../fonts/TiemposHeadline-Regular.otf');
-
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.ttf');
 }
 
 .footer {
@@ -27,7 +26,7 @@
 }
 
 .companyInfo{
-    font-family: 'pFont';
+    font-family: 'Inter';
     color: white;
 }
 
