@@ -140,6 +140,15 @@ function getGlass() {
         })
 }
 
+function getIngrediants() {
+    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`))
+        .then(r => r.json())
+        .then(rsc => {
+            console.log(rsc)
+            createFilterIngrediant(rsc.drinks)
+        })
+}
+
 let alcoholDrinksById = [];
 
 function createFilterAlcohol(alcohol) {
@@ -236,6 +245,38 @@ function createFilterGlass(glass) {
     })
 }
 
+let ingrediantDrinksById = [];
+
+function createFilterIngrediant(ingrediant) {
+
+    let chooseIngrediant = document.getElementById("chooseIngrediant");
+
+    ingrediant.forEach((i) => {
+        let option = document.createElement("option");
+        option.text = i.strIngredient1;
+        chooseIngrediant.append(option);
+
+        option.addEventListener("click", function() {
+
+            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${option.value}`))
+                .then(r => r.json())
+                .then(rsc => {
+                    rsc.drinks.forEach(drink => {
+                        let id = drink.idDrink;
+
+                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                            .then(r => r.json())
+                            .then(rsc => {
+                                ingrediantDrinksById.push(rsc.drinks[0]);
+                                createDrinks(ingrediantDrinksById)
+                            })
+                    })
+                    ingrediantDrinksById = [];
+                })
+        })
+    })
+}
+
 
 
 
@@ -245,3 +286,4 @@ createAlphabet()
 getAlcoholic()
 getCategory()
 getGlass()
+getIngrediants()
