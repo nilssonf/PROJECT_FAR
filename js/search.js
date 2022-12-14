@@ -47,10 +47,15 @@ function createDrinks(rsc) {
 
         drinkBox.classList.add("drinkBox");
         document.querySelector("#wrapper").append(drinkBox);
+    
 
-
+        document.querySelector(".text").addEventListener("click", function() {
+            console.log("hej");
+            buildDrinkPopUp();
+        })
 
     })
+
 }
 
 function getsearchedDrink() {
