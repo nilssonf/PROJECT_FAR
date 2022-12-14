@@ -1,10 +1,11 @@
-"use strict";
+'use strict'
 
 let user = 1
 
 window.onload = getRandomIngredients()
 
 window.onload = getRandomDrinks()
+
 
 function getRandomIngredients() {
     const rqstIngredients = new Request('../php/topIngredients.json')
@@ -77,3 +78,4 @@ function showTopIngredients(ingredient3) {
         })
     })
 }
+

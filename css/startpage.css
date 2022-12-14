@@ -12,14 +12,24 @@
     z-index: 10;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 175px;
+    margin-top: 100px;
     place-items: center;
 
+    height: 650px;
 
-    /* Needs to be fixed */
+    position: relative;
+}
+
+.lines{
+    grid-column: 1 / span 2;
     background-image: url("../images/lines.png");
     background-repeat: no-repeat;
     background-position: bottom;
+
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: absolute;
 }
 
 .drinkIndexContainer {
@@ -56,10 +66,12 @@ p{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: 350px;
+    margin-top: 30px;
 }
 
 #topDrink div,
 #topIngredients div {
+    position: relative;
     height: 350px;
     display: flex;
     justify-content: center;
@@ -67,9 +79,21 @@ p{
     flex-direction: column;
 }
 
-#topDrink img,
-#topIngredients img {
-    height: 50%;
+.circles {
+    z-index: 1;
+    position: absolute;
+}
+
+.top{
+    z-index: 50;
+    position: absolute;
+}
+
+.round{
+    border-radius: 50%; 
+    height: 250px;
+    width: 250px;
+    background-repeat: no-repeat;
 }
 
 #drinkHeader,
@@ -77,4 +101,8 @@ p{
     margin: 0;
     padding-top: 80px;
     text-align: center;
+}
+
+#topIngredients{
+    margin-bottom: 60px;
 }
