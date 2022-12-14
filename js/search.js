@@ -19,6 +19,7 @@ function getDrinksByName(name) {
 }
 
 function createDrinks(rsc) {
+<<<<<<< Updated upstream
     document.querySelector("#wrapper").innerHTML = " "
 
 
@@ -57,6 +58,49 @@ function createDrinks(rsc) {
 
     })
 
+=======
+   document.querySelector("#wrapper").innerHTML = " "
+ 
+ 
+   rsc.forEach(drink => {
+        let id = drink.idDrink;
+       let oneDrink = drink.strDrink
+       let drinkImg = drink.strDrinkThumb
+       let drinkAlcoholic = drink.strAlcoholic
+       let drinkCategory = drink.strCategory
+       let drinkGlass = drink.strGlass
+ 
+       let drinkBox = document.createElement("div");
+       drinkBox.innerHTML = `
+               <div class="imgWrap">
+                   <img src="${drinkImg}" class="drinkImg">
+               </div>
+               <div class="text" id="${id}">
+                   <h3>${oneDrink} </h3>
+                   <div class="tags">
+                       <p> ${drinkAlcoholic} </p>
+                       <p>${drinkCategory} </p>
+      
+                       <p>${drinkGlass} </p>
+                   </div>
+               </div>
+                <img src="../images/gilla.png" class="heartImg">
+               `;
+ 
+       drinkBox.classList.add("drinkBox");
+       document.querySelector("#wrapper").append(drinkBox);
+   
+   })
+
+    let all = document.querySelectorAll(".text")
+    all.forEach(div => {
+        div.addEventListener("click", function() {
+            document.getElementById("wrapper").innerHTML = ""; 
+            buildDrinkPopUp(div.id);
+        })
+    })
+    sessionStorage.clear();
+>>>>>>> Stashed changes
 }
 
 function getsearchedDrink() {
@@ -284,6 +328,7 @@ function createFilterIngrediant(ingrediant) {
 
 
 function getClickedIngretidant() {
+<<<<<<< Updated upstream
     let name = sessionStorage.getItem("ingName")
     console.log(name)
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
@@ -304,6 +349,27 @@ function getClickedIngretidant() {
         })
 
 
+=======
+   let name = sessionStorage.getItem("ingName")
+   fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
+       .then(r => r.json())
+       .then(rsc => {
+           rsc.drinks.forEach(drink => {
+               let id = drink.idDrink;
+ 
+               fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                   .then(r => r.json())
+                   .then(rsc => {
+                       ingrediantDrinksById.push(rsc.drinks[0]);
+                       createDrinks(ingrediantDrinksById)
+                   })
+           })
+           ingrediantDrinksById = [];
+ 
+       })
+ 
+ 
+>>>>>>> Stashed changes
 }
 
 
