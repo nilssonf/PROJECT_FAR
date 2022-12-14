@@ -144,7 +144,6 @@ function getIngrediants() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`))
         .then(r => r.json())
         .then(rsc => {
-            console.log(rsc)
             createFilterIngrediant(rsc.drinks)
         })
 }
@@ -279,6 +278,30 @@ function createFilterIngrediant(ingrediant) {
 
 
 
+function getClickedIngretidant() {
+    let name = sessionStorage.getItem("ingName")
+    console.log(name)
+    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
+        .then(r => r.json())
+        .then(rsc => {
+            rsc.drinks.forEach(drink => {
+                let id = drink.idDrink;
+
+                fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                    .then(r => r.json())
+                    .then(rsc => {
+                        ingrediantDrinksById.push(rsc.drinks[0]);
+                        createDrinks(ingrediantDrinksById)
+                    })
+            })
+            ingrediantDrinksById = [];
+
+        })
+
+
+}
+
+
 
 getDrinksByLetter("a")
 getsearchedDrink()
@@ -287,3 +310,4 @@ getAlcoholic()
 getCategory()
 getGlass()
 getIngrediants()
+getClickedIngretidant()
