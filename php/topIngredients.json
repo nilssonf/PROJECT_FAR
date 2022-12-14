@@ -2,61 +2,61 @@
     {
         "ingId": "1",
         "ingName": "Vodka",
-        "ingImg": "ingredients/vodka.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/vodka-Medium.png"
     },
     {
         "ingId": "2",
         "ingName": "Gin",
-        "ingImg": "ingredients/gin.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/gin-Medium.png"
     },
     {
         "ingId": "3",
         "ingName": "Rum",
-        "ingImg": "ingredients/rum.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/rum-Medium.png"
     },
     {
         "ingId": "4",
         "ingName": "Tequila",
-        "ingImg": "ingredients/tequila.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/tequila-Medium.png"
     },
     {
         "ingId": "59",
         "ingName": "Black Sambuca",
-        "ingImg": "ingredients/lemon_peel.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/black%20sambuca-Medium.png"
     },
     {
         "ingId": "31",
         "ingName": "Applejack",
-        "ingImg": "ingredients/applejack.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/applejack-Medium.png"
     },
     {
         "ingId": "299",
         "ingName": "Lemon",
-        "ingImg": "ingredients/lemon.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/lemon-Medium.png"
     },
     {
         "ingId": "600",
         "ingName": "Whiskey",
-        "ingImg": "ingredients/whiskey.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/whiskey-Medium.png"
     },
     {
         "ingId": "542",
         "ingName": "Prosecco",
-        "ingImg": "ingredients/prosecco.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/prosecco-Medium.png"
     },
     {
         "ingId": "312",
         "ingName": "Lime",
-        "ingImg": "ingredients/lime.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/lime-Medium.png"
     },
     {
         "ingId": "470",
         "ingName": "Strawberries",
-        "ingImg": "ingredients/strawberries.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/strawberries-Medium.png"
     },
     {
         "ingId": "337",
         "ingName": "Mint",
-        "ingImg": "ingredients/mint.png"
+        "ingImg": "https://www.thecocktaildb.com/images/ingredients/mint-Medium.png"
     }
 ]

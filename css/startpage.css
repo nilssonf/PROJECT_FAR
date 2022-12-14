@@ -62,11 +62,29 @@ p{
 
 #topDrink div,
 #topIngredients div {
+    position: relative;
     height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.circles {
+    z-index: 1;
+    position: absolute;
+}
+
+.top{
+    z-index: 50;
+    position: absolute;
+}
+
+.round{
+    border-radius: 50%; 
+    height: 250px;
+    width: 250px;
+    background-repeat: no-repeat;
 }
 
 #drinkHeader,
