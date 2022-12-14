@@ -12,7 +12,11 @@ body {
 @font-face {
     font-family: 'pFont';
     src: url('../fonts/TiemposHeadline-Regular.otf');
+}
 
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.ttf');
 }
 
 .header {
@@ -34,7 +38,6 @@ body {
 
 .logga {
     grid-column: 1/1;
-    font-family: "BottledFont";
     font-size: 60px;
     margin: 10px 0px 10px 20px;
     font-family: "BottledFont";
@@ -73,9 +76,13 @@ body {
 
 .menuElm {
     transition: 0.3s;
-    font: "Inter";
+    font-family: "Inter";
 }
 .menuElm:hover {
     color: #EC6543;
     cursor: pointer;
+}
+
+.logga {
+    font-family: "BottledFont";
 }
