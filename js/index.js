@@ -6,68 +6,76 @@ window.onload = getRandomIngredients()
 
 window.onload = getRandomDrinks()
 
-function getRandomIngredients () {
-  const rqstIngredients = new Request('../php/topIngredients.json')
 
-  fetch(rqstIngredients)
-    .then(r => r.json())
-    .then(ingredients => {
-      const n = 3
-      let ingredient3 = ingredients
-        .map(x => ({ x, r: Math.random() }))
-        .sort((a, b) => a.r - b.r)
-        .map(a => a.x)
-        .slice(0, n)
+function getRandomIngredients() {
+    const rqstIngredients = new Request('../php/topIngredients.json')
 
-      showTopIngredients(ingredient3)
+    fetch(rqstIngredients)
+        .then(r => r.json())
+        .then(ingredients => {
+            const n = 3
+            let ingredient3 = ingredients
+                .map(x => ({ x, r: Math.random() }))
+                .sort((a, b) => a.r - b.r)
+                .map(a => a.x)
+                .slice(0, n)
+
+            showTopIngredients(ingredient3)
+        })
+}
+
+function getRandomDrinks() {
+    const rqstDrinks = new Request('../php/topDrinks.json')
+
+    fetch(rqstDrinks)
+        .then(r => r.json())
+        .then(drinks => {
+            const n = 3
+            let drink3 = drinks
+                .map(x => ({ x, r: Math.random() }))
+                .sort((a, b) => a.r - b.r)
+                .map(a => a.x)
+                .slice(0, n)
+
+            showTopDrinks(drink3)
+        })
+}
+
+function showTopDrinks(drink3) {
+    const numbers = ['One', 'Two', 'Three']
+
+    drink3.forEach((drink, index) => {
+        fetch(
+                new Request(
+                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.drinkId}`
+                )
+            )
+            .then(r => r.json())
+            .then(rsc => {
+                let class_name = '.drink' + numbers[index]
+                let topDrinkOne = document.createElement('img')
+                topDrinkOne.classList.add('round', 'top')
+                topDrinkOne.src = rsc.drinks[0].strDrinkThumb
+                document.querySelector(class_name).append(topDrinkOne)
+            })
     })
 }
 
-function getRandomDrinks () {
-  const rqstDrinks = new Request('../php/topDrinks.json')
+function showTopIngredients(ingredient3) {
+    const numbers = ['One', 'Two', 'Three']
 
-  fetch(rqstDrinks)
-    .then(r => r.json())
-    .then(drinks => {
-      const n = 3
-      let drink3 = drinks
-        .map(x => ({ x, r: Math.random() }))
-        .sort((a, b) => a.r - b.r)
-        .map(a => a.x)
-        .slice(0, n)
+    console.log(ingredient3)
+    ingredient3.forEach((ingredient, index) => {
+        let class_name = '.ingredient' + numbers[index]
+        let topIngredientOne = document.createElement('img')
+        topIngredientOne.classList.add('top')
+        topIngredientOne.src = ingredient.ingImg
+        document.querySelector(class_name).append(topIngredientOne)
 
-      showTopDrinks(drink3)
+        topIngredientOne.addEventListener("click", function() {
+            sessionStorage.setItem("ingName", String(ingredient.ingName))
+            location.href = "./search.html";
+        })
     })
 }
 
-function showTopDrinks (drink3) {
-  const numbers = ['One', 'Two', 'Three']
-
-  drink3.forEach((drink, index) => {
-    fetch(
-      new Request(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.drinkId}`
-      )
-    )
-      .then(r => r.json())
-      .then(rsc => {
-        let class_name = '.drink' + numbers[index]
-        let topDrinkOne = document.createElement('img')
-        topDrinkOne.classList.add('round', 'top')
-        topDrinkOne.src = rsc.drinks[0].strDrinkThumb
-        document.querySelector(class_name).append(topDrinkOne)
-      })
-  })
-}
-
-function showTopIngredients (ingredient3) {
-  const numbers = ['One', 'Two', 'Three']
-
-  ingredient3.forEach((ingredient, index) => {
-    let class_name = '.ingredient' + numbers[index]
-    let topIngredientOne = document.createElement('img')
-    topIngredientOne.classList.add('top')
-    topIngredientOne.src = ingredient.ingImg
-    document.querySelector(class_name).append(topIngredientOne)
-  })
-}
