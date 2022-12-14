@@ -21,6 +21,7 @@ function getDrinksByName(name) {
 function createDrinks(rsc) {
     document.querySelector("#wrapper").innerHTML = " "
 
+
     rsc.forEach(drink => {
         let oneDrink = drink.strDrink
         let drinkImg = drink.strDrinkThumb
@@ -139,6 +140,8 @@ function getGlass() {
         })
 }
 
+let alcoholDrinksById = [];
+
 function createFilterAlcohol(alcohol) {
 
     let chooseAlcohol = document.getElementById("chooseAlcohol");
@@ -152,14 +155,25 @@ function createFilterAlcohol(alcohol) {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${option.value}`))
                 .then(r => r.json())
                 .then(rsc => {
-                    createDrinks(rsc.drinks)
+                    rsc.drinks.forEach(drink => {
+                        let id = drink.idDrink;
+
+                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                            .then(r => r.json())
+                            .then(rsc => {
+                                alcoholDrinksById.push(rsc.drinks[0]);
+                                createDrinks(alcoholDrinksById)
+                            })
+
+                    })
+                    alcoholDrinksById = [];
+
                 })
         })
-
     })
-
-
 }
+
+let categoryDrinksById = [];
 
 function createFilterCategory(category) {
 
@@ -174,11 +188,23 @@ function createFilterCategory(category) {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${option.value}`))
                 .then(r => r.json())
                 .then(rsc => {
-                    createDrinks(rsc.drinks)
+                    rsc.drinks.forEach(drink => {
+                        let id = drink.idDrink;
+
+                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                            .then(r => r.json())
+                            .then(rsc => {
+                                categoryDrinksById.push(rsc.drinks[0]);
+                                createDrinks(categoryDrinksById)
+                            })
+                    })
+                    categoryDrinksById = [];
                 })
         })
     })
 }
+
+let glassDrinksById = [];
 
 function createFilterGlass(glass) {
 
@@ -194,8 +220,17 @@ function createFilterGlass(glass) {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${option.value}`))
                 .then(r => r.json())
                 .then(rsc => {
-                    console.log(rsc.drinks)
-                    createDrinks(rsc.drinks)
+                    rsc.drinks.forEach(drink => {
+                        let id = drink.idDrink;
+
+                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                            .then(r => r.json())
+                            .then(rsc => {
+                                glassDrinksById.push(rsc.drinks[0]);
+                                createDrinks(glassDrinksById)
+                            })
+                    })
+                    glassDrinksById = [];
                 })
         })
     })
