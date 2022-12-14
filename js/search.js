@@ -24,6 +24,7 @@ function createDrinks(rsc) {
  
  
    rsc.forEach(drink => {
+        let id = drink.idDrink;
        let oneDrink = drink.strDrink
        let drinkImg = drink.strDrinkThumb
        let drinkAlcoholic = drink.strAlcoholic
@@ -35,7 +36,7 @@ function createDrinks(rsc) {
                <div class="imgWrap">
                    <img src="${drinkImg}" class="drinkImg">
                </div>
-               <div class="text">
+               <div class="text" id="${id}">
                    <h3>${oneDrink} </h3>
                    <div class="tags">
                        <p> ${drinkAlcoholic} </p>
@@ -49,12 +50,17 @@ function createDrinks(rsc) {
  
        drinkBox.classList.add("drinkBox");
        document.querySelector("#wrapper").append(drinkBox);
- 
- 
- 
+   
    })
 
-sessionStorage.clear();
+    let all = document.querySelectorAll(".text")
+    all.forEach(div => {
+        div.addEventListener("click", function() {
+            document.getElementById("wrapper").innerHTML = ""; 
+            buildDrinkPopUp(div.id);
+        })
+    })
+    sessionStorage.clear();
 
 }
  
@@ -283,8 +289,28 @@ function createFilterIngrediant(ingrediant) {
  
  
 function getClickedIngretidant() {
+
+    let name = sessionStorage.getItem("ingName")
+    console.log(name)
+    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
+        .then(r => r.json())
+        .then(rsc => {
+            rsc.drinks.forEach(drink => {
+                let id = drink.idDrink;
+
+                fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
+                    .then(r => r.json())
+                    .then(rsc => {
+                        ingrediantDrinksById.push(rsc.drinks[0]);
+                        createDrinks(ingrediantDrinksById)
+                    })
+            })
+            ingrediantDrinksById = [];
+
+        })
+
    let name = sessionStorage.getItem("ingName")
-   console.log(name)
+
    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
        .then(r => r.json())
        .then(rsc => {
@@ -301,8 +327,7 @@ function getClickedIngretidant() {
            ingrediantDrinksById = [];
  
        })
- 
- 
+
 }
  
  
