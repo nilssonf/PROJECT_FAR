@@ -14,18 +14,15 @@
     grid-template-columns: repeat(2, 1fr);
     margin-top: 100px;
     place-items: center;
-
     height: 650px;
-
     position: relative;
 }
 
-.lines{
+.lines {
     grid-column: 1 / span 2;
     background-image: url("../images/lines.png");
     background-repeat: no-repeat;
     background-position: bottom;
-
     width: 100%;
     height: 100%;
     z-index: 100;
@@ -40,23 +37,21 @@
     flex-direction: column;
 }
 
-.welcomeIndexContainer{
+.welcomeIndexContainer {
     display: flex;
-    
     flex-direction: column;
-    padding-top: 200px
-    ;
+    padding-top: 200px;
     width: 80%;
     height: 100%;
 }
 
-h1{
+h1 {
     font-family: "BottledFontOutlined";
     color: #EC6542BD;
     font-size: 70px;
 }
 
-p{
+p {
     font-family: "pFont";
 }
 
@@ -84,13 +79,17 @@ p{
     position: absolute;
 }
 
-.top{
+.top {
     z-index: 50;
     position: absolute;
 }
 
-.round{
-    border-radius: 50%; 
+.top:hover {
+    cursor: pointer;
+}
+
+.round {
+    border-radius: 50%;
     height: 250px;
     width: 250px;
     background-repeat: no-repeat;
@@ -103,6 +102,6 @@ p{
     text-align: center;
 }
 
-#topIngredients{
+#topIngredients {
     margin-bottom: 60px;
 }

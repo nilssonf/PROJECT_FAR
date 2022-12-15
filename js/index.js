@@ -1,6 +1,6 @@
 'use strict'
 
-let user = 1
+let user = 1;
 
 window.onload = getRandomIngredients()
 
@@ -78,4 +78,3 @@ function showTopIngredients(ingredient3) {
         })
     })
 }
-

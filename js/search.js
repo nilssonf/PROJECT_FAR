@@ -20,6 +20,7 @@ function getDrinksByName(name) {
 }
  
 function createDrinks(rsc) {
+
    document.querySelector("#wrapper").innerHTML = " "
  
  
@@ -33,6 +34,7 @@ function createDrinks(rsc) {
  
        let drinkBox = document.createElement("div");
        drinkBox.innerHTML = `
+
                <div class="imgWrap">
                    <img src="${drinkImg}" class="drinkImg">
                </div>
@@ -47,16 +49,20 @@ function createDrinks(rsc) {
                </div>
                 <img src="../images/gilla.png" class="heartImg">
                `;
+
  
        drinkBox.classList.add("drinkBox");
        document.querySelector("#wrapper").append(drinkBox);
    
    })
 
+
     let all = document.querySelectorAll(".text")
     all.forEach(div => {
         div.addEventListener("click", function() {
+
             document.getElementById("wrapper").innerHTML = ""; 
+
             buildDrinkPopUp(div.id);
         })
     })
@@ -65,7 +71,7 @@ function createDrinks(rsc) {
 }
  
 function getsearchedDrink() {
-    document.getElementById("click").addEventListener("click", function() {
+    document.getElementById("drinkName").addEventListener("keyup", function() {
         let search = document.getElementById("drinkName").value
         getDrinksByName(search)
     })
@@ -111,8 +117,10 @@ function getsearchedDrink() {
             getDrinksByLetter(clickedLetter)
         })
     })
+
   }
   function getAlcoholic() {
+
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`))
         .then(r => r.json())
         .then(rsc => {
@@ -239,8 +247,10 @@ function getsearchedDrink() {
                 })
         })
     })
+
   }
   function getClickedIngretidant() {
+
     let name = sessionStorage.getItem("ingName")
     console.log(name)
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
@@ -257,6 +267,7 @@ function getsearchedDrink() {
             })
             ingrediantDrinksById = [];
         })
+
   }
   getDrinksByLetter("a")
   getsearchedDrink()
@@ -267,4 +278,4 @@ function getsearchedDrink() {
   getIngrediants()
   getClickedIngretidant()
   
-  
+ 
