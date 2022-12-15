@@ -23,6 +23,9 @@ function createDrinks(rsc) {
 
 
     rsc.forEach(drink => {
+
+        let id = drink.idDrink;
+
         let oneDrink = drink.strDrink
         let drinkImg = drink.strDrinkThumb
         let drinkAlcoholic = drink.strAlcoholic
@@ -31,31 +34,41 @@ function createDrinks(rsc) {
 
         let drinkBox = document.createElement("div");
         drinkBox.innerHTML = `
-                <div class="imgWrap">
-                    <img src="${drinkImg}" class="drinkImg">
-                </div>
-                <div class="text">
-                    <h3>${oneDrink} </h3>
-                    <div class="tags">
-                        <p> ${drinkAlcoholic} </p>
-                        <p>${drinkCategory} </p>
-        
-                        <p>${drinkGlass} </p> 
-                    </div>
-                </div>
-                 <img src="../images/gilla.png" class="heartImg">
-                `;
+
+               <div class="imgWrap">
+                   <img src="${drinkImg}" class="drinkImg">
+               </div>
+               <div class="text" id="${id}">
+                   <h3>${oneDrink} </h3>
+                   <div class="tags">
+                       <p> ${drinkAlcoholic} </p>
+                       <p>${drinkCategory} </p>
+      
+                       <p>${drinkGlass} </p>
+                   </div>
+               </div>
+                <img src="../images/gilla.png" class="heartImg">
+               `;
 
         drinkBox.classList.add("drinkBox");
         document.querySelector("#wrapper").append(drinkBox);
 
-
-
     })
+
+    let all = document.querySelectorAll(".text")
+    all.forEach(div => {
+        div.addEventListener("click", function() {
+            document.getElementById("wrapper").innerHTML = "";
+            buildDrinkPopUp(div.id);
+        })
+    })
+    sessionStorage.clear();
+
+
 }
 
 function getsearchedDrink() {
-    document.getElementById("click").addEventListener("click", function() {
+    document.getElementById("drinkName").addEventListener("keyup", function() {
         let search = document.getElementById("drinkName").value
         getDrinksByName(search)
 
@@ -113,6 +126,7 @@ function createAlphabet() {
             getDrinksByLetter(clickedLetter)
         })
     })
+
 
 }
 
@@ -277,7 +291,6 @@ function createFilterIngrediant(ingrediant) {
 }
 
 
-
 function getClickedIngretidant() {
     let name = sessionStorage.getItem("ingName")
     console.log(name)
@@ -298,10 +311,7 @@ function getClickedIngretidant() {
 
         })
 
-
 }
-
-
 
 getDrinksByLetter("a")
 getsearchedDrink()

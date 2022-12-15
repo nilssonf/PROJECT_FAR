@@ -32,16 +32,17 @@
 .drinkBox {
     width: 100%;
     overflow-x: clip;
-    margin: 20px 0px 20px 0px;
-    background-color: whitesmoke;
+    margin: 40px 0px 40px 0px;
     justify-content: space-around;
     display: grid;
     grid-template-columns: 4fr 6fr 1fr;
+    border: 0.5px solid rgb(123, 123, 123);
+    box-shadow: -10px 10px #ec6543c3;
 }
 
 .imgWrap {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
@@ -58,6 +59,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#drinkName {
+    width: 300px;
+    height: 20px;
+    border: 1px solid #EC6542;
+    border-radius: 50px;
 }
 
 .alphabet {
@@ -109,10 +117,12 @@
 }
 
 .filterContainer {
-    padding-top: 380px;
-    width: 20vw;
+    height: 220px;
+    margin-top: 440px;
+    width: 200px;
     position: relative;
-    right: 150px;
+    right: 200px;
+    border: 1px #EC6542 dashed;
 }
 
 .text {
