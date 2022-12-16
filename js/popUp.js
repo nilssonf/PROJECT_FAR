@@ -10,8 +10,6 @@ function buildDrinkPopUp (id){
 } 
 
 function choosenDrink(rsc){
-
-    console.log(rsc);
     let overlay = document.getElementById("overlay");
 
     let drinkName = rsc.drinks[0].strDrink;
@@ -19,7 +17,44 @@ function choosenDrink(rsc){
     let drinkInstructions = rsc.drinks[0].strInstructions;
     let drinkGlass = rsc.drinks[0].strGlass;
 
+    let ingr = [];
+    let measures = [];
+
+    let drinkObject = rsc.drinks[0];
+
+    for (let key in drinkObject) {
+
+        if(key.includes("strIngredient") && drinkObject[key] != null){
+            ingr.push(drinkObject[key]);
+                }        
+    }
+
+    for (let key in drinkObject) {
+
+        if(key.includes("strMeasure") && drinkObject[key] != null){
+            measures.push(drinkObject[key]);
+                }        
+    }
     
+    let ingrDiv = document.createElement('div');
+    ingrDiv.classList.add("ingrDiv");
+    let measureDiv = document.createElement('div');
+    measureDiv.classList.add("measureDiv");
+    
+    for(let i = 0; i < ingr.length; i++){
+        let ingrP = document.createElement("p");
+        ingrP.innerText = ingr[i];
+
+        ingrDiv.append(ingrP)
+    }
+
+    for(let j = 0; j < measures.length; j++){
+        let measureP = document.createElement("p");
+        measureP.innerText = measures[j];
+       
+        measureDiv.append(measureP)
+    }
+
     let drinkBox = document.createElement("div");
     drinkBox.classList.add("showOneDrinkDiv");
 
@@ -28,7 +63,10 @@ function choosenDrink(rsc){
         <div>
             <h2 class="oneDrinkName">${drinkName}</h2>
             <h3 class="oneDrinkH3">Ingredients:</h3>
-            <ul></ul>
+            <div class="ingredientsDiv">
+                <div class="ingrContainer">${ingrDiv.innerHTML}</div>
+                <div class="measureContainer">${measureDiv.innerHTML}</div>
+            </div>
             <h3 class="oneDrinkH3">Recommended glass:</h3>
             <p>${drinkGlass}</p>
         </div>
@@ -41,7 +79,6 @@ function choosenDrink(rsc){
     `;
 
     overlay.append(drinkBox);
-
 
     let close = document.createElement("a");
     close.classList.add("close");
