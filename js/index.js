@@ -2,6 +2,7 @@
 
 
 window.onload = getRandomIngredients();
+window.onload = getRandomDrinks();
 
 
 
@@ -43,11 +44,8 @@ function showTopDrinks(drink3) {
     const numbers = ['One', 'Two', 'Three'];
 
     drink3.forEach((drink, index) => {
-        fetch(
-                new Request(
-                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.drinkId}`
-                )
-            )
+        fetch(new Request(
+            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.drinkId}`))
             .then(r => r.json())
             .then(rsc => {
                 let class_name = '.drink' + numbers[index];
@@ -70,7 +68,7 @@ function showTopIngredients(ingredient3) {
         topIngredientOne.src = ingredient.ingImg;
         document.querySelector(class_name).append(topIngredientOne);
 
-        topIngredientOne.addEventListener("click", function() {
+        topIngredientOne.addEventListener("click", function () {
             sessionStorage.setItem("ingName", String(ingredient.ingName));
             location.href = "./search.html";
         });
