@@ -26,14 +26,16 @@ function choosenDrink(rsc){
     drinkBox.innerHTML =`
         <div><img class="overlayDrinkImg" src="${drinkImg}"></div>
         <div>
-            <h2>${drinkName}</h2>
-            <h3>Ingredients:</h3>
-            <h3>Recommended glass:</h3>
+            <h2 class="oneDrinkName">${drinkName}</h2>
+            <h3 class="oneDrinkH3">Ingredients:</h3>
+            <ul></ul>
+            <h3 class="oneDrinkH3">Recommended glass:</h3>
             <p>${drinkGlass}</p>
         </div>
-        <div>
-            <h3>Steps:</h3>
-            <p>${drinkInstructions}</p>
+        <div class="align-right">
+            <img src="../images/gilla.png" class="heartImg">
+            <h3 class="oneDrinkH3">Steps:</h3>
+            <p class="align-left">${drinkInstructions}</p>
         </div>
 
     `;
@@ -47,7 +49,7 @@ function choosenDrink(rsc){
     overlay.append(close);
 
     close.addEventListener("click", function (event) {
-        window.location.href = "../search.html";
-      });
+        window.location.href = "../html/search.html";
+    });
 }
 
