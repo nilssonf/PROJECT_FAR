@@ -22,18 +22,63 @@
   z-index: 300; 
 }
 
-.close{
-  height: 10px;
+.close {
+  margin-top: 100px;
+  position: fixed;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
 }
+.close:hover {
+  opacity: 1;
+}
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
 
 .showOneDrinkDiv{
   padding-top: 150px;
+  margin: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4vw;
 
   font-family: "Inter";
   color: #EC6542;
+}
+
+.oneDrinkH3{
+  text-decoration-line: underline;
+  font-size: x-large;
+  text-align: left;
+}
+
+.oneDrinkName{
+  text-decoration-line: none;
+  font-size: xxx-large;
+}
+
+.align-right{
+  text-align: right;
+}
+
+.align-left{
+  text-align: left;
 }
 
 p{
