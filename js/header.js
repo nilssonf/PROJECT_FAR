@@ -20,7 +20,10 @@ function header() {
 
     if (user == 0) {
         let signIn = document.createElement("div");
-        signIn.innerHTML = "<img src='../profiles/circle.png' class='circle'><p class='menuElm' id='signIn'>Sign in</p>";
+        signIn.innerHTML = `
+        <img src="../profiles/circle.png" class="circle">
+            <p class="menuElm" id="signIn""> Sign in</p> `
+
         signIn.classList.add("signIn");
         header.append(logga, scroll, about, signIn);
         document.querySelector("#signIn").addEventListener("click", function() {

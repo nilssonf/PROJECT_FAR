@@ -2,11 +2,9 @@ body {
     position: relative;
 }
 
-
 @font-face {
     font-family: 'BottledFont';
     src: url('../fonts/MinyaDemo-qZndd.otf');
-
 }
 
 @font-face {
@@ -30,7 +28,6 @@ body {
     grid-template-columns: repeat(8, 1fr);
     align-items: center;
     text-align: center;
-
     margin-bottom: 10px;
     border-bottom: grey dashed 2px;
     padding: 20px;
@@ -78,6 +75,7 @@ body {
     transition: 0.3s;
     font-family: "Inter";
 }
+
 .menuElm:hover {
     color: #EC6543;
     cursor: pointer;
@@ -85,4 +83,95 @@ body {
 
 .logga {
     font-family: "BottledFont";
+}
+
+#myForm {
+    display: none;
+    padding-top: 0px;
+}
+
+.closeSignIn {
+    position: fixed;
+    right: 10px;
+    bottom: 660px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    z-index: 20000;
+}
+
+.closeSignIn:hover {
+    cursor: pointer;
+}
+
+.closeSignIn:hover {
+    opacity: 1;
+}
+
+.closeSignIn:before,
+.closeSignIn:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: rgb(255, 255, 255);
+}
+
+.closeSignIn:before {
+    transform: rotate(45deg);
+}
+
+.closeSignIn:after {
+    transform: rotate(-45deg);
+}
+
+form>h2 {
+    color: white;
+    padding-top: 40px;
+}
+
+label {
+    color: white;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 300px;
+    right: 1px;
+    top: 1px;
+    z-index: 10000;
+}
+
+.form-container {
+    max-width: 200px;
+    padding: 10px;
+    background-color: #EC6543;
+}
+
+.form-container input[type=text],
+.form-container input[type=password] {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #fffafa;
+}
+
+.form-container .btn {
+    background-color: rgb(230, 161, 144);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
 }
