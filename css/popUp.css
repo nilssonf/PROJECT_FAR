@@ -93,3 +93,12 @@ p{
 .ingredientsDiv{
   display: flex;
 }
+
+.imgContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.measureContainer{
+  text-align: end;
+}
