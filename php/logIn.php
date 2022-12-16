@@ -26,7 +26,6 @@ $password = $requestData["password"];
 forEach($existingUsers as $user) {
     if ($email == $user["email"] && $password == $user["password"]) {
         applyJSON($user);
-
     }
 }
 
