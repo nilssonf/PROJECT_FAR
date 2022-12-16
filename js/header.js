@@ -1,6 +1,6 @@
 "use strict";
 
-function header() {
+function header(user) {
     let header = document.querySelector("#header");
     header.classList.add("header");
 
@@ -23,9 +23,9 @@ function header() {
         signIn.innerHTML = "<img src='../profiles/circle.png' class='circle'><p class='menuElm' id='signIn'>Sign in</p>";
         signIn.classList.add("signIn");
         header.append(logga, scroll, about, signIn);
-        document.querySelector("#signIn").addEventListener("click", function() {
-            createLogin()
-        })
+        document.querySelector("#signIn").addEventListener("click", function () {
+            createLogin();
+        });
     } else {
         let favourites = document.createElement("p");
         favourites.innerText = "Favourite drinks";
@@ -37,29 +37,29 @@ function header() {
 
         header.append(logga, scroll, about, favourites, signOut);
 
-        favourites.onclick = function() {
+        favourites.onclick = function () {
             location.href = '../html/favorites.html';
         };
 
         let profilePic = document.querySelector('.profile');
 
-        profilePic.onclick = function() {
+        profilePic.onclick = function () {
             location.href = '../html/profile.html';
         };
     }
 
-    logga.onclick = function() {
+    logga.onclick = function () {
         location.href = 'index.html';
     };
 
-    scroll.onclick = function() {
+    scroll.onclick = function () {
         location.href = '../html/search.html';
     };
 
-    about.onclick = function() {
+    about.onclick = function () {
         location.href = '../html/about.html';
     };
 
 }
 
-header();
+header(logIn("anna@gmail.com", "blueOrange96!%%"));
