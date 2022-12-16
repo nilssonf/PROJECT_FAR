@@ -89,3 +89,7 @@ p{
 .overlayDrinkImg{
   height: 350Px;
 }
+
+.ingredientsDiv{
+  display: flex;
+}
