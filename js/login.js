@@ -17,16 +17,19 @@ function logIn(username, pw) {
 
     fetch(logInRqst)
         .then(resp => {
-            if (resp.status != 200) {
+            console.log(resp);
+            if (resp.status == 200) {
+                sessionStorage.setItem("user", user);
+                return resp.json();
+            } else {
                 user = 0;
-
+                sessionStorage.setItem("user", user);
+                header(user);
             }
-            return resp.json();
-        }
-        )
+        })
         .then(rsc => {
             user = rsc.id;
-            console.log(user);
+            header(user);
         });
 }
 
@@ -34,29 +37,29 @@ function createLogin() {
 
     let close = document.createElement("a");
     close.classList.add("closeSignIn");
-    close.addEventListener("click", function() {
+    close.addEventListener("click", function () {
         document.getElementById("myForm").style.display = "none";
-    })
+    });
 
     let signInForm = document.createElement("div");
     signInForm.innerHTML =
 
         `
             <div class="form-popup" id="myForm">
-            <form action="" class="form-container">
+            <div class="form-container">
             
             <h2>Sign in</h2>
 
             <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="Enter Email" id="email" required>
         
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" id="psw" required>
         
-            <button type="submit" class="btn">Sign in </button>
-            <button type="button" class="btn create">Create Account</button>
+            <button class="btn sign_in">Sign in </button>
+            <button class="btn create">Create Account</button>
         
-            </form>
+            </div>
 
             </div>
             
@@ -64,10 +67,15 @@ function createLogin() {
             `;
 
 
-    document.querySelector("body").append(signInForm)
-    signInForm.append(close)
+    document.querySelector("body").append(signInForm);
+    signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
+    return signIn;
 
 }
 
-logIn("anna@gmail.com", "blueOrange96!%%");
+function logOut() {
+    user = 0;
+    sessionStorage.setItem("user", 0);
+    header(sessionStorage.getItem("user"));
+}

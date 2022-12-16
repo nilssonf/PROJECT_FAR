@@ -4,8 +4,6 @@ function header(user) {
     let header = document.querySelector("#header");
     header.classList.add("header");
 
-    let icon;
-
     let logga = document.createElement("h2");
     logga.innerText = "Bottled";
     logga.classList.add("logga", "menuElm");
@@ -22,12 +20,20 @@ function header(user) {
         let signIn = document.createElement("div");
         signIn.innerHTML = `
         <img src="../profiles/circle.png" class="circle">
-            <p class="menuElm" id="signIn""> Sign in</p> `
+            <p class="menuElm" id="signIn""> Sign in</p> `;
 
         signIn.classList.add("signIn");
         header.append(logga, scroll, about, signIn);
         document.querySelector("#signIn").addEventListener("click", function () {
             createLogin();
+
+            document.querySelector(".sign_in").addEventListener('click', function () {
+                let username = document.querySelector('[id="email"]').value;
+                let psw = document.querySelector('[id="psw"]').value;
+
+                header.innerHTML = "";
+                logIn(username, psw);
+            });
         });
     } else {
         let favourites = document.createElement("p");
@@ -49,6 +55,12 @@ function header(user) {
         profilePic.onclick = function () {
             location.href = '../html/profile.html';
         };
+
+        signOut.onclick = function () {
+            sessionStorage.removeItem('user');
+            header.innerHTML = "";
+            logOut();
+        };
     }
 
     logga.onclick = function () {
@@ -65,4 +77,4 @@ function header(user) {
 
 }
 
-header(logIn("anna@gmail.com", "blueOrange96!%%"));
+header(0);
