@@ -16,12 +16,19 @@ function logIn(username, pw) {
     });
 
     fetch(logInRqst)
-        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.status != 200) {
+                user = 0;
+
+            }
+            return resp.json();
+        }
+        )
         .then(rsc => {
             user = rsc.id;
+            console.log(user);
         });
 }
-
 
 function createLogin() {
 
@@ -62,3 +69,5 @@ function createLogin() {
     document.getElementById("myForm").style.display = "block";
 
 }
+
+logIn("anna@gmail.com", "blueOrange96!%%");
