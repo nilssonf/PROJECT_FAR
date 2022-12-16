@@ -80,8 +80,9 @@ h1,
 }
 
 #oneFav {
-    border-top: 2px solid #ec65437d;
-    border-bottom: 2px solid #ec65437d;;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to left,  #f38a70bb,  #ec6543ba) 1 0;
     padding: 10%;
 }
 
