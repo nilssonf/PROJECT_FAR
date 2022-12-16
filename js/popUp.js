@@ -36,6 +36,8 @@ function choosenDrink(rsc){
                 }        
     }
     
+    let imgDiv = document.createElement('div');
+    imgDiv.classList.add("imgDiv");
     let ingrDiv = document.createElement('div');
     ingrDiv.classList.add("ingrDiv");
     let measureDiv = document.createElement('div');
@@ -55,6 +57,13 @@ function choosenDrink(rsc){
         measureDiv.append(measureP)
     }
 
+    for(let i = 0; i < ingr.length; i++){
+        let picName = ingr[i].toLowerCase().replace(/\s/g, '%20'); 
+        imgDiv.innerHTML += `
+        <img class="ingrImg" src="https://www.thecocktaildb.com/images/ingredients/${picName}-Small.png">
+        `; 
+    }
+ 
     let drinkBox = document.createElement("div");
     drinkBox.classList.add("showOneDrinkDiv");
 
@@ -64,6 +73,7 @@ function choosenDrink(rsc){
             <h2 class="oneDrinkName">${drinkName}</h2>
             <h3 class="oneDrinkH3">Ingredients:</h3>
             <div class="ingredientsDiv">
+                <div class="imgContainer">${imgDiv.innerHTML}</div>
                 <div class="ingrContainer">${ingrDiv.innerHTML}</div>
                 <div class="measureContainer">${measureDiv.innerHTML}</div>
             </div>
