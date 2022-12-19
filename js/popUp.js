@@ -96,6 +96,8 @@ function choosenDrink(rsc){
     overlay.append(close);
 
     close.addEventListener("click", function (event) {
+        document.getElementById("overlay").style.display = "none";
+
         window.location.href = "../html/search.html";
     });
 }

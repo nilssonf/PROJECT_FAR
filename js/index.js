@@ -56,7 +56,6 @@ function showTopDrinks(drink3) {
 
                 roundTopDrink.addEventListener("click", function() {
                     let topDrinkId = rsc.drinks[0].idDrink;
-                    console.log(topDrinkId);
                     sessionStorage.setItem("topDrinkId", topDrinkId);
                     location.href = "../html/search.html";
                     
