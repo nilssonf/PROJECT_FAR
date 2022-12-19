@@ -7,17 +7,31 @@
         "date": "2022-12-07"
     },
     {
-        "drinkId": "110",
+        "drinkId": "17213",
         "commentId": 2,
         "userId": 5,
         "comment": "worst drink ever... :(",
         "date": "2022-12-07"
     },
     {
-        "drinkId": "110",
+        "drinkId": "17213",
         "commentId": 3,
         "userId": 5,
         "comment": "changed my mind. it sucks.",
         "date": "2022-12-07"
+    },
+    {
+        "drinkId": "17213",
+        "commentId": 3,
+        "userId": 1,
+        "comment": "I've heard about this drink soooo many times, can't believe this is the first time I'm trying it. Love love love it!!",
+        "date": "2022-12-12"
+    },
+    {
+        "drinkId": "17225",
+        "commentId": 2,
+        "userId": 1,
+        "comment": "Not my cup of tea, but could definitely be something I stir up for a birthday party or something!",
+        "date": "2022-12-19"
     }
 ]
