@@ -130,4 +130,10 @@ h1,
 
 .drink {
     text-align: end;
+    transition: 0.3s;
+}
+
+.drink:hover {
+    color: #EC6543;
+    cursor: pointer;
 }
