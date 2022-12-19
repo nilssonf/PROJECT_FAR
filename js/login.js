@@ -37,7 +37,7 @@ function createLogin() {
 
     let close = document.createElement("a");
     close.classList.add("closeSignIn");
-    close.addEventListener("click", function () {
+    close.addEventListener("click", function() {
         document.getElementById("myForm").style.display = "none";
     });
 
@@ -70,6 +70,7 @@ function createLogin() {
     document.querySelector("body").append(signInForm);
     signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
+    document.querySelector(".create").addEventListener("click", createProfile)
     return signIn;
 
 }
@@ -78,4 +79,48 @@ function logOut() {
     user = 0;
     sessionStorage.setItem("user", 0);
     header(sessionStorage.getItem("user"));
+}
+
+function createProfile() {
+    document.getElementById("myForm").style.display = "none";
+
+    let close = document.createElement("a");
+    close.classList.add("closeCreate");
+    close.addEventListener("click", function() {
+        document.querySelector(".createContainer").style.display = "none";
+    });
+
+
+
+    let createUser = document.createElement("div");
+    createUser.innerHTML =
+        `
+<div class="createContainer">
+ <div class="create-popup">
+
+    <div class="createContent" >
+
+    <h2>Create your account</h2>
+
+    <label for="name"><b>Your first name? </b></label>
+    <input type="text" id="name" required>
+
+    <label for="email"><b>Your email?</b></label>
+    <input type="text" id="email" required>
+
+    <label for="password"><b>Select a password</b></label>
+    <input type="password" id="password" required>
+
+    <button class="btn createAndSign"> Create & log in </button>
+
+    </div>
+    </div>
+    </div>
+
+    `
+    createUser.append(close)
+
+    document.querySelector("body").append(createUser);
+
+
 }
