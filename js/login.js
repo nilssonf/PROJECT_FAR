@@ -30,6 +30,7 @@ function logIn(username, pw) {
         .then(rsc => {
             user = rsc.id;
             header(user);
+            getFavoriteId()
             document.getElementById("myForm").style.display = "none";
 
         });
