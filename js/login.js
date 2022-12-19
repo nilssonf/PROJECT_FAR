@@ -19,7 +19,6 @@ function logIn(username, pw) {
         .then(resp => {
             console.log(resp);
             if (resp.status == 200) {
-                sessionStorage.setItem("user", user);
                 return resp.json();
             } else {
                 user = 0;
@@ -29,6 +28,7 @@ function logIn(username, pw) {
         })
         .then(rsc => {
             user = rsc.id;
+            sessionStorage.setItem("user", user);
             header(user);
             getFavoriteId()
             document.getElementById("myForm").style.display = "none";
