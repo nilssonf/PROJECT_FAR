@@ -2,38 +2,38 @@
 
 
 function getDrinksByLetter(letter) {
-   fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`))
-       .then(r => r.json())
-       .then(rsc => {
-           createDrinks(rsc.drinks)
- 
-       })
+    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`))
+        .then(r => r.json())
+        .then(rsc => {
+            createDrinks(rsc.drinks)
+
+        })
 }
- 
+
 function getDrinksByName(name) {
-   fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`))
-       .then(r => r.json())
-       .then(rsc => {
-           createDrinks(rsc.drinks)
- 
-       })
+    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`))
+        .then(r => r.json())
+        .then(rsc => {
+            createDrinks(rsc.drinks)
+
+        })
 }
- 
+
 function createDrinks(rsc) {
 
-   document.querySelector("#wrapper").innerHTML = " "
- 
- 
-   rsc.forEach(drink => {
+    document.querySelector("#wrapper").innerHTML = " "
+
+
+    rsc.forEach(drink => {
         let id = drink.idDrink;
-       let oneDrink = drink.strDrink
-       let drinkImg = drink.strDrinkThumb
-       let drinkAlcoholic = drink.strAlcoholic
-       let drinkCategory = drink.strCategory
-       let drinkGlass = drink.strGlass
- 
-       let drinkBox = document.createElement("div");
-       drinkBox.innerHTML = `
+        let oneDrink = drink.strDrink
+        let drinkImg = drink.strDrinkThumb
+        let drinkAlcoholic = drink.strAlcoholic
+        let drinkCategory = drink.strCategory
+        let drinkGlass = drink.strGlass
+
+        let drinkBox = document.createElement("div");
+        drinkBox.innerHTML = `
 
                <div class="imgWrap">
                    <img src="${drinkImg}" class="drinkImg">
@@ -50,18 +50,18 @@ function createDrinks(rsc) {
                 <img src="../images/gilla.png" class="heartImg">
                `;
 
- 
-       drinkBox.classList.add("drinkBox");
-       document.querySelector("#wrapper").append(drinkBox);
-   
-   })
+
+        drinkBox.classList.add("drinkBox");
+        document.querySelector("#wrapper").append(drinkBox);
+
+    })
 
 
     let all = document.querySelectorAll(".text")
     all.forEach(div => {
         div.addEventListener("click", function() {
 
-            document.getElementById("wrapper").innerHTML = ""; 
+            document.getElementById("wrapper").innerHTML = "";
 
             buildDrinkPopUp(div.id);
         })
@@ -69,14 +69,15 @@ function createDrinks(rsc) {
     sessionStorage.clear();
 
 }
- 
+
 function getsearchedDrink() {
     document.getElementById("drinkName").addEventListener("keyup", function() {
         let search = document.getElementById("drinkName").value
         getDrinksByName(search)
     })
-  }
-  function createAlphabet() {
+}
+
+function createAlphabet() {
     let alphabetOne = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
     let alphabetTwo = [
         'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'
@@ -118,38 +119,43 @@ function getsearchedDrink() {
         })
     })
 
-  }
-  function getAlcoholic() {
+}
+
+function getAlcoholic() {
 
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`))
         .then(r => r.json())
         .then(rsc => {
             createFilterAlcohol(rsc.drinks)
         })
-  }
-  function getCategory() {
+}
+
+function getCategory() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`))
         .then(r => r.json())
         .then(rsc => {
             createFilterCategory(rsc.drinks)
         })
-  }
-  function getGlass() {
+}
+
+function getGlass() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`))
         .then(r => r.json())
         .then(rsc => {
             createFilterGlass(rsc.drinks)
         })
-  }
-  function getIngrediants() {
+}
+
+function getIngrediants() {
     fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`))
         .then(r => r.json())
         .then(rsc => {
             createFilterIngrediant(rsc.drinks)
         })
-  }
-  let alcoholDrinksById = [];
-  function createFilterAlcohol(alcohol) {
+}
+let alcoholDrinksById = [];
+
+function createFilterAlcohol(alcohol) {
     let chooseAlcohol = document.getElementById("chooseAlcohol");
     alcohol.forEach((a) => {
         let option = document.createElement("option");
@@ -172,9 +178,10 @@ function getsearchedDrink() {
                 })
         })
     })
-  }
-  let categoryDrinksById = [];
-  function createFilterCategory(category) {
+}
+let categoryDrinksById = [];
+
+function createFilterCategory(category) {
     let chooseCategory = document.getElementById("chooseCategory");
     category.forEach((c) => {
         let option = document.createElement("option");
@@ -197,9 +204,10 @@ function getsearchedDrink() {
                 })
         })
     })
-  }
-  let glassDrinksById = [];
-  function createFilterGlass(glass) {
+}
+let glassDrinksById = [];
+
+function createFilterGlass(glass) {
     let chooseGlass = document.getElementById("chooseGlass");
     glass.forEach((g) => {
         let option = document.createElement("option");
@@ -222,9 +230,10 @@ function getsearchedDrink() {
                 })
         })
     })
-  }
-  let ingrediantDrinksById = [];
-  function createFilterIngrediant(ingrediant) {
+}
+let ingrediantDrinksById = [];
+
+function createFilterIngrediant(ingrediant) {
     let chooseIngrediant = document.getElementById("chooseIngrediant");
     ingrediant.forEach((i) => {
         let option = document.createElement("option");
@@ -248,8 +257,9 @@ function getsearchedDrink() {
         })
     })
 
-  }
-  function getClickedIngretidant() {
+}
+
+function getClickedIngretidant() {
 
     let name = sessionStorage.getItem("ingName")
     console.log(name)
@@ -268,28 +278,27 @@ function getsearchedDrink() {
             ingrediantDrinksById = [];
         })
 
-  }
+}
 
-function getClickedDrink (){
+function getClickedDrink() {
     let clickedDrinkId = sessionStorage.getItem("topDrinkId");
-    
-    if(clickedDrinkId != null){
-        buildDrinkPopUp(clickedDrinkId); 
-        document.getElementById("wrapper").innerHTML = ""; 
-    } 
+
+    if (clickedDrinkId != null) {
+        buildDrinkPopUp(clickedDrinkId);
+        document.getElementById("wrapper").innerHTML = "";
+    }
+
 
     sessionStorage.clear();
 }
 
 
-  getDrinksByLetter("a")
-  getsearchedDrink()
-  createAlphabet()
-  getAlcoholic()
-  getCategory()
-  getGlass()
-  getIngrediants()
-  getClickedIngretidant()
-  getClickedDrink()
-
- 
+getDrinksByLetter("a")
+getsearchedDrink()
+createAlphabet()
+getAlcoholic()
+getCategory()
+getGlass()
+getIngrediants()
+getClickedIngretidant()
+getClickedDrink()
