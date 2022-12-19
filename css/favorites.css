@@ -47,3 +47,9 @@ h1 {
     border: 2px solid #ec6542;
     border-radius: 30px;
 }
+
+.createAndSign {
+    position: fixed;
+    bottom: 300px;
+    z-index: 40000;
+}
