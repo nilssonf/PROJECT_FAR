@@ -269,6 +269,18 @@ function getsearchedDrink() {
         })
 
   }
+
+function getClickedDrink (){
+    let clickedDrinkId = sessionStorage.getItem("topDrinkId");
+
+    document.getElementById("wrapper").innerHTML = ""; 
+
+    buildDrinkPopUp(clickedDrinkId);
+}
+
+
+getClickedDrink()
+
   getDrinksByLetter("a")
   getsearchedDrink()
   createAlphabet()

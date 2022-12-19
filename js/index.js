@@ -49,10 +49,18 @@ function showTopDrinks(drink3) {
             .then(r => r.json())
             .then(rsc => {
                 let class_name = '.drink' + numbers[index];
-                let topDrinkOne = document.createElement('img');
-                topDrinkOne.classList.add('round', 'top');
-                topDrinkOne.src = rsc.drinks[0].strDrinkThumb;
-                document.querySelector(class_name).append(topDrinkOne);
+                let roundTopDrink = document.createElement('img');
+                roundTopDrink.classList.add('round', 'top');
+                roundTopDrink.src = rsc.drinks[0].strDrinkThumb;
+                document.querySelector(class_name).append(roundTopDrink);
+
+                roundTopDrink.addEventListener("click", function() {
+                    let topDrinkId = rsc.drinks[0].idDrink;
+                    console.log(topDrinkId);
+                    sessionStorage.setItem("topDrinkId", topDrinkId);
+                    location.href = "../html/search.html";
+                    
+                })
             });
     });
 }
@@ -60,7 +68,6 @@ function showTopDrinks(drink3) {
 function showTopIngredients(ingredient3) {
     const numbers = ['One', 'Two', 'Three'];
 
-    console.log(ingredient3);
     ingredient3.forEach((ingredient, index) => {
         let class_name = '.ingredient' + numbers[index];
         let topIngredientOne = document.createElement('img');
