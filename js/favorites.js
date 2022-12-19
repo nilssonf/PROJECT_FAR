@@ -33,8 +33,29 @@ function createFavorites(drinks) {
 
     drinks.forEach(drink => {
 
+        let oneDrink = drink.strDrink
+        let drinkImg = drink.strDrinkThumb
+        let drinkAlcoholic = drink.strAlcoholic
+        let drinkCategory = drink.strCategory
+        let drinkGlass = drink.strGlass
+
         let favoriteBox = document.createElement("div");
-        favoriteBox.innerHTML = `<img src="../images/test.png" class="favoriteImg"><p>${drink.strDrink}<br><br>Tag Tag Tag</p> <img src="../images/test.png" class="heartImg">`;
+        favoriteBox.innerHTML = `
+
+               <div class="imgWrap">
+                   <img src="${drinkImg}" class="drinkImg">
+               </div>
+               <div class="text">
+                   <h3>${oneDrink} </h3>
+                   <div class="tags">
+                       <p> ${drinkAlcoholic} </p>
+                       <p>${drinkCategory} </p>
+      
+                       <p>${drinkGlass} </p>
+                   </div>
+               </div>
+                <img src="../images/gillasvart.png" class="heartImg">
+               `;
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
 
