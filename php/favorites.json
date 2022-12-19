@@ -28,5 +28,40 @@
         "favoriteId": 6,
         "drinkId": "17836",
         "userId": "2"
+    },
+    {
+        "favoriteId": 7,
+        "drinkId": "17222",
+        "userId": "1"
+    },
+    {
+        "favoriteId": 8,
+        "drinkId": "13501",
+        "userId": "1"
+    },
+    {
+        "favoriteId": 9,
+        "drinkId": "11000",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 10,
+        "drinkId": "178325",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 11,
+        "drinkId": "11147",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 12,
+        "drinkId": "11003",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 13,
+        "drinkId": "17215",
+        "userId": "3"
     }
 ]

@@ -43,5 +43,14 @@
         "age": 28,
         "occupation": "Graphic designer",
         "picture": "profiles\/standard_picture"
+    },
+    {
+        "id": 6,
+        "email": "hej123@gmail.com",
+        "password": "hej_123",
+        "name": "Rebecca",
+        "age": "20",
+        "occupation": "student",
+        "picture": "profiles\/standard_picture"
     }
 ]
