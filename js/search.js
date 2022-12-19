@@ -56,6 +56,20 @@ function createDrinks(rsc) {
    
    })
 
+let heart = document.querySelectorAll('.heartImg')
+heart.forEach(h => {
+  h.addEventListener('click', function () {
+    if ((user === 0)) {
+      console.log('hej')
+      createLoginViaHeart()
+      // popUp, sorry not logged in
+    } else {
+      h.src = '../images/gillasvart.png'
+    }
+  })
+})
+
+  
 
     let all = document.querySelectorAll(".text")
     all.forEach(div => {
@@ -66,7 +80,50 @@ function createDrinks(rsc) {
             buildDrinkPopUp(div.id);
         })
     })
-    sessionStorage.clear();
+    sessionStorage.removeItem("ingName");
+
+}
+
+function createLoginViaHeart() {
+
+    let close = document.createElement("a");
+    close.classList.add("closeSignIn");
+    close.addEventListener("click", function() {
+        document.getElementById("myForm").style.display = "none";
+    });
+
+    let signInFormByHeart = document.createElement("div");
+    signInFormByHeart.innerHTML =
+
+        `
+            <div class="form-popup-heart" id="myForm">
+            <div class="form-container-heart">
+            
+            <h2>You are not logged in</h2>
+            <p>Create an account or log in on an already excisting one</p>
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email" id="email" required>
+        
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" required>
+        
+            <button class="btn sign_in">Sign in </button>
+            <button class="btn create">Create Account</button>
+        
+            </div>
+
+            </div>
+            
+            
+            `;
+
+
+    document.querySelector("body").append(signInFormByHeart);
+    signInFormByHeart.append(close);
+    document.getElementById("myForm").style.display = "block";
+    document.querySelector(".create").addEventListener("click", createProfile)
+    return signIn;
 
 }
  
@@ -278,7 +335,7 @@ function getClickedDrink (){
         document.getElementById("wrapper").innerHTML = ""; 
     } 
 
-    sessionStorage.clear();
+    sessionStorage.removeItem("topDrinkId");
 }
 
 

@@ -81,4 +81,4 @@ function header(user) {
 
 }
 
-header(0);
+header(sessionStorage.getItem("user"));
