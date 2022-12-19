@@ -33,6 +33,9 @@ function header(user) {
 
                 header.innerHTML = "";
                 logIn(username, psw);
+                setTimeout(() => {
+                    currentUser();
+                }, "1000");
             });
         });
     } else {
