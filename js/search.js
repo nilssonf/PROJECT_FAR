@@ -1,44 +1,47 @@
-"use strict";
+'use strict'
 
-
-function getDrinksByLetter(letter) {
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`))
-        .then(r => r.json())
-        .then(rsc => {
-            createDrinks(rsc.drinks)
-
-        })
+function getDrinksByLetter (letter) {
+  fetch(
+    new Request(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+    )
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      createDrinks(rsc.drinks)
+    })
 }
 
-function getDrinksByName(name) {
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`))
-        .then(r => r.json())
-        .then(rsc => {
-            createDrinks(rsc.drinks)
-
-        })
+function getDrinksByName (name) {
+  fetch(
+    new Request(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+    )
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      createDrinks(rsc.drinks)
+    })
 }
 
-function createDrinks(rsc) {
+function createDrinks (rsc) {
+  document.querySelector('#wrapper').innerHTML = ' '
 
-    document.querySelector("#wrapper").innerHTML = " "
+  rsc.forEach(drink => {
+    let id = drink.idDrink
+    let oneDrink = drink.strDrink
+    let drinkImg = drink.strDrinkThumb
+    let drinkAlcoholic = drink.strAlcoholic
+    let drinkCategory = drink.strCategory
+    let drinkGlass = drink.strGlass
 
-
-    rsc.forEach(drink => {
-        let id = drink.idDrink;
-        let oneDrink = drink.strDrink
-        let drinkImg = drink.strDrinkThumb
-        let drinkAlcoholic = drink.strAlcoholic
-        let drinkCategory = drink.strCategory
-        let drinkGlass = drink.strGlass
-
-        let drinkBox = document.createElement("div");
-        drinkBox.innerHTML = `
+    let drinkBox = document.createElement('div')
+    drinkBox.innerHTML = `
 
                <div class="imgWrap">
                    <img src="${drinkImg}" class="drinkImg">
                </div>
-               <div class="text" id="${id}">
+               <div class="text" >
                    <h3>${oneDrink} </h3>
                    <div class="tags">
                        <p> ${drinkAlcoholic} </p>
@@ -47,57 +50,48 @@ function createDrinks(rsc) {
                        <p>${drinkGlass} </p>
                    </div>
                </div>
-                <img src="../images/gilla.png" class="heartImg">
-               `;
+                <img src="../images/gilla.png" class="heartImg" id="${id}">
+               `
 
-
-        drinkBox.classList.add("drinkBox");
-        document.querySelector("#wrapper").append(drinkBox);
-
-    })
-
-let heart = document.querySelectorAll('.heartImg')
-heart.forEach(h => {
-  h.addEventListener('click', function () {
-    if ((user === 0)) {
-      console.log('hej')
-      createLoginViaHeart()
-      // popUp, sorry not logged in
-    } else {
-      h.src = '../images/gillasvart.png'
-    }
+    drinkBox.classList.add('drinkBox')
+    document.querySelector('#wrapper').append(drinkBox)
   })
-})
 
-  
-
-    let all = document.querySelectorAll(".text")
-    all.forEach(div => {
-        div.addEventListener("click", function() {
-
-            document.getElementById("wrapper").innerHTML = "";
-
-            buildDrinkPopUp(div.id);
-        })
+  let heart = document.querySelectorAll('.heartImg')
+  heart.forEach(h => {
+    h.addEventListener('click', function () {
+      if (user === 0) {
+        createLoginViaHeart()
+      } else {
+        h.src = '../images/gillasvart.png'
+        let heartId = h.id
+        addNewFavorite(heartId)
+      }
     })
-    sessionStorage.removeItem("ingName");
+  })
 
+  let all = document.querySelectorAll('.text')
+  all.forEach(div => {
+    div.addEventListener('click', function () {
+      document.getElementById('wrapper').innerHTML = ''
+
+      buildDrinkPopUp(div.id)
+    })
+  })
+  sessionStorage.removeItem('ingName')
 }
 
-function createLoginViaHeart() {
+function createLoginViaHeart () {
+  let close = document.createElement('a')
+  close.classList.add('closeSignInHeart')
+  close.addEventListener('click', function () {
+    location.href = '../html/search.html'
+    document.getElementById('myForm').innerHTML = ''
+  })
 
-    let close = document.createElement("a");
-    close.classList.add("closeSignInHeart");
-    close.addEventListener("click", function() {
-        location.href = "../html/search.html";
-        document.getElementById("myForm").innerHTML = "";
-    });
-
-    let signInFormByHeart = document.createElement("div");
-    signInFormByHeart.classList.add("signInFormByHeart");
-    signInFormByHeart.innerHTML =
-
-        `
+  let signInFormByHeart = document.createElement('div')
+  signInFormByHeart.classList.add('signInFormByHeart')
+  signInFormByHeart.innerHTML = `
             <div class="form-popup-heart" id="myFormHeart">
             <div class="form-container-heart">
             
@@ -118,243 +112,295 @@ function createLoginViaHeart() {
             </div>
             
             
-            `;
+            `
 
+  document.querySelector('body').append(signInFormByHeart)
+  document.getElementById('myFormHeart').append(close)
+  document.getElementById('myFormHeart').style.display = 'flex'
 
-    document.querySelector("body").append(signInFormByHeart);
-    document.getElementById("myFormHeart").append(close);
-    document.getElementById("myFormHeart").style.display = "flex";
-    
-    document.querySelector(".createFromHeart").addEventListener("click", function(){
-        document.getElementById("myFormHeart").style.display = "none";
-        createProfile()
+  document
+    .querySelector('.createFromHeart')
+    .addEventListener('click', function () {
+      document.getElementById('myFormHeart').style.display = 'none'
+      createProfile()
     })
 }
 
-function getsearchedDrink() {
-    document.getElementById("drinkName").addEventListener("keyup", function() {
-        let search = document.getElementById("drinkName").value
-        getDrinksByName(search)
+function getsearchedDrink () {
+  document.getElementById('drinkName').addEventListener('keyup', function () {
+    let search = document.getElementById('drinkName').value
+    getDrinksByName(search)
+  })
+}
+
+function createAlphabet () {
+  let alphabetOne = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M'
+  ]
+  let alphabetTwo = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U']
+  let alphabetThree = ['V', 'W', 'X', 'Y', 'Z']
+  alphabetOne.forEach(letter => {
+    let text = document.createElement('p')
+    text.innerHTML = letter
+    let aDiv = document.querySelector('.alphabetOne')
+    aDiv.append(text)
+    text.addEventListener('click', function (e) {
+      let clickedLetter = e.target.innerHTML
+      clickedLetter = clickedLetter.toLowerCase()
+      getDrinksByLetter(clickedLetter)
+    })
+  })
+  alphabetTwo.forEach(letter => {
+    let text = document.createElement('p')
+    text.innerHTML = letter
+    let aDiv = document.querySelector('.alphabetTwo')
+    aDiv.append(text)
+    text.addEventListener('click', function (e) {
+      let clickedLetter = e.target.innerHTML
+      clickedLetter = clickedLetter.toLowerCase()
+      getDrinksByLetter(clickedLetter)
+    })
+  })
+  alphabetThree.forEach(letter => {
+    let text = document.createElement('p')
+    text.innerHTML = letter
+    let aDiv = document.querySelector('.alphabetThree')
+    aDiv.append(text)
+    text.addEventListener('click', function (e) {
+      let clickedLetter = e.target.innerHTML
+      clickedLetter = clickedLetter.toLowerCase()
+      getDrinksByLetter(clickedLetter)
+    })
+  })
+}
+
+function getAlcoholic () {
+  fetch(
+    new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`)
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      createFilterAlcohol(rsc.drinks)
     })
 }
 
-function createAlphabet() {
-    let alphabetOne = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
-    let alphabetTwo = [
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'
-    ];
-    let alphabetThree = ['V', 'W', 'X',
-        'Y', 'Z'
-    ];
-    alphabetOne.forEach(letter => {
-        let text = document.createElement("p");
-        text.innerHTML = letter;
-        let aDiv = document.querySelector(".alphabetOne");
-        aDiv.append(text)
-        text.addEventListener("click", function(e) {
-            let clickedLetter = e.target.innerHTML
-            clickedLetter = clickedLetter.toLowerCase()
-            getDrinksByLetter(clickedLetter)
-        })
+function getCategory () {
+  fetch(
+    new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`)
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      createFilterCategory(rsc.drinks)
     })
-    alphabetTwo.forEach(letter => {
-        let text = document.createElement("p");
-        text.innerHTML = letter;
-        let aDiv = document.querySelector(".alphabetTwo");
-        aDiv.append(text)
-        text.addEventListener("click", function(e) {
-            let clickedLetter = e.target.innerHTML
-            clickedLetter = clickedLetter.toLowerCase()
-            getDrinksByLetter(clickedLetter)
-        })
-    })
-    alphabetThree.forEach(letter => {
-        let text = document.createElement("p");
-        text.innerHTML = letter;
-        let aDiv = document.querySelector(".alphabetThree");
-        aDiv.append(text)
-        text.addEventListener("click", function(e) {
-            let clickedLetter = e.target.innerHTML
-            clickedLetter = clickedLetter.toLowerCase()
-            getDrinksByLetter(clickedLetter)
-        })
-    })
-
 }
 
-function getAlcoholic() {
+function getGlass () {
+  fetch(
+    new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`)
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      createFilterGlass(rsc.drinks)
+    })
+}
 
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`))
+function getIngrediants () {
+  fetch(
+    new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`)
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      createFilterIngrediant(rsc.drinks)
+    })
+}
+let alcoholDrinksById = []
+
+function createFilterAlcohol (alcohol) {
+  let chooseAlcohol = document.getElementById('chooseAlcohol')
+  alcohol.forEach(a => {
+    let option = document.createElement('option')
+    option.text = a.strAlcoholic
+    chooseAlcohol.append(option)
+    option.addEventListener('click', function () {
+      fetch(
+        new Request(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${option.value}`
+        )
+      )
         .then(r => r.json())
         .then(rsc => {
-            createFilterAlcohol(rsc.drinks)
-        })
-}
-
-function getCategory() {
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`))
-        .then(r => r.json())
-        .then(rsc => {
-            createFilterCategory(rsc.drinks)
-        })
-}
-
-function getGlass() {
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`))
-        .then(r => r.json())
-        .then(rsc => {
-            createFilterGlass(rsc.drinks)
-        })
-}
-
-function getIngrediants() {
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`))
-        .then(r => r.json())
-        .then(rsc => {
-            createFilterIngrediant(rsc.drinks)
-        })
-}
-let alcoholDrinksById = [];
-
-function createFilterAlcohol(alcohol) {
-    let chooseAlcohol = document.getElementById("chooseAlcohol");
-    alcohol.forEach((a) => {
-        let option = document.createElement("option");
-        option.text = a.strAlcoholic;
-        chooseAlcohol.append(option);
-        option.addEventListener("click", function() {
-            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${option.value}`))
-                .then(r => r.json())
-                .then(rsc => {
-                    rsc.drinks.forEach(drink => {
-                        let id = drink.idDrink;
-                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
-                            .then(r => r.json())
-                            .then(rsc => {
-                                alcoholDrinksById.push(rsc.drinks[0]);
-                                createDrinks(alcoholDrinksById)
-                            })
-                    })
-                    alcoholDrinksById = [];
-                })
+          rsc.drinks.forEach(drink => {
+            let id = drink.idDrink
+            fetch(
+              new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+              )
+            )
+              .then(r => r.json())
+              .then(rsc => {
+                alcoholDrinksById.push(rsc.drinks[0])
+                createDrinks(alcoholDrinksById)
+              })
+          })
+          alcoholDrinksById = []
         })
     })
+  })
 }
-let categoryDrinksById = [];
+let categoryDrinksById = []
 
-function createFilterCategory(category) {
-    let chooseCategory = document.getElementById("chooseCategory");
-    category.forEach((c) => {
-        let option = document.createElement("option");
-        option.text = c.strCategory;
-        chooseCategory.append(option);
-        option.addEventListener("click", function() {
-            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${option.value}`))
-                .then(r => r.json())
-                .then(rsc => {
-                    rsc.drinks.forEach(drink => {
-                        let id = drink.idDrink;
-                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
-                            .then(r => r.json())
-                            .then(rsc => {
-                                categoryDrinksById.push(rsc.drinks[0]);
-                                createDrinks(categoryDrinksById)
-                            })
-                    })
-                    categoryDrinksById = [];
-                })
-        })
-    })
-}
-let glassDrinksById = [];
-
-function createFilterGlass(glass) {
-    let chooseGlass = document.getElementById("chooseGlass");
-    glass.forEach((g) => {
-        let option = document.createElement("option");
-        option.text = g.strGlass;
-        chooseGlass.append(option);
-        option.addEventListener("click", function() {
-            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${option.value}`))
-                .then(r => r.json())
-                .then(rsc => {
-                    rsc.drinks.forEach(drink => {
-                        let id = drink.idDrink;
-                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
-                            .then(r => r.json())
-                            .then(rsc => {
-                                glassDrinksById.push(rsc.drinks[0]);
-                                createDrinks(glassDrinksById)
-                            })
-                    })
-                    glassDrinksById = [];
-                })
-        })
-    })
-}
-let ingrediantDrinksById = [];
-
-function createFilterIngrediant(ingrediant) {
-    let chooseIngrediant = document.getElementById("chooseIngrediant");
-    ingrediant.forEach((i) => {
-        let option = document.createElement("option");
-        option.text = i.strIngredient1;
-        chooseIngrediant.append(option);
-        option.addEventListener("click", function() {
-            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${option.value}`))
-                .then(r => r.json())
-                .then(rsc => {
-                    rsc.drinks.forEach(drink => {
-                        let id = drink.idDrink;
-                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
-                            .then(r => r.json())
-                            .then(rsc => {
-                                ingrediantDrinksById.push(rsc.drinks[0]);
-                                createDrinks(ingrediantDrinksById)
-                            })
-                    })
-                    ingrediantDrinksById = [];
-                })
-        })
-    })
-
-}
-
-function getClickedIngretidant() {
-
-    let name = sessionStorage.getItem("ingName")
-    console.log(name)
-    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`))
+function createFilterCategory (category) {
+  let chooseCategory = document.getElementById('chooseCategory')
+  category.forEach(c => {
+    let option = document.createElement('option')
+    option.text = c.strCategory
+    chooseCategory.append(option)
+    option.addEventListener('click', function () {
+      fetch(
+        new Request(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${option.value}`
+        )
+      )
         .then(r => r.json())
         .then(rsc => {
-            rsc.drinks.forEach(drink => {
-                let id = drink.idDrink;
-                fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`))
-                    .then(r => r.json())
-                    .then(rsc => {
-                        ingrediantDrinksById.push(rsc.drinks[0]);
-                        createDrinks(ingrediantDrinksById)
-                    })
-            })
-            ingrediantDrinksById = [];
+          rsc.drinks.forEach(drink => {
+            let id = drink.idDrink
+            fetch(
+              new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+              )
+            )
+              .then(r => r.json())
+              .then(rsc => {
+                categoryDrinksById.push(rsc.drinks[0])
+                createDrinks(categoryDrinksById)
+              })
+          })
+          categoryDrinksById = []
         })
+    })
+  })
+}
+let glassDrinksById = []
 
+function createFilterGlass (glass) {
+  let chooseGlass = document.getElementById('chooseGlass')
+  glass.forEach(g => {
+    let option = document.createElement('option')
+    option.text = g.strGlass
+    chooseGlass.append(option)
+    option.addEventListener('click', function () {
+      fetch(
+        new Request(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${option.value}`
+        )
+      )
+        .then(r => r.json())
+        .then(rsc => {
+          rsc.drinks.forEach(drink => {
+            let id = drink.idDrink
+            fetch(
+              new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+              )
+            )
+              .then(r => r.json())
+              .then(rsc => {
+                glassDrinksById.push(rsc.drinks[0])
+                createDrinks(glassDrinksById)
+              })
+          })
+          glassDrinksById = []
+        })
+    })
+  })
+}
+let ingrediantDrinksById = []
+
+function createFilterIngrediant (ingrediant) {
+  let chooseIngrediant = document.getElementById('chooseIngrediant')
+  ingrediant.forEach(i => {
+    let option = document.createElement('option')
+    option.text = i.strIngredient1
+    chooseIngrediant.append(option)
+    option.addEventListener('click', function () {
+      fetch(
+        new Request(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${option.value}`
+        )
+      )
+        .then(r => r.json())
+        .then(rsc => {
+          rsc.drinks.forEach(drink => {
+            let id = drink.idDrink
+            fetch(
+              new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+              )
+            )
+              .then(r => r.json())
+              .then(rsc => {
+                ingrediantDrinksById.push(rsc.drinks[0])
+                createDrinks(ingrediantDrinksById)
+              })
+          })
+          ingrediantDrinksById = []
+        })
+    })
+  })
 }
 
-function getClickedDrink() {
-    let clickedDrinkId = sessionStorage.getItem("topDrinkId");
-
-    if (clickedDrinkId != null) {
-        buildDrinkPopUp(clickedDrinkId);
-        document.getElementById("wrapper").innerHTML = "";
-    }
-
-
-    sessionStorage.removeItem("topDrinkId");
+function getClickedIngretidant () {
+  let name = sessionStorage.getItem('ingName')
+  console.log(name)
+  fetch(
+    new Request(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
+    )
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      rsc.drinks.forEach(drink => {
+        let id = drink.idDrink
+        fetch(
+          new Request(
+            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+          )
+        )
+          .then(r => r.json())
+          .then(rsc => {
+            ingrediantDrinksById.push(rsc.drinks[0])
+            createDrinks(ingrediantDrinksById)
+          })
+      })
+      ingrediantDrinksById = []
+    })
 }
 
+function getClickedDrink () {
+  let clickedDrinkId = sessionStorage.getItem('topDrinkId')
 
-getDrinksByLetter("a")
+  if (clickedDrinkId != null) {
+    buildDrinkPopUp(clickedDrinkId)
+    document.getElementById('wrapper').innerHTML = ''
+  }
+
+  sessionStorage.removeItem('topDrinkId')
+}
+
+getDrinksByLetter('a')
 getsearchedDrink()
 createAlphabet()
 getAlcoholic()
