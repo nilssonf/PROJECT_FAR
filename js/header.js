@@ -24,10 +24,10 @@ function header(user) {
 
         signIn.classList.add("signIn");
         header.append(logga, scroll, about, signIn);
-        document.querySelector("#signIn").addEventListener("click", function () {
+        document.querySelector("#signIn").addEventListener("click", function() {
             createLogin();
 
-            document.querySelector(".sign_in").addEventListener('click', function () {
+            document.querySelector(".sign_in").addEventListener('click', function() {
                 let username = document.querySelector('[id="email"]').value;
                 let psw = document.querySelector('[id="psw"]').value;
 
@@ -36,6 +36,7 @@ function header(user) {
             });
         });
     } else {
+
         let favourites = document.createElement("p");
         favourites.innerText = "Favourite drinks";
         favourites.classList.add("favourites", "menuElm");
@@ -46,32 +47,32 @@ function header(user) {
 
         header.append(logga, scroll, about, favourites, signOut);
 
-        favourites.onclick = function () {
+        favourites.onclick = function() {
             location.href = '../html/favorites.html';
         };
 
         let profilePic = document.querySelector('.profile');
 
-        profilePic.onclick = function () {
+        profilePic.onclick = function() {
             location.href = '../html/profile.html';
         };
 
-        signOut.onclick = function () {
+        signOut.onclick = function() {
             sessionStorage.removeItem('user');
             header.innerHTML = "";
             logOut();
         };
     }
 
-    logga.onclick = function () {
+    logga.onclick = function() {
         location.href = 'index.html';
     };
 
-    scroll.onclick = function () {
+    scroll.onclick = function() {
         location.href = '../html/search.html';
     };
 
-    about.onclick = function () {
+    about.onclick = function() {
         location.href = '../html/about.html';
     };
 

@@ -30,6 +30,8 @@ function logIn(username, pw) {
         .then(rsc => {
             user = rsc.id;
             header(user);
+            document.getElementById("myForm").style.display = "none";
+
         });
 }
 
@@ -89,8 +91,6 @@ function createProfile() {
     close.addEventListener("click", function() {
         document.querySelector(".createContainer").style.display = "none";
     });
-
-
 
     let createUser = document.createElement("div");
     createUser.innerHTML =
