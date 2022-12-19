@@ -59,3 +59,20 @@ function currentUser(user) {
 }
 
 currentUser(user);
+
+setTimeout(() => {
+    let drinks = document.querySelectorAll('.drink');
+    drinks.forEach(drink => {
+        let drinkName = drink.textContent;
+
+        drink.addEventListener("click", function () {
+            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
+                .then(r => r.json())
+                .then(rsc => {
+                    let topDrinkId = rsc.drinks[0].idDrink;
+                    sessionStorage.setItem("topDrinkId", topDrinkId);
+                    location.href = "../html/search.html";
+                });
+        });
+    });
+}, 1000);
