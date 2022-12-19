@@ -58,8 +58,24 @@ function createFavorites(drinks) {
                `;
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
-
     });
+}
+
+function addNewFavorite(clickedId){
+    let newFavorite = {
+        drinkId: clickedId,
+        userId: sessionStorage.getItem("user")
+    };
+
+    const addNewFav = new Request("../php/addFavorites.php", {
+        method: 'POST',
+        body: JSON.stringify(newFavorite),
+        headers: { "Content-type": "application/json" }
+    });
+
+    fetch(addNewFav)
+        .then(r => r.json())
+        .then(rsc => console.log(rsc));
 }
 
 getFavoriteId();
