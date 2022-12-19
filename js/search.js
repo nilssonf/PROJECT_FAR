@@ -87,16 +87,18 @@ heart.forEach(h => {
 function createLoginViaHeart() {
 
     let close = document.createElement("a");
-    close.classList.add("closeSignIn");
+    close.classList.add("closeSignInHeart");
     close.addEventListener("click", function() {
-        document.getElementById("myForm").style.display = "none";
+        location.href = "../html/search.html";
+        document.getElementById("myForm").innerHTML = "";
     });
 
     let signInFormByHeart = document.createElement("div");
+    signInFormByHeart.classList.add("signInFormByHeart");
     signInFormByHeart.innerHTML =
 
         `
-            <div class="form-popup-heart" id="myForm">
+            <div class="form-popup-heart" id="myFormHeart">
             <div class="form-container-heart">
             
             <h2>You are not logged in</h2>
@@ -109,7 +111,7 @@ function createLoginViaHeart() {
             <input type="password" placeholder="Enter Password" id="psw" required>
         
             <button class="btn sign_in">Sign in </button>
-            <button class="btn create">Create Account</button>
+            <button class="btn createFromHeart">Create Account</button>
         
             </div>
 
@@ -120,11 +122,13 @@ function createLoginViaHeart() {
 
 
     document.querySelector("body").append(signInFormByHeart);
-    signInFormByHeart.append(close);
-    document.getElementById("myForm").style.display = "block";
-    document.querySelector(".create").addEventListener("click", createProfile)
-    return signIn;
-
+    document.getElementById("myFormHeart").append(close);
+    document.getElementById("myFormHeart").style.display = "flex";
+    
+    document.querySelector(".createFromHeart").addEventListener("click", function(){
+        document.getElementById("myFormHeart").style.display = "none";
+        createProfile()
+    })
 }
 
 function getsearchedDrink() {
