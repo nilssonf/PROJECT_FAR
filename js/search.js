@@ -272,14 +272,15 @@ function getsearchedDrink() {
 
 function getClickedDrink (){
     let clickedDrinkId = sessionStorage.getItem("topDrinkId");
+    
+    if(clickedDrinkId != null){
+        buildDrinkPopUp(clickedDrinkId); 
+        document.getElementById("wrapper").innerHTML = ""; 
+    } 
 
-    document.getElementById("wrapper").innerHTML = ""; 
-
-    buildDrinkPopUp(clickedDrinkId);
+    sessionStorage.clear();
 }
 
-
-getClickedDrink()
 
   getDrinksByLetter("a")
   getsearchedDrink()
@@ -289,5 +290,6 @@ getClickedDrink()
   getGlass()
   getIngrediants()
   getClickedIngretidant()
-  
+  getClickedDrink()
+
  
