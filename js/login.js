@@ -1,6 +1,7 @@
 "use strict";
 
 let user = 0;
+user = Number(sessionStorage.getItem("user"));
 
 function logIn(username, pw) {
 
@@ -30,7 +31,6 @@ function logIn(username, pw) {
             user = rsc.id;
             sessionStorage.setItem("user", user);
             header(user);
-            getFavoriteId()
             document.getElementById("myForm").style.display = "none";
 
         });
@@ -40,7 +40,7 @@ function createLogin() {
 
     let close = document.createElement("a");
     close.classList.add("closeSignIn");
-    close.addEventListener("click", function() {
+    close.addEventListener("click", function () {
         document.getElementById("myForm").style.display = "none";
     });
 
@@ -73,7 +73,7 @@ function createLogin() {
     document.querySelector("body").append(signInForm);
     signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
-    document.querySelector(".create").addEventListener("click", createProfile)
+    document.querySelector(".create").addEventListener("click", createProfile);
     return signIn;
 
 }
@@ -89,7 +89,7 @@ function createProfile() {
 
     let close = document.createElement("a");
     close.classList.add("closeCreate");
-    close.addEventListener("click", function() {
+    close.addEventListener("click", function () {
         document.querySelector(".createContainer").style.display = "none";
     });
 
@@ -118,10 +118,11 @@ function createProfile() {
     </div>
     </div>
 
-    `
-    createUser.append(close)
+    `;
+    createUser.append(close);
 
     document.querySelector("body").append(createUser);
 
 
 }
+

@@ -1,29 +1,29 @@
 "use strict";
 
-let array = []
+let array = [];
 
 function getFavoriteId() {
 
-    let rqst = new Request("../php/favorites.json")
-    console.log(rqst)
+    let rqst = new Request("../php/favorites.json");
+    console.log(rqst);
     fetch(rqst)
         .then(r => r.json())
         .then(favorites => {
             favorites.forEach(f => {
                 if (f.userId == user) {
-                    let drinkId = (`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${f.drinkId}`)
+                    let drinkId = (`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${f.drinkId}`);
                     fetch(drinkId)
                         .then(r => r.json())
                         .then(rsc => {
-                            console.log(rsc.drinks[0])
-                            array.push(rsc.drinks[0])
-                            createFavorites(rsc.drinks)
+                            console.log(rsc.drinks[0]);
+                            array.push(rsc.drinks[0]);
+                            createFavorites(rsc.drinks);
 
-                        })
+                        });
                 }
 
-            })
-        })
+            });
+        });
 
 }
 
@@ -38,5 +38,7 @@ function createFavorites(drinks) {
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
 
-    })
+    });
 }
+
+getFavoriteId();
