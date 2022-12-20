@@ -5,6 +5,7 @@ user = Number(sessionStorage.getItem("user"));
 
 function logIn(username, pw) {
 
+
     let userObj = {
         email: username,
         password: pw
@@ -82,6 +83,7 @@ function logOut() {
     user = 0;
     sessionStorage.setItem("user", 0);
     header(sessionStorage.getItem("user"));
+
 }
 
 function createProfilePopup() {

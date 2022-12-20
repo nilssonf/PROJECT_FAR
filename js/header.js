@@ -41,6 +41,8 @@ function header(user) {
         });
     } else {
 
+
+
         let favourites = document.createElement("p");
         favourites.innerText = "Favourite drinks";
         favourites.classList.add("favourites", "menuElm");
@@ -62,6 +64,7 @@ function header(user) {
         };
 
         document.querySelector('.signOut p').onclick = function() {
+            location.href = 'index.html';
             sessionStorage.removeItem('user');
             header.innerHTML = "";
             logOut();

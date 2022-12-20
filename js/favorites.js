@@ -59,18 +59,19 @@ function createFavorites(drinks) {
                `;
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
+
     });
 
     let heart = document.querySelectorAll('.heartImgFav')
     heart.forEach(h => {
-    h.addEventListener('click', function () {
-        let clickedIdRemove = h.id;
-        deleteFavorite(clickedIdRemove)
-    })
+        h.addEventListener('click', function() {
+            let clickedIdRemove = h.id;
+            deleteFavorite(clickedIdRemove)
+        })
     })
 }
 
-function addNewFavorite(clickedId){
+function addNewFavorite(clickedId) {
     let newFavorite = {
         drinkId: clickedId,
         userId: sessionStorage.getItem("user")
@@ -104,7 +105,7 @@ function deleteFavorite(clickedIdRemove) {
             console.log(rsc)
         });
 
-        location.reload()
+    location.reload()
 }
 
 getFavoriteId();
