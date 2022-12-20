@@ -1,11 +1,13 @@
 "use strict";
 
+function createFavorites() {
+
 let array = [];
 
 function getFavoriteId() {
 
     let rqst = new Request("../php/favorites.json");
-    console.log(rqst);
+
     fetch(rqst)
         .then(r => r.json())
         .then(favorites => {
@@ -15,7 +17,7 @@ function getFavoriteId() {
                     fetch(drinkId)
                         .then(r => r.json())
                         .then(rsc => {
-                            console.log(rsc.drinks[0]);
+
                             array.push(rsc.drinks[0]);
                             createFavorites(rsc.drinks);
 

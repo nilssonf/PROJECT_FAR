@@ -364,7 +364,7 @@ function createFilterIngrediant(ingrediant) {
 
 function getClickedIngretidant() {
   let name = sessionStorage.getItem('ingName');
-  console.log(name);
+
   fetch(
     new Request(
       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
