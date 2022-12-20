@@ -52,7 +52,7 @@ function showTopDrinks(drink3) {
 
     drink3.forEach((drink, index) => {
         fetch(new Request(
-            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.drinkId}`))
+                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.drinkId}`))
             .then(r => r.json())
             .then(rsc => {
                 let class_name = '.drink' + numbers[index];
@@ -61,7 +61,7 @@ function showTopDrinks(drink3) {
                 roundTopDrink.src = rsc.drinks[0].strDrinkThumb;
                 document.querySelector(class_name).append(roundTopDrink);
 
-                roundTopDrink.addEventListener("click", function () {
+                roundTopDrink.addEventListener("click", function() {
                     let topDrinkId = rsc.drinks[0].idDrink;
                     sessionStorage.setItem("topDrinkId", topDrinkId);
                     location.href = "../html/search.html";
@@ -81,7 +81,7 @@ function showTopIngredients(ingredient3) {
         topIngredientOne.src = ingredient.ingImg;
         document.querySelector(class_name).append(topIngredientOne);
 
-        topIngredientOne.addEventListener("click", function () {
+        topIngredientOne.addEventListener("click", function() {
             sessionStorage.setItem("ingName", String(ingredient.ingName));
             location.href = "./search.html";
         });
