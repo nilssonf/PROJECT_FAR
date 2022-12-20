@@ -33,6 +33,7 @@ function createFavorites(drinks) {
 
     drinks.forEach(drink => {
 
+        let drinkId = drink.idDrink;
         let oneDrink = drink.strDrink
         let drinkImg = drink.strDrinkThumb
         let drinkAlcoholic = drink.strAlcoholic
@@ -54,11 +55,19 @@ function createFavorites(drinks) {
                        <p>${drinkGlass} </p>
                    </div>
                </div>
-                <img src="../images/gillasvart.png" class="heartImg">
+                <img src="../images/gillasvart.png" class="heartImgFav" id="${drinkId}">
                `;
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
     });
+
+    let heart = document.querySelectorAll('.heartImgFav')
+    heart.forEach(h => {
+    h.addEventListener('click', function () {
+        let clickedIdRemove = h.id;
+        deleteFavorite(clickedIdRemove)
+    })
+    })
 }
 
 function addNewFavorite(clickedId){
@@ -76,6 +85,26 @@ function addNewFavorite(clickedId){
     fetch(addNewFav)
         .then(r => r.json())
         .then(rsc => console.log(rsc));
+}
+
+function deleteFavorite(clickedIdRemove) {
+    let deleteFavorite = {
+        drinkId: clickedIdRemove,
+    };
+
+    const deleteFav = new Request("../php/deleteFavorites.php", {
+        method: 'DELETE',
+        body: JSON.stringify(deleteFavorite),
+        headers: { "Content-type": "application/json" }
+    });
+
+    fetch(deleteFav)
+        .then(r => r.json())
+        .then(rsc => {
+            console.log(rsc)
+        });
+
+        location.reload()
 }
 
 getFavoriteId();

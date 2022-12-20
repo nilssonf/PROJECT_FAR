@@ -12,6 +12,7 @@ function buildDrinkPopUp(id) {
 function choosenDrink(rsc) {
     let overlay = document.getElementById("overlay");
 
+    let drinkId = rsc.drinks[0].idDrink;
     let drinkName = rsc.drinks[0].strDrink;
     let drinkImg = rsc.drinks[0].strDrinkThumb;
     let drinkInstructions = rsc.drinks[0].strInstructions;
@@ -81,14 +82,30 @@ function choosenDrink(rsc) {
             <p>${drinkGlass}</p>
         </div>
         <div class="align-right">
-            <img src="../images/gilla.png" class="heartImg">
+            <img src="../images/gilla.png" class="heartImg" id="${drinkId}">
             <h3 class="oneDrinkH3">Steps:</h3>
             <p class="align-left">${drinkInstructions}</p>
         </div>
 
     `;
 
+
     overlay.append(drinkBox);
+
+    let heart = document.querySelectorAll('.heartImg')
+    heart.forEach(h => {
+    h.addEventListener('click', function () {
+        console.log('Hej')
+
+        if (user === 0) {
+        createLoginViaHeart()
+        } else {
+        h.src = '../images/gillasvart.png'
+        let heartId = h.id
+        addNewFavorite(heartId)
+        }
+    })
+    })
 
     let close = document.createElement("a");
     close.classList.add("close");
