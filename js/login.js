@@ -147,9 +147,56 @@ function createProfilePopup() {
         })
 
         fetch(rqst_add)
-            .then(r => r.json())
+            .then(r => {
+                console.log(r)
+                if (r.status == 200) {
+                    createWelcome(nameValue)
+                    logIn(emailValue, passwordValue)
+                }
+                return r.json()
+            })
             .then(console.log)
 
 
+    })
+}
+
+function createWelcome(nameValue) {
+    document.querySelector(".create-popup").style.display = "none"
+
+    let close = document.createElement("a");
+    close.classList.add("closeWelcome");
+    close.addEventListener("click", function() {
+        document.querySelector(".welcomeContainer").style.display = "none";
+    });
+
+    let createWelcome = document.createElement("div");
+    createWelcome.innerHTML =
+        `
+<div class="welcomeContainer">
+ <div class="welcome-popup">
+
+    <div class="welcomeContent" >
+
+    <h2>Welcome ${nameValue}</h2>
+
+    <p>Get started by browsing some drinks and don’t forget to add the ones you like to your favorites!</p>
+    <button class="closeButton"> Close</button>
+    <button class="profileButton"> Profile</button>
+
+    </div>
+    </div>
+    </div>
+
+    `;
+    createWelcome.append(close);
+    document.querySelector("body").append(createWelcome);
+
+    document.querySelector(".closeButton").addEventListener("click", function() {
+        createWelcome.style.display = "none"
+    })
+
+    document.querySelector(".profileButton").addEventListener("click", function() {
+        location.href = '../html/profile.html';
     })
 }
