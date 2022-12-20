@@ -1,15 +1,15 @@
-function buildDrinkPopUp (id){
+function buildDrinkPopUp(id) {
 
     document.getElementById("overlay").style.display = "block";
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(r => r.json())
         .then(rsc => {
-            choosenDrink(rsc)
-        })
-} 
+            choosenDrink(rsc);
+        });
+}
 
-function choosenDrink(rsc){
+function choosenDrink(rsc) {
     let overlay = document.getElementById("overlay");
 
     let drinkName = rsc.drinks[0].strDrink;
@@ -24,50 +24,50 @@ function choosenDrink(rsc){
 
     for (let key in drinkObject) {
 
-        if(key.includes("strIngredient") && drinkObject[key] != null){
+        if (key.includes("strIngredient") && drinkObject[key] != null) {
             ingr.push(drinkObject[key]);
-                }        
+        }
     }
 
     for (let key in drinkObject) {
 
-        if(key.includes("strMeasure") && drinkObject[key] != null){
+        if (key.includes("strMeasure") && drinkObject[key] != null) {
             measures.push(drinkObject[key]);
-                }        
+        }
     }
-    
+
     let imgDiv = document.createElement('div');
     imgDiv.classList.add("imgDiv");
     let ingrDiv = document.createElement('div');
     ingrDiv.classList.add("ingrDiv");
     let measureDiv = document.createElement('div');
     measureDiv.classList.add("measureDiv");
-    
-    for(let i = 0; i < ingr.length; i++){
+
+    for (let i = 0; i < ingr.length; i++) {
         let ingrP = document.createElement("p");
         ingrP.innerText = ingr[i];
 
-        ingrDiv.append(ingrP)
+        ingrDiv.append(ingrP);
     }
 
-    for(let j = 0; j < measures.length; j++){
+    for (let j = 0; j < measures.length; j++) {
         let measureP = document.createElement("p");
         measureP.innerText = measures[j];
-       
-        measureDiv.append(measureP)
+
+        measureDiv.append(measureP);
     }
 
-    for(let i = 0; i < ingr.length; i++){
-        let picName = ingr[i].toLowerCase().replace(/\s/g, '%20'); 
+    for (let i = 0; i < ingr.length; i++) {
+        let picName = ingr[i].toLowerCase().replace(/\s/g, '%20');
         imgDiv.innerHTML += `
         <img class="ingrImg" src="https://www.thecocktaildb.com/images/ingredients/${picName}-Small.png">
-        `; 
+        `;
     }
- 
+
     let drinkBox = document.createElement("div");
     drinkBox.classList.add("showOneDrinkDiv");
 
-    drinkBox.innerHTML =`
+    drinkBox.innerHTML = `
         <div><img class="overlayDrinkImg" src="${drinkImg}"></div>
         <div>
             <h2 class="oneDrinkName">${drinkName}</h2>
