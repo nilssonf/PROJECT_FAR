@@ -1,7 +1,5 @@
 "use strict";
 
-function createFavorites() {
-
 let array = [];
 
 function getFavoriteId() {
