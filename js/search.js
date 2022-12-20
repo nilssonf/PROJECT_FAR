@@ -305,8 +305,36 @@ function getsearchedDrink() {
         })
     })
 
+<<<<<<< Updated upstream
   }
   function getClickedIngretidant() {
+=======
+function getClickedIngretidant() {
+  let name = sessionStorage.getItem('ingName');
+  fetch(
+    new Request(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
+    )
+  )
+    .then(r => r.json())
+    .then(rsc => {
+      rsc.drinks.forEach(drink => {
+        let id = drink.idDrink;
+        fetch(
+          new Request(
+            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+          )
+        )
+          .then(r => r.json())
+          .then(rsc => {
+            ingrediantDrinksById.push(rsc.drinks[0]);
+            createDrinks(ingrediantDrinksById);
+          });
+      });
+      ingrediantDrinksById = [];
+    });
+}
+>>>>>>> Stashed changes
 
     let name = sessionStorage.getItem("ingName")
     console.log(name)
