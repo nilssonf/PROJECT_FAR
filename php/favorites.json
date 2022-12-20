@@ -58,5 +58,10 @@
         "favoriteId": 14,
         "drinkId": "12560",
         "userId": "1"
+    },
+    {
+        "favoriteId": 15,
+        "drinkId": "11021",
+        "userId": "1"
     }
 ]
