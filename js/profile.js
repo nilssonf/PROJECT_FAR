@@ -42,6 +42,33 @@ function renderComments(usr) {
         });
 }
 
+function renderRandomFav(usr) {
+    fetch(new Request('../php/favorites.json'))
+        .then(r => r.json())
+        .then(rsc => {
+            let allFavorites = rsc;
+            let myFavorites = [];
+            allFavorites.forEach(fav => {
+                if (fav.userId == usr) {
+                    myFavorites.push(fav);
+                }
+            });
+
+            let randomId = myFavorites[Math.floor(Math.random() * myFavorites.length)].drinkId;
+
+            fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${randomId}`))
+                .then(r => r.json())
+                .then(rsc => {
+                    let imgSrc = rsc.drinks[0].strDrinkThumb;
+                    console.log(imgSrc);
+
+                    let imgWrap = document.querySelector('#oneFav');
+
+                    imgWrap.innerHTML = `<img src='${imgSrc}'>`;
+                });
+        });
+}
+
 function currentUser(user) {
 
     fetch(new Request('../php/users.json'))
@@ -53,6 +80,7 @@ function currentUser(user) {
                 if (u.id == user) {
                     renderProfile(u);
                     renderComments(u.id);
+                    renderRandomFav(user);
                 }
             });
         });
