@@ -15,11 +15,6 @@
         "userId": 1
     },
     {
-        "favoriteId": 4,
-        "drinkId": "11006",
-        "userId": 1
-    },
-    {
         "favoriteId": 5,
         "drinkId": "17222",
         "userId": "2"
@@ -32,11 +27,6 @@
     {
         "favoriteId": 7,
         "drinkId": "17222",
-        "userId": "1"
-    },
-    {
-        "favoriteId": 8,
-        "drinkId": "13501",
         "userId": "1"
     },
     {
