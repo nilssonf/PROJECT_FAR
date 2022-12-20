@@ -1,6 +1,7 @@
 "use strict";
 
 function header(user) {
+
     let header = document.querySelector("#header");
     header.classList.add("header");
 
@@ -33,9 +34,9 @@ function header(user) {
 
                 header.innerHTML = "";
                 logIn(username, psw);
-                setTimeout(() => {
-                    currentUser();
-                }, "1000");
+                // setTimeout(() => {
+                //     currentUser();
+                // }, "1000");
             });
         });
     } else {
@@ -60,7 +61,7 @@ function header(user) {
             location.href = '../html/profile.html';
         };
 
-        signOut.onclick = function() {
+        document.querySelector('.signOut p').onclick = function() {
             sessionStorage.removeItem('user');
             header.innerHTML = "";
             logOut();

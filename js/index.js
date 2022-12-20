@@ -4,6 +4,13 @@
 window.onload = getRandomIngredients();
 window.onload = getRandomDrinks();
 
+function setFavicons(src) {
+    let headTitle = document.querySelector('head');
+    let setFavicon = document.createElement('link');
+    setFavicon.setAttribute('rel', 'shortcut icon');
+    setFavicon.setAttribute('href', src);
+    headTitle.appendChild(setFavicon);
+}
 
 
 function getRandomIngredients() {
@@ -54,12 +61,12 @@ function showTopDrinks(drink3) {
                 roundTopDrink.src = rsc.drinks[0].strDrinkThumb;
                 document.querySelector(class_name).append(roundTopDrink);
 
-                roundTopDrink.addEventListener("click", function() {
+                roundTopDrink.addEventListener("click", function () {
                     let topDrinkId = rsc.drinks[0].idDrink;
                     sessionStorage.setItem("topDrinkId", topDrinkId);
                     location.href = "../html/search.html";
-                    
-                })
+
+                });
             });
     });
 }
@@ -80,3 +87,5 @@ function showTopIngredients(ingredient3) {
         });
     });
 }
+
+setFavicons("../images/logo_bottled.png");

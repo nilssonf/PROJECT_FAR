@@ -1,6 +1,7 @@
 "use strict";
 
 let user = 0;
+user = Number(sessionStorage.getItem("user"));
 
 function logIn(username, pw) {
 
@@ -72,7 +73,7 @@ function createLogin() {
     document.querySelector("body").append(signInForm);
     signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
-    document.querySelector(".create").addEventListener("click", createProfile)
+    document.querySelector(".create").addEventListener("click", createProfilePopup);
     return signIn;
 
 }
@@ -83,7 +84,7 @@ function logOut() {
     header(sessionStorage.getItem("user"));
 }
 
-function createProfile() {
+function createProfilePopup() {
     document.getElementById("myForm").style.display = "none";
 
     let close = document.createElement("a");
@@ -106,21 +107,96 @@ function createProfile() {
     <input type="text" id="name" required>
 
     <label for="email"><b>Your email?</b></label>
-    <input type="text" id="email" required>
+    <input type="text" id="mail" required>
 
     <label for="password"><b>Select a password</b></label>
     <input type="password" id="password" required>
 
-    <button class="btn createAndSign"> Create & log in </button>
+    <label for="aga"><b>Your age?</b></label>
+    <input type="text" id="age" required>
+
+    <label for="occupation"><b> Your occupation?</b></label>
+    <input type="text" id="occupation" required>
+
+    <button class="createAndSign"> Create & log in </button>
 
     </div>
     </div>
     </div>
 
-    `
-    createUser.append(close)
-
+    `;
+    createUser.append(close);
     document.querySelector("body").append(createUser);
 
+    let createUserButton = document.querySelector('.createAndSign');
+    createUserButton.addEventListener("click", function(event) {
+        event.preventDefault()
+        let nameValue = document.getElementById("name").value
+        let emailValue = document.getElementById("mail").value
+        let passwordValue = document.getElementById("password").value
+        let ageValue = document.getElementById("age").value
+        let occupationValue = document.getElementById("occupation").value
+        console.log(nameValue, emailValue, passwordValue, ageValue, occupationValue)
 
+
+        let rqst_add = new Request("../php/createUser.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: nameValue, email: emailValue, password: passwordValue, age: ageValue, occupation: occupationValue })
+
+        })
+
+        fetch(rqst_add)
+            .then(r => {
+                console.log(r)
+                if (r.status == 200) {
+                    createWelcome(nameValue)
+                    logIn(emailValue, passwordValue)
+                }
+                return r.json()
+            })
+            .then(console.log)
+
+
+    })
+}
+
+function createWelcome(nameValue) {
+    document.querySelector(".create-popup").style.display = "none"
+
+    let close = document.createElement("a");
+    close.classList.add("closeWelcome");
+    close.addEventListener("click", function() {
+        document.querySelector(".welcomeContainer").style.display = "none";
+    });
+
+    let createWelcome = document.createElement("div");
+    createWelcome.innerHTML =
+        `
+<div class="welcomeContainer">
+ <div class="welcome-popup">
+
+    <div class="welcomeContent" >
+
+    <h2>Welcome ${nameValue}</h2>
+
+    <p>Get started by browsing some drinks and don’t forget to add the ones you like to your favorites!</p>
+    <button class="closeButton"> Close</button>
+    <button class="profileButton"> Profile</button>
+
+    </div>
+    </div>
+    </div>
+
+    `;
+    createWelcome.append(close);
+    document.querySelector("body").append(createWelcome);
+
+    document.querySelector(".closeButton").addEventListener("click", function() {
+        createWelcome.style.display = "none"
+    })
+
+    document.querySelector(".profileButton").addEventListener("click", function() {
+        location.href = '../html/profile.html';
+    })
 }

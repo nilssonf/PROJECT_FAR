@@ -1,13 +1,13 @@
 "use strict";
 
-<<<<<<< Updated upstream
 function createFavorites() {
-=======
+
 let array = [];
 
 function getFavoriteId() {
 
     let rqst = new Request("../php/favorites.json");
+
     fetch(rqst)
         .then(r => r.json())
         .then(favorites => {
@@ -17,6 +17,7 @@ function getFavoriteId() {
                     fetch(drinkId)
                         .then(r => r.json())
                         .then(rsc => {
+
                             array.push(rsc.drinks[0]);
                             createFavorites(rsc.drinks);
 
@@ -40,16 +41,72 @@ function createFavorites(drinks) {
         let drinkAlcoholic = drink.strAlcoholic
         let drinkCategory = drink.strCategory
         let drinkGlass = drink.strGlass
->>>>>>> Stashed changes
 
-    // change loop and loop through favourites.json
-    for (let i = 0; i < 4; i++) {
         let favoriteBox = document.createElement("div");
-        favoriteBox.innerHTML = "<img src='../images/test.png' class='favoriteImg'><p>Drink Name <br><br>Tag Tag Tag</p> <img src='../images/test.png' class='heartImg'>";
+        favoriteBox.innerHTML = `
+
+               <div class="imgWrap">
+                   <img src="${drinkImg}" class="drinkImg">
+               </div>
+               <div class="text">
+                   <h3>${oneDrink} </h3>
+                   <div class="tags">
+                       <p> ${drinkAlcoholic} </p>
+                       <p>${drinkCategory} </p>
+      
+                       <p>${drinkGlass} </p>
+                   </div>
+               </div>
+                <img src="../images/gillasvart.png" class="heartImgFav" id="${drinkId}">
+               `;
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
+    });
 
-    }
+    let heart = document.querySelectorAll('.heartImgFav')
+    heart.forEach(h => {
+    h.addEventListener('click', function () {
+        let clickedIdRemove = h.id;
+        deleteFavorite(clickedIdRemove)
+    })
+    })
 }
 
-createFavorites()
+function addNewFavorite(clickedId){
+    let newFavorite = {
+        drinkId: clickedId,
+        userId: sessionStorage.getItem("user")
+    };
+
+    const addNewFav = new Request("../php/addFavorites.php", {
+        method: 'POST',
+        body: JSON.stringify(newFavorite),
+        headers: { "Content-type": "application/json" }
+    });
+
+    fetch(addNewFav)
+        .then(r => r.json())
+        .then(rsc => console.log(rsc));
+}
+
+function deleteFavorite(clickedIdRemove) {
+    let deleteFavorite = {
+        drinkId: clickedIdRemove,
+    };
+
+    const deleteFav = new Request("../php/deleteFavorites.php", {
+        method: 'DELETE',
+        body: JSON.stringify(deleteFavorite),
+        headers: { "Content-type": "application/json" }
+    });
+
+    fetch(deleteFav)
+        .then(r => r.json())
+        .then(rsc => {
+            console.log(rsc)
+        });
+
+        location.reload()
+}
+
+getFavoriteId();

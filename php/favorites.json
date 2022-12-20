@@ -13,5 +13,45 @@
         "favoriteId": 3,
         "drinkId": "11006",
         "userId": 1
+    },
+    {
+        "favoriteId": 9,
+        "drinkId": "11000",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 10,
+        "drinkId": "178325",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 11,
+        "drinkId": "11147",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 12,
+        "drinkId": "11003",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 13,
+        "drinkId": "17215",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 14,
+        "drinkId": "12560",
+        "userId": "1"
+    },
+    {
+        "favoriteId": 15,
+        "drinkId": "11021",
+        "userId": "1"
+    },
+    {
+        "favoriteId": 17,
+        "drinkId": "12704",
+        "userId": "2"
     }
 ]

@@ -128,6 +128,10 @@
   font-family: 'Inter';
 }
 
+.text:hover {
+  cursor: pointer;
+}
+
 .tags {
   display: flex;
   gap: 20px;
@@ -144,31 +148,36 @@ h3 {
   border-radius: 30px;
 }
 
-#myForm {
+#myFormHeart {
   display: none;
+  justify-content: center;
   padding-top: 0px;
 }
 
-.closeSignIn {
-  position: fixed;
-  right: 10px;
-  bottom: 660px;
+.signInFormByHeart {
+  display: flex;
+  justify-content: center;
+}
+
+.closeSignInHeart {
+  position: absolute;
+  right: 20px;
+  padding-top: 20px;
   width: 32px;
   height: 32px;
-  opacity: 0.3;
   z-index: 20000;
 }
 
-.closeSignIn:hover {
+.closeSignInHeart:hover {
   cursor: pointer;
 }
 
-.closeSignIn:hover {
-  opacity: 1;
+.closeSignInHeart:hover {
+  opacity: 0.3;
 }
 
-.closeSignIn:before,
-.closeSignIn:after {
+.closeSignInHeart:before,
+.closeSignInHeart:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -177,11 +186,11 @@ h3 {
   background-color: rgb(255, 255, 255);
 }
 
-.closeSignIn:before {
+.closeSignInHeart:before {
   transform: rotate(45deg);
 }
 
-.closeSignIn:after {
+.closeSignInHeart:after {
   transform: rotate(-45deg);
 }
 
@@ -198,15 +207,16 @@ label {
   display: none;
   position: fixed;
   bottom: 300px;
-  right: 1px;
-  top: 1px;
   z-index: 10000;
+  background-color: rgba(236, 101, 67, 0.9);
+  border-radius: 50px;
+  width: 40%;
 }
 
 .form-container-heart {
-  max-width: 200px;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
-  background-color: #ec6543;
 }
 
 .form-container-heart input[type='text'],

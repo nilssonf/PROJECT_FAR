@@ -14,18 +14,42 @@ h1 {
 }
 
 .favoriteBox {
-    margin: 20px 0px 20px 0px;
-    background-color: whitesmoke;
+    margin: 40px 0px 40px 0px;
     justify-content: space-around;
     display: grid;
     grid-template-columns: 4fr 6fr 1fr;
+    border: 0.5px solid rgb(123, 123, 123);
+    box-shadow: -10px 10px #ec6543c3;
 }
 
-.favoriteImg {
+.imgWrap {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.drinkImg {
     height: 200px;
 }
 
-.heartImg {
+.heartImgFav {
     height: 50px;
     padding-top: 10px;
+}
+
+.tags {
+    display: flex;
+    gap: 20px;
+}
+
+.tags p {
+    padding: 12px;
+    border: 2px solid #ec6542;
+    border-radius: 30px;
+}
+
+.createAndSign {
+    position: fixed;
+    bottom: 300px;
+    z-index: 40000;
 }
