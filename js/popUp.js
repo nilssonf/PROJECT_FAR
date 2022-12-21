@@ -94,6 +94,7 @@ function choosenDrink(rsc) {
 
     let heart = document.querySelectorAll('.heartImg')
     heart.forEach(h => {
+<<<<<<< Updated upstream
     h.addEventListener('click', function () {
         console.log('Hej')
 
@@ -106,16 +107,29 @@ function choosenDrink(rsc) {
         }
     })
     })
+=======
+        h.addEventListener('click', function() {
+
+
+            if (user === 0) {
+                createLoginViaHeart();
+            } else {
+                h.src = '../images/gillasvart.png';
+                let heartId = h.id;
+                addNewFavorite(heartId);
+            }
+        });
+    });
+>>>>>>> Stashed changes
 
     let close = document.createElement("a");
     close.classList.add("close");
     close.href = "#";
     overlay.append(close);
 
-    close.addEventListener("click", function (event) {
+    close.addEventListener("click", function(event) {
         document.getElementById("overlay").style.display = "none";
 
         window.location.href = "../html/search.html";
     });
 }
-

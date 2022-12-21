@@ -19,7 +19,7 @@ h1 {
     display: grid;
     grid-template-columns: 4fr 6fr 1fr;
     border: 0.5px solid rgb(123, 123, 123);
-    box-shadow: -10px 10px #ec6543c3;
+    box-shadow: -10px 10px rgba(236, 101, 67, 0.7);
 }
 
 .imgWrap {

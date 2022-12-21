@@ -194,15 +194,23 @@ function createAlphabet() {
     });
 }
 
+let sortArrayA = [];
+
 function getAlcoholic() {
     fetch(
             new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`)
         )
         .then(r => r.json())
         .then(rsc => {
-            createFilterAlcohol(rsc.drinks);
+            for (let drink of rsc.drinks) {
+                sortArrayA.push(drink.strAlcoholic)
+            }
+            let sortAlcoholic = sortArrayA.sort()
+            createFilterAlcohol(sortAlcoholic);
         });
 }
+
+let sortArrayC = [];
 
 function getCategory() {
     fetch(
@@ -210,9 +218,15 @@ function getCategory() {
         )
         .then(r => r.json())
         .then(rsc => {
-            createFilterCategory(rsc.drinks);
+            for (let drink of rsc.drinks) {
+                sortArrayC.push(drink.strCategory)
+            }
+            let sortCategory = sortArrayC.sort()
+            createFilterCategory(sortCategory);
         });
 }
+
+let sortArrayG = [];
 
 function getGlass() {
     fetch(
@@ -220,9 +234,15 @@ function getGlass() {
         )
         .then(r => r.json())
         .then(rsc => {
-            createFilterGlass(rsc.drinks);
+            for (let drink of rsc.drinks) {
+                sortArrayG.push(drink.strGlass)
+            }
+            let sortGlass = sortArrayG.sort()
+            createFilterGlass(sortGlass);
         });
 }
+
+let sortArrayI = [];
 
 function getIngrediants() {
     fetch(
@@ -230,7 +250,13 @@ function getIngrediants() {
         )
         .then(r => r.json())
         .then(rsc => {
-            createFilterIngrediant(rsc.drinks);
+            for (let drink of rsc.drinks) {
+                sortArrayI.push(drink.strIngredient1)
+            }
+            let sortIngrediants = sortArrayI.sort()
+
+            createFilterIngrediant(sortIngrediants);
+
         });
 }
 let alcoholDrinksById = [];
@@ -239,7 +265,7 @@ function createFilterAlcohol(alcohol) {
     let chooseAlcohol = document.getElementById('chooseAlcohol');
     alcohol.forEach(a => {
         let option = document.createElement('option');
-        option.text = a.strAlcoholic;
+        option.text = a;
         chooseAlcohol.append(option);
         option.addEventListener('click', function() {
             fetch(
@@ -263,6 +289,7 @@ function createFilterAlcohol(alcohol) {
                             });
                     });
                     alcoholDrinksById = [];
+
                 });
         });
     });
@@ -273,7 +300,7 @@ function createFilterCategory(category) {
     let chooseCategory = document.getElementById('chooseCategory');
     category.forEach(c => {
         let option = document.createElement('option');
-        option.text = c.strCategory;
+        option.text = c;
         chooseCategory.append(option);
         option.addEventListener('click', function() {
             fetch(
@@ -307,7 +334,7 @@ function createFilterGlass(glass) {
     let chooseGlass = document.getElementById('chooseGlass');
     glass.forEach(g => {
         let option = document.createElement('option');
-        option.text = g.strGlass;
+        option.text = g;
         chooseGlass.append(option);
         option.addEventListener('click', function() {
             fetch(
@@ -342,7 +369,7 @@ function createFilterIngrediant(ingrediant) {
     ingrediant.forEach(i => {
 
         let option = document.createElement('option');
-        option.text = i.strIngredient1;
+        option.text = i;
         chooseIngrediant.append(option);
         option.addEventListener('click', function() {
             fetch(
@@ -409,6 +436,38 @@ function getClickedDrink() {
     sessionStorage.removeItem('topDrinkId');
 }
 
+function clearSelect() {
+    let alcohol = document.getElementById("chooseAlcohol");
+    let category = document.getElementById("chooseCategory");
+    let glass = document.getElementById("chooseGlass");
+    let ingrediant = document.getElementById("chooseIngrediant");
+    alcohol.addEventListener("change", function(event) {
+        category.value = "";
+        glass.value = "";
+        ingrediant.value = "";
+    })
+
+    category.addEventListener("change", function(event) {
+        alcohol.value = "";
+        glass.value = "";
+        ingrediant.value = "";
+    })
+
+    glass.addEventListener("change", function(event) {
+        alcohol.value = "";
+        category.value = "";
+        ingrediant.value = "";
+    })
+
+    ingrediant.addEventListener("change", function(event) {
+        alcohol.value = "";
+        category.value = "";
+        glass.value = "";
+    })
+
+
+}
+
 getDrinksByLetter('a');
 getsearchedDrink();
 createAlphabet();
@@ -418,3 +477,4 @@ getGlass();
 getIngrediants();
 getClickedIngretidant();
 getClickedDrink();
+clearSelect();

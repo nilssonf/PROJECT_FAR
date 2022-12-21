@@ -15,7 +15,6 @@ function getFavoriteId() {
                     let drinkId = (`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${f.drinkId}`);
                     fetch(drinkId)
                         .then(r => {
-                            console.log(r)
                             return r.json()
                         })
                         .then(rsc => {
@@ -74,6 +73,7 @@ function createFavorites(drinks) {
                `;
         favoriteBox.classList.add("favoriteBox");
         document.querySelector("#wrapper").append(favoriteBox);
+
 
     });
 
