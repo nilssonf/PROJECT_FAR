@@ -32,7 +32,7 @@ function createDrinks(rsc) {
         noDrinks.classList.add("noDrinks")
         noDrinks.innerHTML = "Sorry, there is no drinks that matches your search"
         document.querySelector('#wrapper').append(noDrinks)
-        wrapper.style.height = "50vh"
+        wrapper.style.paddingBottom = "200px"
     }
 
     rsc.forEach(drink => {
@@ -128,7 +128,7 @@ function createLoginViaHeart() {
         .querySelector('.createFromHeart')
         .addEventListener('click', function() {
             document.getElementById('myFormHeart').style.display = 'none';
-            createProfile();
+            createProfilePopup();
         });
 }
 
