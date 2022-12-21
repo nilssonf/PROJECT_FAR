@@ -59,3 +59,7 @@
 .closeCreate:after {
     transform: rotate(-45deg);
 }
+
+.wrongInlogg {
+    color: white;
+}
