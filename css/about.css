@@ -18,6 +18,11 @@
 
 }
 
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.ttf');
+}
+
 h1{
     font-family: "BottledFont";
     font-size: xxx-large;
@@ -122,10 +127,15 @@ img{
   
 .flip-card-back {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #EC6542;
     color: white;
     transform: rotateY(180deg);
     border-radius: 50%;
+}
+
+.aboutCircle{
+    font-family: "Inter";
 }
