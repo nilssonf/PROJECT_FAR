@@ -10,6 +10,8 @@ function buildDrinkPopUp(id) {
 }
 
 function choosenDrink(rsc) {
+    document.getElementById('searchWrapper').innerHTML = '';
+
     let overlay = document.getElementById("overlay");
 
     let drinkId = rsc.drinks[0].idDrink;
