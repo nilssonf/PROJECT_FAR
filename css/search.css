@@ -117,7 +117,7 @@
 }
 
 .filterContainer {
-    height: 250px;
+    height: 280px;
     margin-top: 440px;
     width: 250px;
     position: relative;
@@ -134,11 +134,9 @@
 }
 
 .tags {
-
-  display: flex;
-  gap: 20px;
-  width: 100%
-
+    display: flex;
+    gap: 20px;
+    width: 100%
 }
 
 h3 {
@@ -147,17 +145,15 @@ h3 {
 }
 
 .tags p {
-
-  text-align: center;
-  padding: 12px;
-  border: 1px solid #ec6542;
-  border-radius: 30px;
-  font-family: 'Inter';
-  font-weight: bold;
-  color: #ec6442c1;
-  font-size: 13px;
-  flex-grow: 1;
-
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ec6542;
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-weight: bold;
+    color: #ec6442c1;
+    font-size: 13px;
+    flex-grow: 1;
 }
 
 #myFormHeart {
@@ -271,5 +267,6 @@ select {
     border: none;
     margin-left: 15px;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 8px;
+    border-radius: 50px;
 }
