@@ -78,7 +78,10 @@ function createLogin() {
     signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
     document.querySelector(".wrongInlogg").style.display = "none";
-    document.querySelector(".create").addEventListener("click", createProfilePopup);
+    document.querySelector(".create").addEventListener("click", function() {
+        document.getElementById("myForm").style.display = "none";
+        createProfilePopup()
+    });
     return signIn;
 
 }
@@ -91,7 +94,7 @@ function logOut() {
 }
 
 function createProfilePopup() {
-    document.getElementById("myForm").style.display = "none";
+
 
     let close = document.createElement("a");
     close.classList.add("closeCreate");
