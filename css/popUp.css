@@ -88,14 +88,13 @@ p {
 }
 
 .ingredientsDiv {
-    display: flex;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
 }
 
-.imgContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.measureContainer {
-    text-align: end;
+.imgContainer,
+.measureContainer,
+.ingrContainer {
+  display: grid;
+  align-items: center;
 }
