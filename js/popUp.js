@@ -109,8 +109,10 @@ function choosenDrink(rsc) {
 
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
+
         h.addEventListener('click', function () {
             console.log('Hej');
+
 
             if (user === 0) {
                 createLoginViaHeart();
@@ -122,15 +124,15 @@ function choosenDrink(rsc) {
         });
     });
 
+
     let close = document.createElement("a");
     close.classList.add("close");
     close.href = "#";
     overlay.append(close);
 
-    close.addEventListener("click", function (event) {
+    close.addEventListener("click", function(event) {
         document.getElementById("overlay").style.display = "none";
 
         window.location.href = "../html/search.html";
     });
 }
-

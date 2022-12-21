@@ -19,7 +19,6 @@ function logIn(username, pw) {
 
     fetch(logInRqst)
         .then(resp => {
-            console.log(resp);
             if (resp.status == 200) {
                 return resp.json();
             } else {
@@ -147,7 +146,7 @@ function createProfilePopup() {
         let passwordValue = document.getElementById("password").value
         let ageValue = document.getElementById("age").value
         let occupationValue = document.getElementById("occupation").value
-        console.log(nameValue, emailValue, passwordValue, ageValue, occupationValue)
+
 
 
         let rqst_add = new Request("../php/createUser.php", {
@@ -159,7 +158,6 @@ function createProfilePopup() {
 
         fetch(rqst_add)
             .then(r => {
-                console.log(r)
                 if (r.status == 200) {
                     createWelcome(nameValue)
                     logIn(emailValue, passwordValue)

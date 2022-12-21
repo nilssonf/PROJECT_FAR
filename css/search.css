@@ -37,7 +37,7 @@
     display: grid;
     grid-template-columns: 4fr 6fr 1fr;
     border: 0.5px solid rgb(123, 123, 123);
-    box-shadow: -10px 10px #ec6543c3;
+    box-shadow: -10px 10px rgba(236, 101, 67, 0.7);
 }
 
 .imgWrap {
@@ -117,11 +117,11 @@
 }
 
 .filterContainer {
-    height: 220px;
+    height: 250px;
     margin-top: 440px;
-    width: 200px;
+    width: 250px;
     position: relative;
-    right: 200px;
+    right: 170px;
     border: 1px #ec6542 dashed;
 }
 
@@ -134,9 +134,11 @@
 }
 
 .tags {
+
   display: flex;
   gap: 20px;
   width: 100%
+
 }
 
 h3 {
@@ -145,6 +147,7 @@ h3 {
 }
 
 .tags p {
+
   text-align: center;
   padding: 12px;
   border: 1px solid #ec6542;
@@ -154,6 +157,7 @@ h3 {
   color: #ec6442c1;
   font-size: 13px;
   flex-grow: 1;
+
 }
 
 #myFormHeart {
@@ -259,4 +263,13 @@ label {
     justify-content: center;
     padding-top: 100px;
     color: #ec6542;
+}
+
+select {
+    background-color: rgba(236, 101, 67, 0.7);
+    color: white;
+    border: none;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
 }
