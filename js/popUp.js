@@ -44,6 +44,13 @@ function choosenDrink(rsc) {
     let measureDiv = document.createElement('div');
     measureDiv.classList.add("measureDiv");
 
+    let gridCol = ingr.length;
+
+    imgDiv.style.gridColumn = `repeat(${gridCol}, 1fr)`;
+    ingrDiv.style.gridColumn = `repeat(${gridCol}, 1fr)`;
+    measureDiv.style.gridColumn = `repeat(${gridCol}, 1fr)`;
+
+
     for (let i = 0; i < ingr.length; i++) {
         let ingrP = document.createElement("p");
         ingrP.innerText = ingr[i];
@@ -92,20 +99,20 @@ function choosenDrink(rsc) {
 
     overlay.append(drinkBox);
 
-    let heart = document.querySelectorAll('.heartImg')
+    let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
-    h.addEventListener('click', function () {
-        console.log('Hej')
+        h.addEventListener('click', function () {
+            console.log('Hej');
 
-        if (user === 0) {
-        createLoginViaHeart()
-        } else {
-        h.src = '../images/gillasvart.png'
-        let heartId = h.id
-        addNewFavorite(heartId)
-        }
-    })
-    })
+            if (user === 0) {
+                createLoginViaHeart();
+            } else {
+                h.src = '../images/gillasvart.png';
+                let heartId = h.id;
+                addNewFavorite(heartId);
+            }
+        });
+    });
 
     let close = document.createElement("a");
     close.classList.add("close");
