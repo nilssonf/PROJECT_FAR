@@ -187,7 +187,3 @@ function closebtn(){
 
     document.getElementById("update-close").append(close)
 }
-
-// function updateNewUser() {
-
-// }
