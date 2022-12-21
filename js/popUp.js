@@ -1,6 +1,6 @@
 function buildDrinkPopUp(id) {
 
-    document.getElementById("overlay").style.display = "block";
+    document.getElementById("overlay").style.display = "flex";
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(r => r.json())
