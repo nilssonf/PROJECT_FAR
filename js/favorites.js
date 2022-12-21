@@ -15,11 +15,14 @@ function getFavoriteId() {
                     fetch(drinkId)
                         .then(r => r.json())
                         .then(rsc => {
-
                             array.push(rsc.drinks[0]);
                             createFavorites(rsc.drinks);
 
+
+
                         });
+                } else {
+                    createFavorites(null)
                 }
 
             });
@@ -30,6 +33,21 @@ function getFavoriteId() {
 
 
 function createFavorites(drinks) {
+    console.log(drinks)
+
+    if (drinks === null) {
+        let noDrinks = document.createElement("div")
+        document.querySelector(".favoritesDrinks").style.display = "none"
+        noDrinks.innerHTML =
+            `<p class="noDrinks">You don't have any favorite drinks</p>
+            <p class="clickHere"> Click &nbsp <a class ="link" href="../html/search.html"> here </a> &nbsp to scroll drinks and like some of your favorites</p>
+            
+        
+        `
+
+        document.querySelector('#wrapper').append(noDrinks)
+        wrapper.style.height = "100vh"
+    }
 
     drinks.forEach(drink => {
 
