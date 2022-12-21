@@ -135,6 +135,7 @@
 .tags {
   display: flex;
   gap: 20px;
+  width: 100%
 }
 
 h3 {
@@ -143,9 +144,15 @@ h3 {
 }
 
 .tags p {
+  text-align: center;
   padding: 12px;
-  border: 2px solid #ec6542;
+  border: 1px solid #ec6542;
   border-radius: 30px;
+  font-family: 'Inter';
+  font-weight: bold;
+  color: #ec6442c1;
+  font-size: 13px;
+  flex-grow: 1;
 }
 
 #myFormHeart {
