@@ -18,6 +18,10 @@
     position: relative;
 }
 
+.introduction img {
+    height: 50%;
+}
+
 .lines {
     grid-column: 1 / span 2;
     background-image: url("../images/lines.png");
