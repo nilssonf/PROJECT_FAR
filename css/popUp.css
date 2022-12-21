@@ -70,8 +70,18 @@
     font-size: xxx-large;
 }
 
+#instruct {
+    margin-top: 30%;
+    display: grid;
+    gap: 15px;
+}
+
 .align-right {
     text-align: right;
+}
+
+.align-right div p {
+    text-align: left;
 }
 
 .align-left {
