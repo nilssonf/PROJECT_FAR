@@ -27,6 +27,14 @@ function getDrinksByName(name) {
 function createDrinks(rsc) {
     document.querySelector('#wrapper').innerHTML = ' ';
 
+    if (rsc === null) {
+        let noDrinks = document.createElement("p")
+        noDrinks.classList.add("noDrinks")
+        noDrinks.innerHTML = "Sorry, there is no drinks that matches your search"
+        document.querySelector('#wrapper').append(noDrinks)
+        wrapper.style.height = "50vh"
+    }
+
     rsc.forEach(drink => {
         let id = drink.idDrink;
         let oneDrink = drink.strDrink;

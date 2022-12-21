@@ -1,246 +1,255 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-Regular.ttf');
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.ttf');
 }
 
 #searchWrapper {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
+
 
 /* TODO: Fix responsive, looks wierd on smaller screen */
 
 #container {
-  display: grid;
-  grid-template-rows: 1fr min-content;
+    display: grid;
+    grid-template-rows: 1fr min-content;
 }
 
 #topContainer {
-  padding-top: 100px;
-  grid-row: 1/1;
-  display: grid;
-  grid-template-rows: 1fr 3fr;
+    padding-top: 100px;
+    grid-row: 1/1;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
 }
 
 #wrapper {
-  width: 50vw;
-  padding: 50px 0 100px 0;
-  grid-row: 2/2;
+    width: 50vw;
+    padding: 50px 0 100px 0;
+    grid-row: 2/2;
 }
 
 .drinkBox {
-  width: 100%;
-  overflow-x: clip;
-  margin: 40px 0px 40px 0px;
-  justify-content: space-around;
-  display: grid;
-  grid-template-columns: 4fr 6fr 1fr;
-  border: 0.5px solid rgb(123, 123, 123);
-  box-shadow: -10px 10px #ec6543c3;
+    width: 100%;
+    overflow-x: clip;
+    margin: 40px 0px 40px 0px;
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 4fr 6fr 1fr;
+    border: 0.5px solid rgb(123, 123, 123);
+    box-shadow: -10px 10px #ec6543c3;
 }
 
 .imgWrap {
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 .drinkImg {
-  height: 200px;
+    height: 200px;
 }
 
 .heartImg {
-  height: 50px;
-  padding-top: 10px;
+    height: 50px;
+    padding-top: 10px;
 }
 
 .searchContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #drinkName {
-  width: 300px;
-  height: 20px;
-  border: 1px solid #ec6542;
-  border-radius: 50px;
+    width: 300px;
+    height: 20px;
+    border: 1px solid #ec6542;
+    border-radius: 50px;
 }
 
 .alphabet {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .alphabetOne,
 .alphabetThree {
-  display: flex;
-  width: 400px;
-  height: 60px;
-  grid-row: 2/2;
-  gap: 7px;
-  justify-content: center;
+    display: flex;
+    width: 400px;
+    height: 60px;
+    grid-row: 2/2;
+    gap: 7px;
+    justify-content: center;
 }
 
 .alphabetTwo {
-  display: flex;
-  width: 400px;
-  height: 60px;
-  grid-row: 2/2;
-  gap: 7px;
-  justify-content: center;
+    display: flex;
+    width: 400px;
+    height: 60px;
+    grid-row: 2/2;
+    gap: 7px;
+    justify-content: center;
 }
 
 .alphabetThree {
-  display: flex;
-  width: 400px;
-  height: 60px;
-  grid-row: 2/2;
-  gap: 7px;
-  justify-content: center;
+    display: flex;
+    width: 400px;
+    height: 60px;
+    grid-row: 2/2;
+    gap: 7px;
+    justify-content: center;
 }
 
 .alphabetOne p,
 .alphabetTwo p,
 .alphabetThree p {
-  font-family: 'Inter';
-  font-size: 30px;
+    font-family: 'Inter';
+    font-size: 30px;
 }
 
 .alphabetOne p:hover,
 .alphabetTwo p:hover,
 .alphabetThree p:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .filterContainer {
-  height: 220px;
-  margin-top: 440px;
-  width: 200px;
-  position: relative;
-  right: 200px;
-  border: 1px #ec6542 dashed;
+    height: 220px;
+    margin-top: 440px;
+    width: 200px;
+    position: relative;
+    right: 200px;
+    border: 1px #ec6542 dashed;
 }
 
 .text {
-  font-family: 'Inter';
+    font-family: 'Inter';
 }
 
 .text:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .tags {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 h3 {
-  font-size: xx-large;
-  color: #ec6542;
+    font-size: xx-large;
+    color: #ec6542;
 }
 
 .tags p {
-  padding: 12px;
-  border: 2px solid #ec6542;
-  border-radius: 30px;
+    padding: 12px;
+    border: 2px solid #ec6542;
+    border-radius: 30px;
 }
 
 #myFormHeart {
-  display: none;
-  justify-content: center;
-  padding-top: 0px;
+    display: none;
+    justify-content: center;
+    padding-top: 0px;
 }
 
 .signInFormByHeart {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .closeSignInHeart {
-  position: absolute;
-  right: 20px;
-  padding-top: 20px;
-  width: 32px;
-  height: 32px;
-  z-index: 20000;
+    position: absolute;
+    right: 20px;
+    padding-top: 20px;
+    width: 32px;
+    height: 32px;
+    z-index: 20000;
 }
 
 .closeSignInHeart:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .closeSignInHeart:hover {
-  opacity: 0.3;
+    opacity: 0.3;
 }
 
 .closeSignInHeart:before,
 .closeSignInHeart:after {
-  position: absolute;
-  left: 15px;
-  content: ' ';
-  height: 33px;
-  width: 2px;
-  background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: rgb(255, 255, 255);
 }
 
 .closeSignInHeart:before {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .closeSignInHeart:after {
-  transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
-.form-container-heart > h2 {
-  color: white;
-  padding-top: 40px;
+.form-container-heart>h2 {
+    color: white;
+    padding-top: 40px;
 }
 
 label {
-  color: white;
+    color: white;
 }
 
 .form-popup-heart {
-  display: none;
-  position: fixed;
-  bottom: 300px;
-  z-index: 10000;
-  background-color: rgba(236, 101, 67, 0.9);
-  border-radius: 50px;
-  width: 40%;
+    display: none;
+    position: fixed;
+    bottom: 300px;
+    z-index: 10000;
+    background-color: rgba(236, 101, 67, 0.9);
+    border-radius: 50px;
+    width: 40%;
 }
 
 .form-container-heart {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .form-container-heart input[type='text'],
 .form-container-heart input[type='password'] {
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #fffafa;
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #fffafa;
 }
 
 .form-container-heart .btn {
-  background-color: rgb(230, 161, 144);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 10px;
-  opacity: 0.9;
+    background-color: rgb(230, 161, 144);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.9;
 }
 
 .form-container-heart .btn:hover,
 .open-button:hover {
-  opacity: 1;
+    opacity: 1;
+}
+
+.noDrinks {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    color: #ec6542;
 }
