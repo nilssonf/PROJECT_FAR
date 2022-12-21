@@ -60,8 +60,6 @@ function renderRandomFav(usr) {
                 .then(r => r.json())
                 .then(rsc => {
                     let imgSrc = rsc.drinks[0].strDrinkThumb;
-                    console.log(imgSrc);
-
                     let imgWrap = document.querySelector('#oneFav');
 
                     imgWrap.innerHTML = `<img src='${imgSrc}'>`;
@@ -104,3 +102,57 @@ setTimeout(() => {
         });
     });
 }, 1000);
+
+
+let settingsIcon = document.getElementById("settingsIcon");
+settingsIcon.addEventListener("click", function(){
+    document.getElementById("updateOverlay").style.display = "flex";
+
+    createSettingsPopUp()
+    closebtn()
+})
+
+function createSettingsPopUp () {
+   
+    let updateUser = document.createElement("div");
+    updateUser.classList.add("updateContainer");
+
+    updateUser.innerHTML = `
+        <div class="update-popup" >
+
+            <div class="updateContent" id="update-close">
+
+                <h2>Update your account</h2>
+
+                <label for="name"><b>Your first name? </b></label>
+                <input type="text" id="name" required>
+
+                <label for="email"><b>Your email?</b></label>
+                <input type="text" id="mail" required>
+
+                <label for="password"><b>Select a password</b></label>
+                <input type="password" id="password" required>
+
+                <label for="age"><b>Your age?</b></label>
+                <input type="text" id="age" required>
+
+                <label for="occupation"><b>Your occupation?</b></label>
+                <input type="text" id="occupation" required>
+
+                <button class="updateDone"> Update profile </button>
+
+            </div>
+         </div>
+    `
+    document.getElementById("updateOverlay").append(updateUser)
+}
+
+function closebtn(){
+    let close = document.createElement('a');
+    close.classList.add('closeUpdateHeart');
+    close.addEventListener('click', function() {
+        document.getElementById("updateOverlay").style.display = "none";
+    });
+
+    document.getElementById("update-close").append(close)
+}
