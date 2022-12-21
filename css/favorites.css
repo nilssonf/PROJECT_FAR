@@ -53,3 +53,28 @@ h1 {
     bottom: 300px;
     z-index: 40000;
 }
+
+.noDrinks {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    color: #ec6542;
+    padding-top: 300px;
+}
+
+.clickHere {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    color: #ec6542;
+    padding-top: 10px;
+}
+
+.link {
+    color: #ec6542;
+    gap: 5px
+}
+
+.link:hover {
+    color: black;
+}
