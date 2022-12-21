@@ -87,13 +87,19 @@ function choosenDrink(rsc) {
                 <div class="ingrContainer">${ingrDiv.innerHTML}</div>
                 <div class="measureContainer">${measureDiv.innerHTML}</div>
             </div>
-            <h3 class="oneDrinkH3">Recommended glass:</h3>
-            <p>${drinkGlass}</p>
         </div>
         <div class="align-right">
             <img src="../images/gilla.png" class="heartImg" id="${drinkId}">
+            <div id="instruct">
+            <div class="steps">
             <h3 class="oneDrinkH3">Steps:</h3>
             <p class="align-left">${drinkInstructions}</p>
+            </div>
+            <div class="steps">
+            <h3 class="oneDrinkH3">Recommended glass:</h3>
+            <p>${drinkGlass}</p>
+            </div>
+            </div>
         </div>
 
     `;
