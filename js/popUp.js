@@ -1,6 +1,6 @@
 function buildDrinkPopUp(id) {
 
-    document.getElementById("overlay").style.display = "block";
+    document.getElementById("overlay").style.display = "flex";
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(r => r.json())
@@ -10,6 +10,8 @@ function buildDrinkPopUp(id) {
 }
 
 function choosenDrink(rsc) {
+    document.getElementById('searchWrapper').innerHTML = '';
+
     let overlay = document.getElementById("overlay");
 
     let drinkId = rsc.drinks[0].idDrink;
@@ -43,6 +45,13 @@ function choosenDrink(rsc) {
     ingrDiv.classList.add("ingrDiv");
     let measureDiv = document.createElement('div');
     measureDiv.classList.add("measureDiv");
+
+    let gridCol = ingr.length;
+
+    imgDiv.style.gridColumn = `repeat(${gridCol}, 1fr)`;
+    ingrDiv.style.gridColumn = `repeat(${gridCol}, 1fr)`;
+    measureDiv.style.gridColumn = `repeat(${gridCol}, 1fr)`;
+
 
     for (let i = 0; i < ingr.length; i++) {
         let ingrP = document.createElement("p");
@@ -78,13 +87,19 @@ function choosenDrink(rsc) {
                 <div class="ingrContainer">${ingrDiv.innerHTML}</div>
                 <div class="measureContainer">${measureDiv.innerHTML}</div>
             </div>
-            <h3 class="oneDrinkH3">Recommended glass:</h3>
-            <p>${drinkGlass}</p>
         </div>
         <div class="align-right">
             <img src="../images/gilla.png" class="heartImg" id="${drinkId}">
+            <div id="instruct">
+            <div class="steps">
             <h3 class="oneDrinkH3">Steps:</h3>
             <p class="align-left">${drinkInstructions}</p>
+            </div>
+            <div class="steps">
+            <h3 class="oneDrinkH3">Recommended glass:</h3>
+            <p>${drinkGlass}</p>
+            </div>
+            </div>
         </div>
 
     `;
@@ -92,23 +107,11 @@ function choosenDrink(rsc) {
 
     overlay.append(drinkBox);
 
-    let heart = document.querySelectorAll('.heartImg')
+    let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
-<<<<<<< Updated upstream
-    h.addEventListener('click', function () {
-        console.log('Hej')
 
-        if (user === 0) {
-        createLoginViaHeart()
-        } else {
-        h.src = '../images/gillasvart.png'
-        let heartId = h.id
-        addNewFavorite(heartId)
-        }
-    })
-    })
-=======
-        h.addEventListener('click', function() {
+        h.addEventListener('click', function () {
+            console.log('Hej');
 
 
             if (user === 0) {
@@ -120,7 +123,7 @@ function choosenDrink(rsc) {
             }
         });
     });
->>>>>>> Stashed changes
+
 
     let close = document.createElement("a");
     close.classList.add("close");

@@ -43,12 +43,12 @@ body {
 
 .scroll {
     grid-column: 2/2;
-    font-family: "pFont";
+    /* font-family: "pFont"; */
 }
 
 .about {
     grid-column: 3/3;
-    font-family: "pFont";
+    /* font-family: "pFont"; */
 }
 
 .signIn,
@@ -58,12 +58,12 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-family: "pFont";
+    /* font-family: "pFont"; */
 }
 
 .favourites {
     grid-column: 4/4;
-    font-family: "pFont";
+    /* font-family: "pFont"; */
 }
 
 .circle,

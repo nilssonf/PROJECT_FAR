@@ -9,14 +9,10 @@
 }
 
 #overlay {
-    position: fixed;
     display: none;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: rgb(255, 255, 255);
     z-index: 300;
 }
@@ -74,8 +70,18 @@
     font-size: xxx-large;
 }
 
+#instruct {
+    margin-top: 30%;
+    display: grid;
+    gap: 15px;
+}
+
 .align-right {
     text-align: right;
+}
+
+.align-right div p {
+    text-align: left;
 }
 
 .align-left {
@@ -92,14 +98,19 @@ p {
 }
 
 .ingredientsDiv {
-    display: flex;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 15px;
 }
 
-.imgContainer {
-    display: flex;
-    flex-direction: column;
+.imgContainer,
+.measureContainer,
+.ingrContainer {
+  display: grid;
+  align-items: center;
 }
 
-.measureContainer {
-    text-align: end;
+.imgContainer, 
+.ingrContainer {
+    border-right: 1px dashed gray;
 }

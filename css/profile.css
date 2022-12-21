@@ -8,14 +8,18 @@
     src: url('../fonts/TiemposHeadline-Regular.otf');
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+body{
+    margin:0;
+    height:100%;
 }
 
-#content {
+#profileWrapper{
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 50px);
+}
+
+#profileContent {
     width: 90%;
     display: grid;
     grid-template-columns: 0.5fr 0.5fr;
@@ -136,4 +140,13 @@ h1,
 .drink:hover {
     color: #EC6543;
     cursor: pointer;
+}
+
+#settingsIcon{
+    margin-top: 100px;
+    position: fixed;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
 }

@@ -81,8 +81,6 @@ function createDrinks(rsc) {
     let all = document.querySelectorAll('.text');
     all.forEach(div => {
         div.addEventListener('click', function() {
-            document.getElementById('wrapper').innerHTML = '';
-
             buildDrinkPopUp(div.id);
         });
     });
