@@ -2,7 +2,9 @@
 
 function header(user) {
 
+
     let header = document.querySelector("#header");
+    header.innerHTML = "";
     header.classList.add("header");
 
     let logga = document.createElement("h2");
