@@ -26,6 +26,7 @@ function logIn(username, pw) {
                 user = 0;
                 sessionStorage.setItem("user", user);
                 header(user);
+                document.querySelector(".wrongInlogg").style.display = "block";
             }
         })
         .then(rsc => {
@@ -60,6 +61,8 @@ function createLogin() {
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" id="psw" required>
         
+            <p class= "wrongInlogg">Email/password is incorrect</p>
+            
             <button class="btn sign_in">Sign in </button>
             <button class="btn create">Create Account</button>
         
@@ -74,6 +77,7 @@ function createLogin() {
     document.querySelector("body").append(signInForm);
     signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
+    document.querySelector(".wrongInlogg").style.display = "none";
     document.querySelector(".create").addEventListener("click", createProfilePopup);
     return signIn;
 
@@ -120,6 +124,8 @@ function createProfilePopup() {
     <label for="occupation"><b> Your occupation?</b></label>
     <input type="text" id="occupation" required>
 
+    <p class="wrongMessage"> </p>
+
     <button class="createAndSign"> Create & log in </button>
 
     </div>
@@ -154,8 +160,13 @@ function createProfilePopup() {
                 if (r.status == 200) {
                     createWelcome(nameValue)
                     logIn(emailValue, passwordValue)
+                    return r.json()
+                } else {
+                    return r.json().then(message => {
+                        document.querySelector(".wrongMessage").innerHTML = message.message
+
+                    })
                 }
-                return r.json()
             })
             .then(console.log)
 
