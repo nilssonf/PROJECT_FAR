@@ -1,10 +1,66 @@
-#updateOverlay{
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.ttf');
+}
 
+.updateH2{
+    font-family: "Inter";
+    color: white;
+}
+
+.updateLabels{
+    font-family: "Inter";
+    color: white;
+}
+
+.updateStyle{
+    padding: 10px;
+}
+
+#profilePic::file-selector-button{
+    background-color: rgb(230, 161, 144);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 55%;
+    margin-bottom: 10px;
+}
+
+#profilePic::file-selector-button:hover{
+    cursor: pointer;
+    background-color: rgba(230, 161, 144, 0.5);
+}
+
+.updateDone{
+    background-color: rgb(230, 161, 144);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.updateDone:hover{
+    cursor: pointer;
+    background-color: rgba(230, 161, 144, 0.5);
+}
+
+.updateInput{
+    border: none;
+    border-radius: 50px;
+    padding: 5px;
+}
+
+#updateOverlay{
+    position: absolute;
     display: none;
     overflow-y: scroll;
     width: 100%;
     height: 100%;
-    z-index: 300;
+    z-index: 30000;
     justify-content: center;
 }
 
@@ -12,11 +68,11 @@
 .updateContainer{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .update-popup{
     position: fixed;
-    bottom: 300px;
     z-index: 10000;
     background-color: rgba(236, 101, 67, 0.9);
     border-radius: 50px;

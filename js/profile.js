@@ -124,24 +124,24 @@ function createSettingsPopUp (user) {
 
             <div class="updateContent" id="update-close">
 
-                <h2>Update your account</h2>
+                <h2 class="updateH2">Update your account</h2>
 
-                <label for="name"><b>Your first name? </b></label>
-                <input value="${user.name}" type="text" id="name" required>
+                <label class="updateStyle" for="name"><b class="updateLabels">Your first name? </b></label>
+                <input class="updateInput" value="${user.name}" type="text" id="name" required>
 
-                <label for="email"><b>Your email?</b></label>
-                <input value="${user.email}" type="text" id="mail" required>
+                <label class="updateStyle" for="email"><b class="updateLabels">Your email?</b></label>
+                <input class="updateInput" value="${user.email}" type="text" id="mail" required>
 
-                <label for="password"><b>Select a password</b></label>
-                <input value="${user.password}" type="password" id="password" required>
+                <label class="updateStyle" for="password"><b class="updateLabels">Select a password</b></label>
+                <input class="updateInput" value="${user.password}" type="password" id="password" required>
 
-                <label for="age"><b>Your age?</b></label>
-                <input value="${user.age}" type="text" id="age" required>
+                <label class="updateStyle" for="age"><b class="updateLabels">Your age?</b></label>
+                <input class="updateInput" value="${user.age}" type="text" id="age" required>
 
-                <label for="occupation"><b>Your occupation?</b></label>
-                <input value="${user.occupation}" type="text" id="occupation" required>
+                <label class="updateStyle" for="occupation"><b class="updateLabels">Your occupation?</b></label>
+                <input class="updateInput" value="${user.occupation}" type="text" id="occupation" required>
 
-                <label for="profilePic"><b>Choose a profile picture</b></label>
+                <label class="updateStyle" for="profilePic"><b class="updateLabels">Choose a profile picture</b></label>
                 <input type="file" id="profilePic">
 
                 <button class="updateDone"> Update profile </button>
