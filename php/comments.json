@@ -49,6 +49,7 @@
         "date": "2022-12-22"
     },
     {
+
         "drinkId": "11004",
         "commentId": 6,
         "userId": 2,
@@ -60,6 +61,19 @@
         "commentId": 7,
         "userId": 2,
         "comment": "I want to drink this every day",
+    },
+    {
+        "drinkId": "178343",
+        "commentId": 6,
+        "userId": 3,
+        "comment": "Looove it!",
+        "date": "2022-12-22"
+    },
+    {
+        "drinkId": "178332",
+        "commentId": 7,
+        "userId": 3,
+        "comment": "Looove this!!",
         "date": "2022-12-22"
     }
 ]

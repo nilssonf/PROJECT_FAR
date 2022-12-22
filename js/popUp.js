@@ -24,10 +24,14 @@ function buildDrinkPopUp(id) {
             }, 200);
 
             let btn = document.querySelector('.postCom');
-            btn.addEventListener('click', function () {
-                setTimeout(() => {
-                    postComment(id, user, document.querySelector(".showOneDrinkDiv"));
-                }, 1000);
+            btn.addEventListener('click', function() {
+                if (user == 0) {
+                    createLoginViaHeart();
+                } else {
+                    setTimeout(() => {
+                        postComment(id, user, document.querySelector(".showOneDrinkDiv"));
+                    }, 1000);
+                }
             });
         });
 }
@@ -87,10 +91,10 @@ function postComment(id, user, parent) {
     };
 
     fetch(new Request('../php/createComment.php'), {
-        method: 'POST',
-        body: JSON.stringify(commentBody),
-        headers: { "Content-type": "application/json" }
-    })
+            method: 'POST',
+            body: JSON.stringify(commentBody),
+            headers: { "Content-type": "application/json" }
+        })
         .then(r => r.json())
         .then(rsc => {
             console.log(rsc);
