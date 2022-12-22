@@ -38,17 +38,6 @@ body {
     gap: 5%;
 }
 
-#photo {
-    height: 140px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#photo img {
-    height: 100%;
-}
-
 h1,
 #info p span,
 #latest,
@@ -150,4 +139,11 @@ h1,
     top: 32px;
     width: 32px;
     height: 32px;
+}
+
+.profileImg{
+    border-radius: 50%; 
+    width: 250px;
+    height: 250px;
+    border: solid #EC6543 2px;
 }

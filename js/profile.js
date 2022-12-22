@@ -8,6 +8,13 @@ function renderProfile(usr) {
     firstName.innerText = usr.name;
     age.innerText += ` ${usr.age}`;
     occupation.innerText += ` ${usr.occupation}`;
+
+    let profileImg = document.createElement("img");
+    profileImg.classList.add("profileImg");
+
+    profileImg.src = usr.picture; 
+
+    document.getElementById("photo").append(profileImg);
 }
 
 
@@ -196,7 +203,7 @@ function createSettingsPopUp(user) {
 
     btnUpdate.addEventListener("click", function (){
 
-        let searchPath = "profiles/" + document.getElementById("profilePic").files[0].name;
+        let searchPath = "../profiles/" + document.getElementById("profilePic").files[0].name;
 
         let updUser = {
             id: sessionStorage.getItem("user"),

@@ -5,19 +5,9 @@
         "userId": 1
     },
     {
-        "favoriteId": 2,
-        "drinkId": "11000",
-        "userId": 1
-    },
-    {
         "favoriteId": 3,
         "drinkId": "11006",
         "userId": 1
-    },
-    {
-        "favoriteId": 9,
-        "drinkId": "11000",
-        "userId": "3"
     },
     {
         "favoriteId": 10,
@@ -46,7 +36,22 @@
     },
     {
         "favoriteId": 20,
-        "drinkId": "178332",
-        "userId": "3"
+        "drinkId": "11000",
+        "userId": "2"
+    },
+    {
+        "favoriteId": 21,
+        "drinkId": "12518",
+        "userId": "2"
+    },
+    {
+        "favoriteId": 22,
+        "drinkId": "11004",
+        "userId": "2"
+    },
+    {
+        "favoriteId": 23,
+        "drinkId": "13214",
+        "userId": "2"
     }
 ]

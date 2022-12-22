@@ -49,6 +49,20 @@
         "date": "2022-12-22"
     },
     {
+
+        "drinkId": "11004",
+        "commentId": 6,
+        "userId": 2,
+        "comment": "Best drink in the world!!!!",
+        "date": "2022-12-22"
+    },
+    {
+        "drinkId": "11004",
+        "commentId": 7,
+        "userId": 2,
+        "comment": "I want to drink this every day",
+    },
+    {
         "drinkId": "178343",
         "commentId": 6,
         "userId": 3,

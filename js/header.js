@@ -2,7 +2,6 @@
 
 function header(user) {
 
-
     let header = document.querySelector("#header");
     header.innerHTML = "";
     header.classList.add("header");
@@ -44,26 +43,20 @@ function header(user) {
         });
     } else {
 
-
+        createSmallImage(user)
 
         let favourites = document.createElement("p");
         favourites.innerText = "Favourite drinks";
         favourites.classList.add("favourites", "menuElm");
 
         let signOut = document.createElement("div");
-        signOut.innerHTML = "<img src='../profiles/standard_picture.png' class='standard profile'><p>Sign out</p>";
+        signOut.innerHTML = `<p  class='standard'>Sign out</p>`;
         signOut.classList.add("signOut", "menuElm");
-
+    
         header.append(logga, scroll, about, favourites, signOut);
 
         favourites.onclick = function() {
             location.href = '../html/favorites.html';
-        };
-
-        let profilePic = document.querySelector('.profile');
-
-        profilePic.onclick = function() {
-            location.href = '../html/profile.html';
         };
 
         document.querySelector('.signOut p').onclick = function() {
@@ -71,7 +64,7 @@ function header(user) {
             sessionStorage.removeItem('user');
             header.innerHTML = "";
             logOut();
-        };
+        }
     }
 
     logga.onclick = function() {
@@ -89,3 +82,25 @@ function header(user) {
 }
 
 header(sessionStorage.getItem("user"));
+
+function createSmallImage(user) {
+    fetch('../php/users.json')
+    .then(r => r.json())
+    .then(rsc => {
+        rsc.forEach(u => {
+            if (u.id === user) {
+                let userPic = u.picture
+
+                let smallImage = document.createElement("img")
+                smallImage.classList.add("smallImage")
+                smallImage.src = userPic;
+
+                document.querySelector(".signOut").append(smallImage)
+
+                smallImage.onclick = function () {
+                location.href = '../html/profile.html'
+                }
+            }
+        })
+    })
+}
