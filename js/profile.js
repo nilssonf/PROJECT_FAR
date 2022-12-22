@@ -10,6 +10,7 @@ function renderProfile(usr) {
     occupation.innerText += ` ${usr.occupation}`;
 }
 
+
 function renderComments(usr) {
     let comments = document.getElementById("comments");
 
@@ -17,6 +18,7 @@ function renderComments(usr) {
         .then(r => r.json())
         .then(rsc => {
             let commentList = rsc;
+            let notLiked = [];
             commentList.forEach(c => {
                 if (c.userId == usr) {
                     let comment = document.createElement('div');
@@ -37,6 +39,14 @@ function renderComments(usr) {
                             `;
 
                         });
+                } else if (c.userId != usr) {
+                    let drinkId = c.userId
+                    notLiked.push(drinkId)
+
+                    if (notLiked.length == commentList.length) {
+                        let noFav = document.querySelector('#comments');
+                        noFav.innerHTML = "You have not commented any drinks"
+                    }
                 }
             });
         });
@@ -48,9 +58,19 @@ function renderRandomFav(usr) {
         .then(rsc => {
             let allFavorites = rsc;
             let myFavorites = [];
+            let notLiked = [];
             allFavorites.forEach(fav => {
                 if (fav.userId == usr) {
                     myFavorites.push(fav);
+                } else if (fav.userId != usr) {
+                    let drinkId = fav.userId
+                    notLiked.push(drinkId)
+
+                    if (notLiked.length == allFavorites.length) {
+                        let noFav = document.querySelector('#oneFav');
+                        noFav.innerHTML =
+                            `You don't have any favorite drinks`
+                    }
                 }
             });
 
@@ -81,7 +101,7 @@ function currentUser(user) {
                     renderRandomFav(user);
 
                     let settingsIcon = document.getElementById("settingsIcon");
-                    settingsIcon.addEventListener("click", function(){
+                    settingsIcon.addEventListener("click", function() {
                         document.getElementById("updateOverlay").style.display = "flex";
 
                         createSettingsPopUp(u)
@@ -99,7 +119,7 @@ setTimeout(() => {
     drinks.forEach(drink => {
         let drinkName = drink.textContent;
 
-        drink.addEventListener("click", function () {
+        drink.addEventListener("click", function() {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
                 .then(r => r.json())
                 .then(rsc => {
@@ -114,7 +134,7 @@ setTimeout(() => {
 
 
 
-function createSettingsPopUp (user) {
+function createSettingsPopUp(user) {
 
     let updateUser = document.createElement("div");
     updateUser.classList.add("updateContainer");
@@ -173,9 +193,11 @@ function createSettingsPopUp (user) {
     })
 
     let btnUpdate = document.querySelector(".updateDone");
+
     btnUpdate.addEventListener("click", function (){
 
         let searchPath = "profiles/" + document.getElementById("profilePic").files[0].name;
+
         let updUser = {
             id: sessionStorage.getItem("user"),
             email: document.getElementById("mail").value,
@@ -185,17 +207,17 @@ function createSettingsPopUp (user) {
             occupation: document.getElementById("occupation").value,
             picture: searchPath
         };
-    
+
         const addUpdUser = new Request("../php/editUser.php", {
             method: 'PUT',
             body: JSON.stringify(updUser),
             headers: { "Content-type": "application/json" }
         });
-    
+
         fetch(addUpdUser)
             .then(r => r.json())
             .then(rsc => console.log(rsc));
-        
+
         location.reload();
         document.getElementById("updateOverlay").remove();
 
@@ -203,7 +225,7 @@ function createSettingsPopUp (user) {
 
 }
 
-function closebtn(){
+function closebtn() {
     let close = document.createElement('a');
     close.classList.add('closeUpdateHeart');
     close.addEventListener('click', function() {
