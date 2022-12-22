@@ -12,10 +12,10 @@
         "id": "2",
         "email": "fanny@hotmail.com",
         "password": "mastiffLover!",
-        "name": "Fanny",
-        "age": "30",
+        "name": "Sanny",
+        "age": "29",
         "occupation": "Student",
-        "picture": "C:\\fakepath\\emily-andreeva-BuuQJ3QxZ_A-unsplash.jpeg"
+        "picture": "profiles\/emily-andreeva-BuuQJ3QxZ_A-unsplash.jpeg"
     },
     {
         "id": 3,
