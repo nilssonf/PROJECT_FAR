@@ -6,6 +6,68 @@ function buildDrinkPopUp(id) {
         .then(r => r.json())
         .then(rsc => {
             choosenDrink(rsc);
+            let comt = document.querySelector('textarea');
+            comt.addEventListener('keyup', function () {
+                let maxLength = 120;
+                let currentLength = comt.value.length;
+                let left = maxLength - currentLength;
+
+                document.querySelector('.charsLeft').innerText = `${left} characters remaining`;
+            });
+
+            let commentCount = document.querySelector('.comHeader h3');
+            setTimeout(() => {
+                let count = document.querySelectorAll('.comment').length;
+                if (count > 0) {
+                    commentCount.innerText += ` (${count})`;
+                }
+            }, 200);
+        });
+}
+
+function drinkComments(id, parent) {
+    let commentBox = document.createElement('div');
+    commentBox.classList.add('comments');
+    commentBox.innerHTML = `
+    <div class='comHeader'>
+        <h3>Comments</h3>
+        <div>
+            <textarea class="cmt" name="cmt" minlength="1" maxlength="120" rows="5" cols="45" placeholder="What did you think about this drink?"></textarea>
+        <div class='sendInfo'>
+            <p class='charsLeft'>120 characters remaining</p>
+            <button class='postCom'>Comment</button>
+        <div>
+    </div>
+    `;
+    parent.append(commentBox);
+
+    fetch(new Request('../php/comments.json'))
+        .then(r => r.json())
+        .then(comments => {
+            comments.forEach(comment => {
+                if (comment.drinkId == id) {
+                    let com = document.createElement('div');
+                    com.classList.add('comment');
+                    commentBox.append(com);
+
+                    fetch(new Request('../php/users.json'))
+                        .then(r => r.json())
+                        .then(users => {
+                            users.forEach(usr => {
+                                if (comment.userId == usr.id) {
+
+                                    com.innerHTML = `
+                                <div>
+                                    <p class='userName'>${usr.name}</p>
+                                    <p class='date'>${comment.date}</p>
+                                </div>
+                                <p class='content'>${comment.comment}</p>
+                                `;
+                                }
+                            });
+                        });
+                }
+            });
         });
 }
 
@@ -104,8 +166,8 @@ function choosenDrink(rsc) {
 
     `;
 
-
     overlay.append(drinkBox);
+    drinkComments(drinkId, drinkBox);
 
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
@@ -130,9 +192,15 @@ function choosenDrink(rsc) {
     close.href = "#";
     overlay.append(close);
 
-    close.addEventListener("click", function(event) {
+    close.addEventListener("click", function (event) {
         document.getElementById("overlay").style.display = "none";
 
         window.location.href = "../html/search.html";
     });
 }
+
+// keyup(function () {
+//     var length = $(this).val().length;
+//     var length = maxLength - length;
+//     $('#chars').text(length);
+// });

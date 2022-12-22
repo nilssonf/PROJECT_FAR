@@ -114,3 +114,91 @@ p {
 .ingrContainer {
     border-right: 1px dashed gray;
 }
+
+.comments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1 / span 3;
+}
+
+.cmt {
+    padding: 10px;
+}
+
+.comHeader > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comHeader {
+    margin-bottom: 30px;
+    width: 500px;
+}
+
+.postCom {
+    width: 100px;
+    background-color: rgba(236, 101, 67, 0.7);
+    color: white;
+    border: none;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.sendInfo {
+    display: flex;
+    width: 100%;
+    justify-content:end;
+}
+
+.charsLeft {
+    font-size: small;
+    font-family: 'Inter';
+    color: #333;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    background-color: white;
+    border: 1px solid rgb(169, 168, 168);
+    width: 500px;
+    font-size: smaller;
+    color: black;
+    font-family: "pFont";
+    box-shadow: 10px 10px 0px #ec6543c3;
+    margin: 30px 0 30px 0;
+}
+
+.comment p,
+.comment div {
+    width: 80%;
+}
+
+.comment div {
+    display: flex;
+}
+
+.date, .userName {
+    font-family: 'Inter';
+}
+
+.date {
+    text-align: end;
+}
+
+.userName {
+    font-weight: bold;
+    color: #ec6442ca;
+}
+
+.comments :last-child {
+    margin-bottom: 0;
+}
