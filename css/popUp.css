@@ -98,19 +98,19 @@ p {
 }
 
 .ingredientsDiv {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .imgContainer,
 .measureContainer,
 .ingrContainer {
-  display: grid;
-  align-items: center;
+    display: grid;
+    align-items: center;
 }
 
-.imgContainer, 
+.imgContainer,
 .ingrContainer {
     border-right: 1px dashed gray;
 }
@@ -127,7 +127,7 @@ p {
     padding: 10px;
 }
 
-.comHeader > div {
+.comHeader>div {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -152,7 +152,7 @@ p {
 .sendInfo {
     display: flex;
     width: 100%;
-    justify-content:end;
+    justify-content: end;
 }
 
 .charsLeft {
@@ -190,7 +190,8 @@ p {
     margin-top: 0
 }
 
-.date, .userName {
+.date,
+.userName {
     font-family: 'Inter';
     margin-top: 0;
 }
