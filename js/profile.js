@@ -10,6 +10,7 @@ function renderProfile(usr) {
     occupation.innerText += ` ${usr.occupation}`;
 }
 
+
 function renderComments(usr) {
     let comments = document.getElementById("comments");
 
@@ -17,6 +18,7 @@ function renderComments(usr) {
         .then(r => r.json())
         .then(rsc => {
             let commentList = rsc;
+            let notLiked = [];
             commentList.forEach(c => {
                 if (c.userId == usr) {
                     let comment = document.createElement('div');
@@ -37,6 +39,14 @@ function renderComments(usr) {
                             `;
 
                         });
+                } else if (c.userId != usr) {
+                    let drinkId = c.userId
+                    notLiked.push(drinkId)
+
+                    if (notLiked.length == commentList.length) {
+                        let noFav = document.querySelector('#comments');
+                        noFav.innerHTML = "You have not commented any drinks"
+                    }
                 }
             });
         });
