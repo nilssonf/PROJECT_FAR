@@ -61,6 +61,12 @@ function showTopDrinks(drink3) {
                 roundTopDrink.src = rsc.drinks[0].strDrinkThumb;
                 document.querySelector(class_name).append(roundTopDrink);
 
+                let class_drinkName = '.drinkName' + numbers[index]
+                let textName = document.createElement("p")
+                textName.classList.add("drinkName")
+                textName.innerText = rsc.drinks[0].strDrink
+                document.querySelector(class_drinkName).append(textName)
+
                 roundTopDrink.addEventListener("click", function() {
                     let topDrinkId = rsc.drinks[0].idDrink;
                     sessionStorage.setItem("topDrinkId", topDrinkId);
@@ -75,11 +81,18 @@ function showTopIngredients(ingredient3) {
     const numbers = ['One', 'Two', 'Three'];
 
     ingredient3.forEach((ingredient, index) => {
+        console.log(ingredient)
         let class_name = '.ingredient' + numbers[index];
         let topIngredientOne = document.createElement('img');
         topIngredientOne.classList.add('top');
         topIngredientOne.src = ingredient.ingImg;
         document.querySelector(class_name).append(topIngredientOne);
+
+        let class_ingredientName = '.ingredientName' + numbers[index]
+        let textName = document.createElement("p")
+        textName.classList.add("ingredientName")
+        textName.innerText = ingredient.ingName
+        document.querySelector(class_ingredientName).append(textName)
 
         topIngredientOne.addEventListener("click", function() {
             sessionStorage.setItem("ingName", String(ingredient.ingName));
