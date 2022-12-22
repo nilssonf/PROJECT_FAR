@@ -47,5 +47,19 @@
         "userId": 1,
         "comment": "Have to add another comment: soooo into this! Can't believe it!",
         "date": "2022-12-22"
+    },
+    {
+        "drinkId": "11004",
+        "commentId": 6,
+        "userId": 2,
+        "comment": "Best drink in the world!!!!",
+        "date": "2022-12-22"
+    },
+    {
+        "drinkId": "11004",
+        "commentId": 7,
+        "userId": 2,
+        "comment": "I want to drink this every day",
+        "date": "2022-12-22"
     }
 ]
