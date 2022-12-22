@@ -161,9 +161,12 @@ function createSettingsPopUp(user) {
                 <label class="updateStyle" for="occupation"><b class="updateLabels">Your occupation?</b></label>
                 <input class="updateInput" value="${user.occupation}" type="text" id="occupation" required>
 
-                <label class="updateStyle" for="profilePic"><b class="updateLabels">Choose a profile picture</b></label>
-                <input type="file" id="profilePic">
+                <form action="../php/addProfilePicture.php" method="POST" id="uploadForm"
+                    <label class="updateStyle" for="profilePic"><b class="updateLabels paddingbtm">Choose a profile picture</b></label>
+                    <input type="file" name="uploadProfilePic" id="profilePic">
+                    <button type="submit" class="savePicture"> Save picture </button>
 
+                </form>
                 <button class="updateDone"> Update profile </button>
 
             </div>
@@ -171,8 +174,30 @@ function createSettingsPopUp(user) {
     `
     document.getElementById("updateOverlay").append(updateUser)
 
+    const form = document.getElementById("uploadForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        const request = new Request("../php/addProfilePicture.php", {
+            method: "POST",
+            body: formData
+        });
+
+        fetch(request)
+            .then(r => r.json())
+            .then(data => {
+                console.log(data);
+            })
+    })
+
     let btnUpdate = document.querySelector(".updateDone");
-    btnUpdate.addEventListener("click", function() {
+
+    btnUpdate.addEventListener("click", function (){
+
+        let searchPath = "profiles/" + document.getElementById("profilePic").files[0].name;
+
         let updUser = {
             id: sessionStorage.getItem("user"),
             email: document.getElementById("mail").value,
@@ -180,7 +205,7 @@ function createSettingsPopUp(user) {
             name: document.getElementById("name").value,
             age: document.getElementById("age").value,
             occupation: document.getElementById("occupation").value,
-            picture: document.getElementById("profilePic").value
+            picture: searchPath
         };
 
         const addUpdUser = new Request("../php/editUser.php", {
