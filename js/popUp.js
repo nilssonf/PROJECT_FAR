@@ -22,10 +22,17 @@ function buildDrinkPopUp(id) {
                     commentCount.innerText += ` (${count})`;
                 }
             }, 200);
+
+            let btn = document.querySelector('.postCom');
+            btn.addEventListener('click', function () {
+                setTimeout(() => {
+                    postComment(id, user, document.querySelector(".showOneDrinkDiv"));
+                }, 1000);
+            });
         });
 }
 
-function drinkComments(id, parent) {
+function renderComments(id, parent) {
     let commentBox = document.createElement('div');
     commentBox.classList.add('comments');
     commentBox.innerHTML = `
@@ -68,6 +75,28 @@ function drinkComments(id, parent) {
                         });
                 }
             });
+        });
+}
+
+function postComment(id, user, parent) {
+    let commentText = document.querySelector('.cmt').value;
+    let commentBody = {
+        drinkId: id,
+        userId: user,
+        comment: commentText
+    };
+
+    fetch(new Request('../php/createComment.php'), {
+        method: 'POST',
+        body: JSON.stringify(commentBody),
+        headers: { "Content-type": "application/json" }
+    })
+        .then(r => r.json())
+        .then(rsc => {
+            console.log(rsc);
+            let currentList = document.querySelector('.comments');
+            currentList.remove();
+            renderComments(id, parent);
         });
 }
 
@@ -167,7 +196,7 @@ function choosenDrink(rsc) {
     `;
 
     overlay.append(drinkBox);
-    drinkComments(drinkId, drinkBox);
+    renderComments(drinkId, drinkBox);
 
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
