@@ -1,116 +1,137 @@
-@font-face {
-    font-family: 'BottledFontOutlined';
-    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
-}
-
-@font-face {
-    font-family: 'pFont';
-    src: url('../fonts/TiemposHeadline-Regular.otf');
-}
-
-.introduction {
-    z-index: 10;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 100px;
-    place-items: center;
-    height: 650px;
-    position: relative;
-}
-.introduction h1 {
-    margin-bottom: 0;
-}
-
-.introduction img {
-    height: 50%;
-}
-
-.lines {
-    grid-column: 1 / span 2;
-    background-image: url("../images/lines.png");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    width: 100%;
-    height: 60%;
-    z-index: 100;
-    position: absolute;
-    opacity: 70%;
-    top: 60%;
-    transform: rotate(5deg);
-}
-
-.drinkIndexContainer {
-    z-index: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.welcomeIndexContainer {
-    display: flex;
-    flex-direction: column;
-    padding-top: 200px;
-    width: 80%;
-    height: 100%;
-}
-
-h1 {
-    font-family: "BottledFontOutlined";
-    color: #EC6542BD;
-    font-size: 70px;
-}
-
-p {
-    font-family: "pFont";
-}
-
-#topDrink,
-#topIngredients {
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 350px;
-    margin-top: 30px;
-}
-
-#topDrink div,
-#topIngredients div {
-    position: relative;
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.circles {
-    z-index: 1;
-    position: absolute;
-}
-
-.top {
-    z-index: 50;
-    position: absolute;
-}
-
-.top:hover {
-    cursor: pointer;
-}
-
-.round {
-    border-radius: 50%;
-    height: 250px;
-    width: 250px;
-    background-repeat: no-repeat;
-}
-
-#drinkHeader,
-#drinkIngredients {
-    margin-top: 30vh;
-    text-align: center;
-}
-
-#topIngredients {
-    margin-bottom: 60px;
-}
+    @font-face {
+        font-family: 'BottledFontOutlined';
+        src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+    }
+    
+    @font-face {
+        font-family: 'pFont';
+        src: url('../fonts/TiemposHeadline-Regular.otf');
+    }
+    
+    .introduction {
+        z-index: 10;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 100px;
+        place-items: center;
+        height: 650px;
+        position: relative;
+    }
+    
+    .introduction h1 {
+        margin-bottom: 0;
+    }
+    
+    .introduction img {
+        height: 50%;
+    }
+    
+    .lines {
+        grid-column: 1 / span 2;
+        background-image: url("../images/lines.png");
+        background-repeat: no-repeat;
+        background-position: bottom;
+        width: 100%;
+        height: 60%;
+        z-index: 100;
+        position: absolute;
+        opacity: 70%;
+        top: 60%;
+        transform: rotate(5deg);
+    }
+    
+    .drinkIndexContainer {
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .welcomeIndexContainer {
+        display: flex;
+        flex-direction: column;
+        padding-top: 200px;
+        width: 80%;
+        height: 100%;
+    }
+    
+    h1 {
+        font-family: "BottledFontOutlined";
+        color: #EC6542BD;
+        font-size: 70px;
+    }
+    
+    p {
+        font-family: "pFont";
+    }
+    
+    #topDrink,
+    #topIngredients {
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        height: 350px;
+        margin-top: 30px;
+    }
+    
+    #topIngredients {
+        margin-top: 15vh;
+    }
+    
+    #topDrink div,
+    #topIngredients div {
+        position: relative;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .circles {
+        z-index: 1;
+        position: absolute;
+    }
+    
+    .top {
+        z-index: 50;
+        position: absolute;
+        bottom: 50px;
+    }
+    
+    .top:hover {
+        cursor: pointer;
+    }
+    
+    .round {
+        border-radius: 50%;
+        height: 250px;
+        width: 250px;
+        background-repeat: no-repeat;
+    }
+    
+    #drinkHeader,
+    #drinkIngredients {
+        margin-top: 30vh;
+        text-align: center;
+    }
+    
+    #topIngredients {
+        padding-bottom: 100px;
+    }
+    
+    .drinkName {
+        color: #00000097;
+        font-size: 25px;
+        font-family: Inter;
+        padding-top: 440px;
+        padding-left: 60px;
+    }
+    
+    .ingredientName {
+        color: #00000097;
+        font-size: 25px;
+        font-family: Inter;
+        padding-left: 20px;
+    }
