@@ -29,10 +29,11 @@ function header(user) {
         header.append(logga, scroll, about, signIn);
         document.querySelector("#signIn").addEventListener("click", function() {
             createLogin();
-
+            closeSignInBtn();
             document.querySelector(".sign_in").addEventListener('click', function() {
                 let username = document.querySelector('[id="email"]').value;
                 let psw = document.querySelector('[id="psw"]').value;
+                document.querySelector(".signInForm").remove();
 
                 header.innerHTML = "";
                 logIn(username, psw);

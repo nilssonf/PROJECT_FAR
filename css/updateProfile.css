@@ -98,6 +98,8 @@
 
 .closeUpdateHeart:hover {
     opacity: 0.3;
+    cursor: pointer;
+
 }
 
 .closeUpdateHeart:before,

@@ -174,6 +174,8 @@ function createSettingsPopUp (user) {
             .then(rsc => console.log(rsc));
         
         location.reload();
+        document.getElementById("updateOverlay").remove();
+
     })
 
 }
@@ -182,7 +184,7 @@ function closebtn(){
     let close = document.createElement('a');
     close.classList.add('closeUpdateHeart');
     close.addEventListener('click', function() {
-        document.getElementById("updateOverlay").style.display = "none";
+        document.getElementById("updateOverlay").remove();
     });
 
     document.getElementById("update-close").append(close)
