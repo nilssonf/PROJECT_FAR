@@ -3,9 +3,9 @@
         "email": "anna@gmail.com",
         "password": "blueOrange96!%%",
         "name": "Anna",
-        "age": 26,
+        "age": "26",
         "occupation": "Student",
-        "picture": "profiles\/202212140041.jpg"
+        "picture": "profiles\/202212151317.png"
     },
     {
         "id": 2,
