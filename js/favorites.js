@@ -1,6 +1,7 @@
 "use strict";
 
 let array = [];
+let notLiked = []
 
 function getFavoriteId() {
 
@@ -9,7 +10,6 @@ function getFavoriteId() {
     fetch(rqst)
         .then(r => r.json())
         .then(favorites => {
-
             favorites.forEach(f => {
                 if (f.userId == user) {
                     let drinkId = (`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${f.drinkId}`);
@@ -21,7 +21,16 @@ function getFavoriteId() {
                             array.push(rsc.drinks[0]);
                             createFavorites(rsc.drinks);
 
+
                         })
+
+                } else if (f.userId != user) {
+                    let drinkId = f.userId
+                    notLiked.push(drinkId)
+
+                    if (notLiked.length == favorites.length) {
+                        createFavorites("empty")
+                    }
                 }
             });
         });
@@ -29,17 +38,17 @@ function getFavoriteId() {
 
 
 
+
+
 function createFavorites(drinks) {
+
     if (drinks === "empty") {
         let noDrinks = document.createElement("div")
         document.querySelector(".favoritesDrinks").style.display = "none"
         noDrinks.innerHTML =
             `<p class="noDrinks">You don't have any favorite drinks</p>
             <p class="clickHere"> Click &nbsp <a class ="link" href="../html/search.html"> here </a> &nbsp to scroll drinks and like some of your favorites</p>
-
-
         `
-
         document.querySelector('#wrapper').append(noDrinks)
         wrapper.style.height = "100vh"
 
