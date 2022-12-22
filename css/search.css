@@ -40,12 +40,6 @@
     box-shadow: -10px 10px rgba(236, 101, 67, 0.7);
 }
 
-.imgWrap {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-}
-
 .drinkImg {
     height: 200px;
 }
@@ -114,6 +108,7 @@
 .alphabetTwo p:hover,
 .alphabetThree p:hover {
     cursor: pointer;
+    color: #ec6542;
 }
 
 .filterContainer {

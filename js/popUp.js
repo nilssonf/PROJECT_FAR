@@ -6,6 +6,97 @@ function buildDrinkPopUp(id) {
         .then(r => r.json())
         .then(rsc => {
             choosenDrink(rsc);
+            let comt = document.querySelector('textarea');
+            comt.addEventListener('keyup', function() {
+                let maxLength = 120;
+                let currentLength = comt.value.length;
+                let left = maxLength - currentLength;
+
+                document.querySelector('.charsLeft').innerText = `${left} characters remaining`;
+            });
+
+            let commentCount = document.querySelector('.comHeader h3');
+            setTimeout(() => {
+                let count = document.querySelectorAll('.comment').length;
+                if (count > 0) {
+                    commentCount.innerText += ` (${count})`;
+                }
+            }, 200);
+
+            let btn = document.querySelector('.postCom');
+            btn.addEventListener('click', function () {
+                setTimeout(() => {
+                    postComment(id, user, document.querySelector(".showOneDrinkDiv"));
+                }, 1000);
+            });
+        });
+}
+
+function renderComments(id, parent) {
+    let commentBox = document.createElement('div');
+    commentBox.classList.add('comments');
+    commentBox.innerHTML = `
+    <div class='comHeader'>
+        <h3>Comments</h3>
+        <div>
+            <textarea class="cmt" name="cmt" minlength="1" maxlength="120" rows="5" cols="45" placeholder="What did you think about this drink?"></textarea>
+        <div class='sendInfo'>
+            <p class='charsLeft'>120 characters remaining</p>
+            <button class='postCom'>Comment</button>
+        <div>
+    </div>
+    `;
+    parent.append(commentBox);
+
+    fetch(new Request('../php/comments.json'))
+        .then(r => r.json())
+        .then(comments => {
+            comments.forEach(comment => {
+                if (comment.drinkId == id) {
+                    let com = document.createElement('div');
+                    com.classList.add('comment');
+                    commentBox.append(com);
+
+                    fetch(new Request('../php/users.json'))
+                        .then(r => r.json())
+                        .then(users => {
+                            users.forEach(usr => {
+                                if (comment.userId == usr.id) {
+
+                                    com.innerHTML = `
+                                <div>
+                                    <p class='userName'>${usr.name}</p>
+                                    <p class='date'>${comment.date}</p>
+                                </div>
+                                <p class='content'>${comment.comment}</p>
+                                `;
+                                }
+                            });
+                        });
+                }
+            });
+        });
+}
+
+function postComment(id, user, parent) {
+    let commentText = document.querySelector('.cmt').value;
+    let commentBody = {
+        drinkId: id,
+        userId: user,
+        comment: commentText
+    };
+
+    fetch(new Request('../php/createComment.php'), {
+        method: 'POST',
+        body: JSON.stringify(commentBody),
+        headers: { "Content-type": "application/json" }
+    })
+        .then(r => r.json())
+        .then(rsc => {
+            console.log(rsc);
+            let currentList = document.querySelector('.comments');
+            currentList.remove();
+            renderComments(id, parent);
         });
 }
 
@@ -104,13 +195,13 @@ function choosenDrink(rsc) {
 
     `;
 
-
     overlay.append(drinkBox);
+    renderComments(drinkId, drinkBox);
 
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
 
-        h.addEventListener('click', function () {
+        h.addEventListener('click', function() {
             console.log('Hej');
 
 
@@ -136,3 +227,9 @@ function choosenDrink(rsc) {
         window.location.href = "../html/search.html";
     });
 }
+
+// keyup(function () {
+//     var length = $(this).val().length;
+//     var length = maxLength - length;
+//     $('#chars').text(length);
+// });

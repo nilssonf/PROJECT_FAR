@@ -1,5 +1,4 @@
-[
-    {
+[{
         "id": 1,
         "email": "anna@gmail.com",
         "password": "blueOrange96!%%",
@@ -9,13 +8,13 @@
         "picture": "profiles\/202212140041.jpg"
     },
     {
-        "id": "2",
+        "id": 2,
         "email": "fanny@hotmail.com",
         "password": "mastiffLover!",
         "name": "Fanny",
-        "age": "29",
+        "age": "30",
         "occupation": "Student",
-        "picture": "C:\\fakepath\\172546_search_icon.png"
+        "picture": "C:\\fakepath\\emily-andreeva-BuuQJ3QxZ_A-unsplash.jpeg"
     },
     {
         "id": 3,
