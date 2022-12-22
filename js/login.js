@@ -39,18 +39,13 @@ function logIn(username, pw) {
 
 function createLogin() {
 
-    let close = document.createElement("a");
-    close.classList.add("closeSignIn");
-    close.addEventListener("click", function() {
-        document.getElementById("myForm").style.display = "none";
-    });
-
     let signInForm = document.createElement("div");
+    signInForm.classList.add("signInForm");
     signInForm.innerHTML =
 
         `
             <div class="form-popup" id="myForm">
-            <div class="form-container">
+            <div class="form-container" id="signInBtn">
             
             <h2>Sign in</h2>
 
@@ -74,14 +69,27 @@ function createLogin() {
 
 
     document.querySelector("body").append(signInForm);
-    signInForm.append(close);
     document.getElementById("myForm").style.display = "block";
     document.querySelector(".wrongInlogg").style.display = "none";
     document.querySelector(".create").addEventListener("click", function() {
-        document.getElementById("myForm").style.display = "none";
+        document.querySelector(".signInForm").remove();
+
         createProfilePopup()
+        closeCreateBtn()
+
     });
-    return signIn;
+    return signInForm;
+
+}
+
+function closeSignInBtn(){
+    let close = document.createElement("a");
+    close.classList.add("closeSignIn");
+    close.addEventListener("click", function() {
+        document.querySelector(".signInForm").remove();
+    });
+
+    document.getElementById("signInBtn").append(close);
 
 }
 
@@ -94,48 +102,39 @@ function logOut() {
 
 function createProfilePopup() {
 
-
-    let close = document.createElement("a");
-    close.classList.add("closeCreate");
-    close.addEventListener("click", function() {
-        document.querySelector(".createContainer").style.display = "none";
-    });
-
     let createUser = document.createElement("div");
-    createUser.innerHTML =
-        `
-<div class="createContainer">
- <div class="create-popup">
+    createUser.classList.add("createUser");
+    createUser.innerHTML =`
+        <div class="createContainer">
+            <div class="create-popup">
 
-    <div class="createContent" >
+                <div class="createContent" id="createClose" >
 
-    <h2>Create your account</h2>
+                    <h2 class="createH2">Create your account</h2>
 
-    <label for="name"><b>Your first name? </b></label>
-    <input type="text" id="name" required>
+                    <label class="createLabelStyle" for="name"><b>Your first name? </b></label>
+                    <input class="createInput" type="text" id="name" required>
 
-    <label for="email"><b>Your email?</b></label>
-    <input type="text" id="mail" required>
+                    <label class="createLabelStyle" for="email"><b>Your email?</b></label>
+                    <input class="createInput" type="text" id="mail" required>
 
-    <label for="password"><b>Select a password</b></label>
-    <input type="password" id="password" required>
+                    <label class="createLabelStyle" for="password"><b>Select a password</b></label>
+                    <input class="createInput" type="password" id="password" required>
 
-    <label for="aga"><b>Your age?</b></label>
-    <input type="text" id="age" required>
+                    <label class="createLabelStyle" for="aga"><b>Your age?</b></label>
+                    <input class="createInput" type="text" id="age" required>
 
-    <label for="occupation"><b> Your occupation?</b></label>
-    <input type="text" id="occupation" required>
+                    <label class="createLabelStyle" for="occupation"><b> Your occupation?</b></label>
+                    <input class="createInput" type="text" id="occupation" required>
 
-    <p class="wrongMessage"> </p>
+                    <p class="wrongMessage"> </p>
 
-    <button class="createAndSign"> Create & log in </button>
+                    <button class="createAndSign"> Create & log in </button>
 
-    </div>
-    </div>
-    </div>
-
+                </div>
+            </div>
+        </div>
     `;
-    createUser.append(close);
     document.querySelector("body").append(createUser);
 
     let createUserButton = document.querySelector('.createAndSign');
@@ -171,8 +170,19 @@ function createProfilePopup() {
             })
             .then(console.log)
 
-
+            document.querySelector(".createAndSignIn").remove();
     })
+}
+
+function closeCreateBtn(){
+    let close = document.createElement("a");
+    close.classList.add("closeCreate");
+    close.addEventListener("click", function() {
+        document.querySelector(".createUser").remove();
+    });
+
+    document.getElementById("createClose").append(close);
+
 }
 
 function createWelcome(nameValue) {
