@@ -49,8 +49,8 @@ function createFavorites(drinks) {
             `<p class="noDrinks">You don't have any favorite drinks</p>
             <p class="clickHere"> Click &nbsp <a class ="link" href="../html/search.html"> here </a> &nbsp to scroll drinks and like some of your favorites</p>
         `
-        document.querySelector('#wrapper').append(noDrinks)
-        wrapper.style.height = "100vh"
+        document.querySelector('#favoritesWrapper').append(noDrinks)
+        document.querySelector('#favoritesWrapper').style.height = "100vh"
 
     }
 
@@ -81,7 +81,7 @@ function createFavorites(drinks) {
                 <img src="../images/gillasvart.png" class="heartImgFav" id="${drinkId}">
                `;
         favoriteBox.classList.add("favoriteBox");
-        document.querySelector("#wrapper").append(favoriteBox);
+        document.querySelector("#favoritesWrapper").append(favoriteBox);
 
 
     });
@@ -113,6 +113,7 @@ function addNewFavorite(clickedId) {
 }
 
 function deleteFavorite(clickedIdRemove) {
+
     let deleteFavorite = {
         drinkId: clickedIdRemove,
     };

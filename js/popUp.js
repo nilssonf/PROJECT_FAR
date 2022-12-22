@@ -7,7 +7,7 @@ function buildDrinkPopUp(id) {
         .then(rsc => {
             choosenDrink(rsc);
             let comt = document.querySelector('textarea');
-            comt.addEventListener('keyup', function () {
+            comt.addEventListener('keyup', function() {
                 let maxLength = 120;
                 let currentLength = comt.value.length;
                 let left = maxLength - currentLength;
@@ -172,7 +172,7 @@ function choosenDrink(rsc) {
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
 
-        h.addEventListener('click', function () {
+        h.addEventListener('click', function() {
             console.log('Hej');
 
 
@@ -192,7 +192,7 @@ function choosenDrink(rsc) {
     close.href = "#";
     overlay.append(close);
 
-    close.addEventListener("click", function (event) {
+    close.addEventListener("click", function(event) {
         document.getElementById("overlay").style.display = "none";
 
         window.location.href = "../html/search.html";
