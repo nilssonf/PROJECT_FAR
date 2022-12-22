@@ -1,4 +1,5 @@
-[{
+[
+    {
         "favoriteId": 1,
         "drinkId": "11007",
         "userId": 1
@@ -39,9 +40,13 @@
         "userId": "1"
     },
     {
-
         "favoriteId": 19,
         "drinkId": "178333",
+        "userId": "3"
+    },
+    {
+        "favoriteId": 20,
+        "drinkId": "178332",
         "userId": "3"
     }
 ]
