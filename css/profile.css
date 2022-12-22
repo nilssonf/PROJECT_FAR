@@ -8,12 +8,12 @@
     src: url('../fonts/TiemposHeadline-Regular.otf');
 }
 
-body{
-    margin:0;
-    height:100%;
+body {
+    margin: 0;
+    height: 100%;
 }
 
-#profileWrapper{
+#profileWrapper {
     display: flex;
     justify-content: center;
     min-height: calc(100vh - 50px);
@@ -50,8 +50,8 @@ body{
 }
 
 h1,
-#info p span, 
-#latest, 
+#info p span,
+#latest,
 #fav {
     color: #EC6543;
 }
@@ -86,7 +86,7 @@ h1,
 #oneFav {
     border-top: 2px solid;
     border-bottom: 2px solid;
-    border-image: linear-gradient(to left,  #f38a70bb,  #ec6543ba) 1 0;
+    border-image: linear-gradient(to left, #f38a70bb, #ec6543ba) 1 0;
     padding: 10%;
 }
 
@@ -128,7 +128,8 @@ h1,
     display: flex;
 }
 
-.date, .drink {
+.date,
+.drink {
     font-family: 'Inter';
 }
 
@@ -142,7 +143,7 @@ h1,
     cursor: pointer;
 }
 
-#settingsIcon{
+#settingsIcon {
     margin-top: 100px;
     position: fixed;
     right: 32px;

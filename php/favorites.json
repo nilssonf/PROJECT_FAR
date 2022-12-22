@@ -52,10 +52,13 @@
         "favoriteId": 18,
         "drinkId": "178335",
         "userId": "3"
+<<<<<<< Updated upstream
     },
     {
         "favoriteId": 19,
         "drinkId": "178333",
         "userId": "3"
+=======
+>>>>>>> Stashed changes
     }
 ]
