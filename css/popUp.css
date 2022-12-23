@@ -207,3 +207,14 @@ p {
 .comments :last-child {
     margin-bottom: 0;
 }
+
+.removeContain {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.remove {
+    height: 25px;
+
+}
