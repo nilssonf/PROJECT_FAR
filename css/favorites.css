@@ -104,6 +104,7 @@ h1 {
 
 .text {
     font-family: "Inter";
+    cursor: pointer;
 }
 
 .text h3 {
