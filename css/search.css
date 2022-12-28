@@ -63,6 +63,8 @@ html {
     height: 20px;
     border: 1px solid #ec6542;
     border-radius: 50px;
+    padding: 5px 0 5px 15px;
+    font-family: "Inter";
 }
 
 .alphabet {
@@ -123,7 +125,12 @@ html {
     border: 1px #ec6542 dashed;
 }
 
-.text {
+.filterContainer h3 {
+    margin-left: 20px;
+}
+
+.text,
+.filterContainer h3 {
     font-family: 'Inter';
 }
 

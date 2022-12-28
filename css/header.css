@@ -179,3 +179,7 @@ label {
 .open-button:hover {
     opacity: 1;
 }
+
+.standard {
+    font-family: "Inter";
+}
