@@ -1,7 +1,7 @@
 "use strict";
 
 let array = [];
-let notLiked = []
+let notLiked = [];
 
 function getFavoriteId() {
 
@@ -15,25 +15,41 @@ function getFavoriteId() {
                     let drinkId = (`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${f.drinkId}`);
                     fetch(drinkId)
                         .then(r => {
-                            return r.json()
+                            return r.json();
                         })
                         .then(rsc => {
                             array.push(rsc.drinks[0]);
                             createFavorites(rsc.drinks);
 
 
-                        })
+                        });
 
                 } else if (f.userId != user) {
-                    let drinkId = f.userId
-                    notLiked.push(drinkId)
+                    let drinkId = f.userId;
+                    notLiked.push(drinkId);
 
                     if (notLiked.length == favorites.length) {
-                        createFavorites("empty")
+                        createFavorites("empty");
                     }
                 }
             });
         });
+
+    setTimeout(() => {
+        let drinks = document.querySelectorAll('.text');
+        drinks.forEach(drink => {
+            let drinkName = drink.querySelector('h3').textContent;
+            drink.addEventListener("click", function () {
+                fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
+                    .then(r => r.json())
+                    .then(rsc => {
+                        let topDrinkId = rsc.drinks[0].idDrink;
+                        sessionStorage.setItem("topDrinkId", topDrinkId);
+                        location.href = "../html/search.html";
+                    });
+            });
+        });
+    }, 1000);
 }
 
 
@@ -43,25 +59,25 @@ function getFavoriteId() {
 function createFavorites(drinks) {
 
     if (drinks === "empty") {
-        let noDrinks = document.createElement("div")
-        document.querySelector(".favoritesDrinks").style.display = "none"
+        let noDrinks = document.createElement("div");
+        document.querySelector(".favoritesDrinks").style.display = "none";
         noDrinks.innerHTML =
             `<p class="noDrinks">You don't have any favorite drinks</p>
             <p class="clickHere"> Click &nbsp <a class ="link" href="../html/search.html"> here </a> &nbsp to scroll drinks and like some of your favorites</p>
-        `
-        document.querySelector('#favoritesWrapper').append(noDrinks)
-        document.querySelector('#favoritesWrapper').style.height = "100vh"
+        `;
+        document.querySelector('#favoritesWrapper').append(noDrinks);
+        document.querySelector('#favoritesWrapper').style.height = "100vh";
 
     }
 
     drinks.forEach(drink => {
 
         let drinkId = drink.idDrink;
-        let oneDrink = drink.strDrink
-        let drinkImg = drink.strDrinkThumb
-        let drinkAlcoholic = drink.strAlcoholic
-        let drinkCategory = drink.strCategory
-        let drinkGlass = drink.strGlass
+        let oneDrink = drink.strDrink;
+        let drinkImg = drink.strDrinkThumb;
+        let drinkAlcoholic = drink.strAlcoholic;
+        let drinkCategory = drink.strCategory;
+        let drinkGlass = drink.strGlass;
 
         let favoriteBox = document.createElement("div");
         favoriteBox.innerHTML = `
@@ -70,7 +86,7 @@ function createFavorites(drinks) {
                    <img src="${drinkImg}" class="drinkImg">
                </div>
                <div class="text">
-                   <h3>${oneDrink} </h3>
+                   <h3 class='drinkName'>${oneDrink} </h3>
                    <div class="tags">
                        <p> ${drinkAlcoholic} </p>
                        <p>${drinkCategory} </p>
@@ -86,13 +102,13 @@ function createFavorites(drinks) {
 
     });
 
-    let heart = document.querySelectorAll('.heartImgFav')
+    let heart = document.querySelectorAll('.heartImgFav');
     heart.forEach(h => {
-        h.addEventListener('click', function() {
+        h.addEventListener('click', function () {
             let clickedIdRemove = h.id;
-            deleteFavorite(clickedIdRemove)
-        })
-    })
+            deleteFavorite(clickedIdRemove);
+        });
+    });
 }
 
 function addNewFavorite(clickedId) {
@@ -127,10 +143,10 @@ function deleteFavorite(clickedIdRemove) {
     fetch(deleteFav)
         .then(r => r.json())
         .then(rsc => {
-            console.log(rsc)
+            console.log(rsc);
         });
 
-    location.reload()
+    location.reload();
 }
 
 getFavoriteId();
