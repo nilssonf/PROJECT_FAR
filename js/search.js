@@ -136,6 +136,10 @@ function getsearchedDrink() {
   document.getElementById('drinkName').addEventListener('keyup', function () {
     let search = document.getElementById('drinkName').value;
     getDrinksByName(search);
+
+    if (search == "") {
+      getDrinksByLetter('a');
+    }
   });
 }
 
