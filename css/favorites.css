@@ -110,4 +110,9 @@ h1 {
 .text h3 {
     font-size: xx-large;
     color: #ec6542;
+    transition: 0.5s;
+}
+
+.text:hover h3 {
+    color: #ec644295;
 }
