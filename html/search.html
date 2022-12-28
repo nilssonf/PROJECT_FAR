@@ -18,63 +18,67 @@
 <body>
     <div id="header"></div>
     <div id="overlay"></div>
+   
     <div id="searchWrapper">
+        <div id="backgroundDiv1"></div>
+        <div id="backgroundDiv2"></div>
 
-        <div class="filterContainer">
-            <h3>Filter</h3>
-
-            <div id="filterAlcohol">
-                <select id="chooseAlcohol" required>
-                    <option value="" selected disabled hidden>Alcoholic</option>
-                </select>
-            </div>
-
-            <div id="filterCategory">
-                <select id="chooseCategory" required>
-                    <option value="" selected disabled hidden>Category</option>
-                </select>
-            </div>
-
-            <div id="filterGlass">
-                <select id="chooseGlass" required>
-                    <option value="" selected disabled hidden>Glass</option>
-                </select>
-
-                <div id="filterIngrediant">
-                    <select id="chooseIngrediant" required>
-                        <option value="" selected disabled hidden>Ingrediant</option>
-                    </select>
-                </div>
-
-            </div>
-
-            <button id="clearFilters">Clear</button>
+        <div id="searchTitleDiv">
+            <h1 id="searchTitle">DRINKS</h1>
         </div>
-
-        <div id="container">
+    
+        <div class="searchContainer">
+            <div class="drinkInput">
+                <input type="text" id="drinkName" name="drinkName" placeholder="Search drink by name">
+            </div>
             <div id="topContainer">
-                <div class="searchContainer">
-                    <div class="drinkInput">
-
-                        <input type="text" id="drinkName" name="drinkName" placeholder="Search drink by name">
-                    </div>
-                </div>
                 <div class="alphabet">
                     <div class="alphabetOne"> </div>
                     <div class="alphabetTwo"> </div>
                     <div class="alphabetThree"> </div>
+                </div>      
+            </div>
+        </div>    
+                
+        <img id="toTop" src="../images/up-arrow.png"></img>
+
+        <div id="container">
+            <div class="filterContainer">
+                <h3>Filter</h3>
+
+                <div id="filterAlcohol">
+                    <select id="chooseAlcohol" required>
+                        <option value="" selected disabled hidden>Alcoholic</option>
+                    </select>
+                </div>
+
+                <div id="filterCategory">
+                    <select id="chooseCategory" required>
+                        <option value="" selected disabled hidden>Category</option>
+                    </select>
+                </div>
+
+                <div id="filterGlass">
+                    <select id="chooseGlass" required>
+                        <option value="" selected disabled hidden>Glass</option>
+                    </select>
+                </div>
+
+                <div id="filterIngredient">
+                    <select id="chooseIngrediant" required>
+                        <option value="" selected disabled hidden>Ingredient</option>
+                    </select>
+                </div>
+
+                <div id="clearFiltersDiv">
+                    <button id="clearFilters">Clear</button>
                 </div>
             </div>
-
-            <img id="toTop" src="../images/up-arrow.png"></img>
-
-            <div id="wrapper">
-
-            </div>
-
+            
+            <div id="wrapper"></div>
         </div>
-
     </div>
+
     <div id="footer"></div>
 
     <script src="../js/login.js"></script>
@@ -84,7 +88,5 @@
     <script src="../js/footer.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/favorites.js"></script>
-
 </body>
-
 </html>
