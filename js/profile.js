@@ -235,6 +235,7 @@ function closebtn() {
     close.classList.add('closeUpdateHeart');
     close.addEventListener('click', function () {
         document.getElementById("updateOverlay").remove();
+        location.reload();
     });
 
     document.getElementById("update-close").append(close);
