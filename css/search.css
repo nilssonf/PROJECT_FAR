@@ -133,8 +133,41 @@ html {
     font-family: 'Inter';
 }
 
+<<<<<<< Updated upstream
+=======
+#clearFilters {
+    margin-left: 15px;
+    width: 100px;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ec6542;
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-weight: bold;
+    background-color: white;
+    color: #ec6442c1;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+#clearFilters:hover {
+    color: #ec6442c1;
+    background-color: #ec644238;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.text h3 {
+    transition: 0.5s;
+}
+
+>>>>>>> Stashed changes
 .text:hover {
     cursor: pointer;
+}
+
+.text:hover h3 {
+    color: #ec644295;
 }
 
 .tags {
