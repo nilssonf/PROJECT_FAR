@@ -12,7 +12,7 @@ function renderProfile(usr) {
     let profileImg = document.createElement("img");
     profileImg.classList.add("profileImg");
 
-    profileImg.src = usr.picture; 
+    profileImg.src = usr.picture;
 
     document.getElementById("photo").append(profileImg);
 }
@@ -47,12 +47,12 @@ function renderComments(usr) {
 
                         });
                 } else if (c.userId != usr) {
-                    let drinkId = c.userId
-                    notLiked.push(drinkId)
+                    let drinkId = c.userId;
+                    notLiked.push(drinkId);
 
                     if (notLiked.length == commentList.length) {
                         let noFav = document.querySelector('#comments');
-                        noFav.innerHTML = "You have not commented any drinks"
+                        noFav.innerHTML = "You have not commented any drinks";
                     }
                 }
             });
@@ -70,13 +70,13 @@ function renderRandomFav(usr) {
                 if (fav.userId == usr) {
                     myFavorites.push(fav);
                 } else if (fav.userId != usr) {
-                    let drinkId = fav.userId
-                    notLiked.push(drinkId)
+                    let drinkId = fav.userId;
+                    notLiked.push(drinkId);
 
                     if (notLiked.length == allFavorites.length) {
                         let noFav = document.querySelector('#oneFav');
                         noFav.innerHTML =
-                            `You don't have any favorite drinks`
+                            `You don't have any favorite drinks`;
                     }
                 }
             });
@@ -108,12 +108,12 @@ function currentUser(user) {
                     renderRandomFav(user);
 
                     let settingsIcon = document.getElementById("settingsIcon");
-                    settingsIcon.addEventListener("click", function() {
+                    settingsIcon.addEventListener("click", function () {
                         document.getElementById("updateOverlay").style.display = "flex";
 
-                        createSettingsPopUp(u)
-                        closebtn()
-                    })
+                        createSettingsPopUp(u);
+                        closebtn();
+                    });
                 }
             });
         });
@@ -126,7 +126,7 @@ setTimeout(() => {
     drinks.forEach(drink => {
         let drinkName = drink.textContent;
 
-        drink.addEventListener("click", function() {
+        drink.addEventListener("click", function () {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
                 .then(r => r.json())
                 .then(rsc => {
@@ -178,11 +178,11 @@ function createSettingsPopUp(user) {
 
             </div>
          </div>
-    `
-    document.getElementById("updateOverlay").append(updateUser)
+    `;
+    document.getElementById("updateOverlay").append(updateUser);
 
     const form = document.getElementById("uploadForm");
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -196,14 +196,14 @@ function createSettingsPopUp(user) {
             .then(r => r.json())
             .then(data => {
                 console.log(data);
-            })
-    })
+            });
+    });
 
     let btnUpdate = document.querySelector(".updateDone");
 
-    btnUpdate.addEventListener("click", function (){
+    btnUpdate.addEventListener("click", function () {
 
-        let searchPath = "../profiles/" + document.getElementById("profilePic").files[0].name;
+        let searchPath = "profiles/" + document.getElementById("profilePic").files[0].name;
 
         let updUser = {
             id: sessionStorage.getItem("user"),
@@ -228,16 +228,16 @@ function createSettingsPopUp(user) {
         location.reload();
         document.getElementById("updateOverlay").remove();
 
-    })
+    });
 
 }
 
 function closebtn() {
     let close = document.createElement('a');
     close.classList.add('closeUpdateHeart');
-    close.addEventListener('click', function() {
+    close.addEventListener('click', function () {
         document.getElementById("updateOverlay").remove();
     });
 
-    document.getElementById("update-close").append(close)
+    document.getElementById("update-close").append(close);
 }
