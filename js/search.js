@@ -136,6 +136,10 @@ function getsearchedDrink() {
   document.getElementById('drinkName').addEventListener('keyup', function () {
     let search = document.getElementById('drinkName').value;
     getDrinksByName(search);
+
+    if (search == "") {
+      getDrinksByLetter('a');
+    }
   });
 }
 
@@ -439,6 +443,7 @@ function clearSelect() {
   let category = document.getElementById("chooseCategory");
   let glass = document.getElementById("chooseGlass");
   let ingrediant = document.getElementById("chooseIngrediant");
+  let clearAll = document.getElementById("clearFilters");
   alcohol.addEventListener("change", function (event) {
     category.value = "";
     glass.value = "";
@@ -461,6 +466,13 @@ function clearSelect() {
     alcohol.value = "";
     category.value = "";
     glass.value = "";
+  });
+
+  clearAll.addEventListener("click", function () {
+    alcohol.value = "";
+    category.value = "";
+    glass.value = "";
+    ingrediant.value = "";
   });
 
 

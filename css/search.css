@@ -116,7 +116,7 @@ html {
 }
 
 .filterContainer {
-    height: 280px;
+    height: 320px;
     margin-top: 440px;
     width: 250px;
     position: relative;
@@ -133,8 +133,6 @@ html {
     font-family: 'Inter';
 }
 
-<<<<<<< Updated upstream
-=======
 #clearFilters {
     margin-left: 15px;
     width: 100px;
@@ -161,7 +159,6 @@ html {
     transition: 0.5s;
 }
 
->>>>>>> Stashed changes
 .text:hover {
     cursor: pointer;
 }
@@ -306,6 +303,7 @@ select {
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 50px;
+    width: 210px;
 }
 
 #toTop {
