@@ -108,7 +108,7 @@ function currentUser(user) {
                     renderRandomFav(user);
 
                     let settingsIcon = document.getElementById("settingsIcon");
-                    settingsIcon.addEventListener("click", function () {
+                    settingsIcon.addEventListener("click", function() {
                         document.getElementById("updateOverlay").style.display = "flex";
 
                         createSettingsPopUp(u);
@@ -126,7 +126,7 @@ setTimeout(() => {
     drinks.forEach(drink => {
         let drinkName = drink.textContent;
 
-        drink.addEventListener("click", function () {
+        drink.addEventListener("click", function() {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
                 .then(r => r.json())
                 .then(rsc => {
@@ -170,6 +170,7 @@ function createSettingsPopUp(user) {
                     <label class="updateStyle" for="profilePic"><b class="updateLabels paddingbtm">Choose a profile picture</b></label>
                     <input type="file" name="uploadProfilePic" id="profilePic">
                     <button type="submit" class="savePicture"> Save picture </button>
+                    
 
                 </form>
                 <button class="updateDone"> Update profile </button>
@@ -179,8 +180,12 @@ function createSettingsPopUp(user) {
     `;
     document.getElementById("updateOverlay").append(updateUser);
 
+    document.querySelector(".savePicture").addEventListener("click", function() {
+        document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile"
+    })
+
     const form = document.getElementById("uploadForm");
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", function(event) {
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -199,7 +204,7 @@ function createSettingsPopUp(user) {
 
     let btnUpdate = document.querySelector(".updateDone");
 
-    btnUpdate.addEventListener("click", function () {
+    btnUpdate.addEventListener("click", function() {
 
         let searchPath = "../profiles/" + document.getElementById("profilePic").files[0].name;
 
@@ -233,7 +238,7 @@ function createSettingsPopUp(user) {
 function closebtn() {
     let close = document.createElement('a');
     close.classList.add('closeUpdateHeart');
-    close.addEventListener('click', function () {
+    close.addEventListener('click', function() {
         document.getElementById("updateOverlay").remove();
         location.reload();
     });
