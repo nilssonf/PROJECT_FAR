@@ -139,8 +139,6 @@ setTimeout(() => {
 }, 1000);
 
 
-
-
 function createSettingsPopUp(user) {
 
     let updateUser = document.createElement("div");
@@ -203,7 +201,7 @@ function createSettingsPopUp(user) {
 
     btnUpdate.addEventListener("click", function () {
 
-        let searchPath = "profiles/" + document.getElementById("profilePic").files[0].name;
+        let searchPath = "../profiles/" + document.getElementById("profilePic").files[0].name;
 
         let updUser = {
             id: sessionStorage.getItem("user"),
