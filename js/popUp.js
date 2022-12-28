@@ -24,7 +24,7 @@ function buildDrinkPopUp(id) {
             }, 200);
 
             let btn = document.querySelector('.postCom');
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 if (user == 0) {
                     createLoginViaHeart();
                 } else {
@@ -98,10 +98,10 @@ function postComment(id, user, parent) {
     };
 
     fetch(new Request('../php/createComment.php'), {
-            method: 'POST',
-            body: JSON.stringify(commentBody),
-            headers: { "Content-type": "application/json" }
-        })
+        method: 'POST',
+        body: JSON.stringify(commentBody),
+        headers: { "Content-type": "application/json" }
+    })
         .then(r => r.json())
         .then(rsc => {
             console.log(rsc);
@@ -180,10 +180,10 @@ function choosenDrink(rsc) {
     drinkBox.classList.add("showOneDrinkDiv");
 
     drinkBox.innerHTML = `
-        <div><img class="overlayDrinkImg" src="${drinkImg}"></div>
+        <div class="drinkWrap"><img class="overlayDrinkImg" src="${drinkImg}"></div>
         <div>
             <h2 class="oneDrinkName">${drinkName}</h2>
-            <h3 class="oneDrinkH3">Ingredients:</h3>
+            <h3 class="oneDrinkH3">Ingredients</h3>
             <div class="ingredientsDiv">
                 <div class="imgContainer">${imgDiv.innerHTML}</div>
                 <div class="ingrContainer">${ingrDiv.innerHTML}</div>
@@ -194,11 +194,11 @@ function choosenDrink(rsc) {
             <img src="../images/gilla.png" class="heartImg" id="${drinkId}">
             <div id="instruct">
             <div class="steps">
-            <h3 class="oneDrinkH3">Steps:</h3>
+            <h3 class="oneDrinkH3">Steps</h3>
             <p class="align-left">${drinkInstructions}</p>
             </div>
             <div class="steps">
-            <h3 class="oneDrinkH3">Recommended glass:</h3>
+            <h3 class="oneDrinkH3">Recommended glass</h3>
             <p>${drinkGlass}</p>
             </div>
             </div>
