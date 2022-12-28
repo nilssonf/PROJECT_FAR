@@ -1,5 +1,6 @@
 function buildDrinkPopUp(id) {
 
+
     document.getElementById("overlay").style.display = "flex";
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -7,7 +8,7 @@ function buildDrinkPopUp(id) {
         .then(rsc => {
             choosenDrink(rsc);
             let comt = document.querySelector('textarea');
-            comt.addEventListener('keyup', function () {
+            comt.addEventListener('keyup', function() {
                 let maxLength = 120;
                 let currentLength = comt.value.length;
                 let left = maxLength - currentLength;
@@ -24,7 +25,7 @@ function buildDrinkPopUp(id) {
             }, 200);
 
             let btn = document.querySelector('.postCom');
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function() {
                 if (user == 0) {
                     createLoginViaHeart();
                 } else {
@@ -98,10 +99,10 @@ function postComment(id, user, parent) {
     };
 
     fetch(new Request('../php/createComment.php'), {
-        method: 'POST',
-        body: JSON.stringify(commentBody),
-        headers: { "Content-type": "application/json" }
-    })
+            method: 'POST',
+            body: JSON.stringify(commentBody),
+            headers: { "Content-type": "application/json" }
+        })
         .then(r => r.json())
         .then(rsc => {
             console.log(rsc);
@@ -212,10 +213,7 @@ function choosenDrink(rsc) {
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
 
-        h.addEventListener('click', function () {
-            console.log('Hej');
-
-
+        h.addEventListener('click', function() {
             if (user === 0) {
                 createLoginViaHeart();
             } else {
@@ -232,10 +230,14 @@ function choosenDrink(rsc) {
     close.href = "#";
     overlay.append(close);
 
-    close.addEventListener("click", function (event) {
+    close.addEventListener("click", function(event) {
         document.getElementById("overlay").style.display = "none";
 
-        window.location.href = "../html/search.html";
+
+        // history.back()
+        location.href = "../html/search.html"
+
+
     });
 }
 

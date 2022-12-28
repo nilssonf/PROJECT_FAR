@@ -21,6 +21,7 @@ function logIn(username, pw) {
         .then(resp => {
             if (resp.status == 200) {
                 return resp.json();
+
             } else {
                 user = 0;
                 sessionStorage.setItem("user", user);
@@ -82,7 +83,7 @@ function createLogin() {
 
 }
 
-function closeSignInBtn(){
+function closeSignInBtn() {
     let close = document.createElement("a");
     close.classList.add("closeSignIn");
     close.addEventListener("click", function() {
@@ -104,7 +105,7 @@ function createProfilePopup() {
 
     let createUser = document.createElement("div");
     createUser.classList.add("createUser");
-    createUser.innerHTML =`
+    createUser.innerHTML = `
         <div class="createContainer">
             <div class="create-popup">
 
@@ -170,11 +171,11 @@ function createProfilePopup() {
             })
             .then(console.log)
 
-            document.querySelector(".createAndSignIn").remove();
+        document.querySelector(".createAndSignIn").remove();
     })
 }
 
-function closeCreateBtn(){
+function closeCreateBtn() {
     let close = document.createElement("a");
     close.classList.add("closeCreate");
     close.addEventListener("click", function() {
