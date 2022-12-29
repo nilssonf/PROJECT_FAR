@@ -130,6 +130,14 @@ function createLoginViaHeart() {
             document.getElementById('myFormHeart').style.display = 'none';
             createProfilePopup();
         });
+
+    document.querySelector(".sign_in").addEventListener('click', function() {
+        let username = document.querySelector('[id="email"]').value;
+        let psw = document.querySelector('[id="psw"]').value;
+
+        logIn(username, psw);
+        document.querySelector(".form-popup-heart").remove();
+    });
 }
 
 function getsearchedDrink() {

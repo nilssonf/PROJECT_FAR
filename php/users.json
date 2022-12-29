@@ -1,5 +1,4 @@
-[
-    {
+[{
         "id": "1",
         "email": "anna@gmail.com",
         "password": "blueOrange96!%%",
@@ -42,6 +41,6 @@
         "name": "Malin",
         "age": 28,
         "occupation": "Graphic designer",
-        "picture": "profiles\/standard_picture"
+        "picture": "..\/profiles\/standard_picture.png"
     }
 ]
