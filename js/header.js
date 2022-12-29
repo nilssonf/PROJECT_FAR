@@ -44,9 +44,6 @@ function header(user) {
         });
     } else {
 
-
-        createSmallImage(user)
-
         let favourites = document.createElement("p");
         favourites.innerText = "Favourite drinks";
         favourites.classList.add("favourites", "menuElm");
@@ -67,14 +64,20 @@ function header(user) {
             header.innerHTML = "";
             logOut();
         }
+
+        createSmallImage(user)
     }
 
     logga.onclick = function() {
         location.href = 'index.html';
+
+
     };
 
     scroll.onclick = function() {
         location.href = '../html/search.html';
+
+
     };
 
     about.onclick = function() {
@@ -99,6 +102,7 @@ function createSmallImage(user) {
 
 
                     document.querySelector(".signOut").append(smallImage)
+
 
                     smallImage.onclick = function() {
                         location.href = '../html/profile.html'

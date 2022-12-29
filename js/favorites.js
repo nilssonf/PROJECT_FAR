@@ -39,7 +39,7 @@ function getFavoriteId() {
         let drinks = document.querySelectorAll('.text');
         drinks.forEach(drink => {
             let drinkName = drink.querySelector('h3').textContent;
-            drink.addEventListener("click", function () {
+            drink.addEventListener("click", function() {
                 fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
                     .then(r => r.json())
                     .then(rsc => {
@@ -104,9 +104,9 @@ function createFavorites(drinks) {
 
     let heart = document.querySelectorAll('.heartImgFav');
     heart.forEach(h => {
-        h.addEventListener('click', function () {
+        h.addEventListener('click', function() {
             let clickedIdRemove = h.id;
-            deleteFavorite(clickedIdRemove);
+            deleteFavorite(clickedIdRemove, user);
         });
     });
 }
@@ -128,25 +128,52 @@ function addNewFavorite(clickedId) {
         .then(rsc => console.log(rsc));
 }
 
-function deleteFavorite(clickedIdRemove) {
+function deleteFavorite(clickedIdRemove, user) {
 
-    let deleteFavorite = {
-        drinkId: clickedIdRemove,
-    };
+    let u1 = user
+    let u2 = String(user)
+    console.log(u1)
+    console.log(u2)
 
-    const deleteFav = new Request("../php/deleteFavorites.php", {
-        method: 'DELETE',
-        body: JSON.stringify(deleteFavorite),
-        headers: { "Content-type": "application/json" }
-    });
-
-    fetch(deleteFav)
+    fetch("../php/favorites.json")
         .then(r => r.json())
-        .then(rsc => {
-            console.log(rsc);
-        });
+        .then(fav => {
+            fetch("../php/users.json")
+                .then(r => r.json())
+                .then(u => {
+                    u.forEach(usr => {
+                        if (usr.id == user) {
+                            fav.forEach(f => {
+                                if (clickedIdRemove == f.drinkId && f.userId == user) {
+                                    let deleteFavorite = {
+                                        favoriteId: f.favoriteId,
+                                    };
 
-    location.reload();
+                                    const deleteFav = new Request("../php/deleteFavorites.php", {
+                                        method: 'DELETE',
+                                        body: JSON.stringify(deleteFavorite),
+                                        headers: { "Content-type": "application/json" }
+                                    });
+
+                                    fetch(deleteFav)
+                                        .then(r => r.json())
+                                        .then(rsc => {
+                                            console.log(rsc);
+                                        });
+                                    setTimeout(() => {
+
+                                        location.reload();
+                                    }, 200);
+                                }
+                            })
+                        }
+                    })
+                })
+
+        })
+
+
+
 }
 
 getFavoriteId();

@@ -26,16 +26,16 @@
         "picture": "..\/profiles\/dog06.jpg"
     },
     {
-        "id": 4,
+        "id": "4",
         "email": "sebbe@hacker.com",
         "password": "mppTheBest21",
         "name": "Sebbe",
         "age": 34,
         "occupation": "Teacher",
-        "picture": "profiles\/standard_picture.png"
+        "picture": "..\/profiles\/standard_picture.png"
     },
     {
-        "id": 5,
+        "id": "5",
         "email": "mallan@gmail.com",
         "password": "arug56sg!",
         "name": "Malin",
