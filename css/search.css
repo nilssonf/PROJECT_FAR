@@ -3,6 +3,7 @@
     src: url('../fonts/Inter-Regular.ttf');
 }
 
+<<<<<<< Updated upstream
 #searchWrapper {
     display: flex;
     justify-content: center;
@@ -10,6 +11,44 @@
 
 html {
   scroll-behavior: smooth;
+=======
+@font-face {
+    font-family: 'BottledFontOutlined';
+    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+
+}
+
+#searchTitle{
+    font-family: 'BottledFontOutlined';
+    font-size: 70px;
+    color: #ec6542;
+    text-align: center;
+    margin: 0;
+}
+
+#searchWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    margin-top: 150px;
+}
+
+#backgroundDiv1{
+    background-image: url(../images/kdhaafafa.png);
+    grid-area: 1 / 1 / span 2 / span 1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 10%;
+}
+
+#backgroundDiv2{
+    background-image: url(../images/adasdao.png);
+    grid-area: 1 / 2 / span 2 / span 1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    opacity: 10%;
+>>>>>>> Stashed changes
 }
 
 /* TODO: Fix responsive, looks wierd on smaller screen */
