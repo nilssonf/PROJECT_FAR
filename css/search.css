@@ -8,6 +8,11 @@
     src: url('../fonts/TiemposHeadline-Regular.otf');
 }
 
+@font-face {
+    font-family: 'BottledFontOutlined';
+    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+}
+
 body{
     display: flex;
     justify-content: center;
@@ -16,12 +21,6 @@ body{
 
 html {
   scroll-behavior: smooth;
-}
-
-@font-face {
-    font-family: 'BottledFontOutlined';
-    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
-
 }
 
 #searchTitle{
@@ -62,27 +61,14 @@ html {
 
 }
 
-#backgroundDiv2{
-    background-image: url(../images/adasdao.png);
-    grid-area: 1 / 2 / span 2 / span 1;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right;
-}
-
 #searchTitleDiv{
     grid-area: 1 / 1 / span 1/ span 2;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 #container {
     display: flex;
     justify-content: center;
     grid-area: 3 / 1 / span 1/ span 2;
-    
 }
 
 #wrapper {
@@ -233,7 +219,7 @@ html {
     width: 100%
 }
 
-h3 {
+.drinkBoxH3{
     font-size: xx-large;
     color: #ec6542;
 }
