@@ -13,7 +13,7 @@
     z-index: 2000;
 }
 
-.create-popup{
+.create-popup {
     position: fixed;
     z-index: 10000;
     background-color: rgba(236, 101, 67, 0.9);
@@ -22,12 +22,29 @@
 }
 
 .welcome-popup {
-    padding-top: 20px;
-    padding-bottom: 60px;
+    padding: 80px;
     left: 0;
     width: 40%;
     background-color: rgba(236, 101, 67, 0.9);
     border-radius: 50px;
+}
+
+.welcomeContent {
+    color: white;
+    font-family: Inter;
+}
+
+.closeButton,
+.profileButton {
+    background-color: rgb(230, 161, 144);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    font-family: Inter;
 }
 
 .createContent {
@@ -47,7 +64,7 @@
     z-index: 20000;
 }
 
-.closeCreate{
+.closeCreate {
     position: absolute;
     right: 20px;
     padding-top: 20px;
@@ -59,7 +76,6 @@
 .closeCreate:hover {
     cursor: pointer;
     opacity: 0.3;
-
 }
 
 .closeCreate:before,
@@ -84,24 +100,24 @@
     color: white;
 }
 
-.createH2{
+.createH2 {
     font-family: "Inter";
     color: white;
 }
 
-.createLabelStyle{
+.createLabelStyle {
     font-family: "Inter";
     color: white;
     padding: 10px;
 }
 
-.createInput{
+.createInput {
     border: none;
     border-radius: 50px;
     padding: 5px;
 }
 
-.createAndSign{
+.createAndSign {
     background-color: rgb(230, 161, 144);
     color: white;
     padding: 10px 20px;
@@ -111,12 +127,12 @@
     margin-bottom: 10px;
 }
 
-.createAndSign:hover{
+.createAndSign:hover {
     cursor: pointer;
     background-color: rgba(230, 161, 144, 0.5);
 }
 
-.wrongMessage{
+.wrongMessage {
     font-family: "Inter";
     color: white;
 }
