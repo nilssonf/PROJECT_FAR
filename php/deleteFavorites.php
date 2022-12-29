@@ -18,15 +18,15 @@ $existingFavorites = json_decode(file_get_contents($filename), true);
 
 
 
-$id = $requestData["drinkId"];
+$id = $requestData["favoriteId"];
 
 forEach($existingFavorites as $index => $fave) {
 
-    if ($id == $fave["drinkId"]) {
+    if ($id == $fave["favoriteId"]) {
         array_splice($existingFavorites, $index, 1);
         $json = json_encode($existingFavorites, JSON_PRETTY_PRINT);
         file_put_contents($filename, $json);
-        applyJSON($fave["drinkId"]);
+        applyJSON($fave["favoriteId"]);
     } 
 }
 

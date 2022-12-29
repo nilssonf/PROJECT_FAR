@@ -2,12 +2,12 @@
     {
         "favoriteId": 1,
         "drinkId": "11007",
-        "userId": 1
+        "userId": "1"
     },
     {
         "favoriteId": 3,
         "drinkId": "11006",
-        "userId": 1
+        "userId": "1"
     },
     {
         "favoriteId": 10,
@@ -20,11 +20,6 @@
         "userId": "3"
     },
     {
-        "favoriteId": 14,
-        "drinkId": "12560",
-        "userId": "1"
-    },
-    {
         "favoriteId": 15,
         "drinkId": "11021",
         "userId": "1"
@@ -33,11 +28,6 @@
         "favoriteId": 19,
         "drinkId": "178333",
         "userId": "3"
-    },
-    {
-        "favoriteId": 20,
-        "drinkId": "11000",
-        "userId": "2"
     },
     {
         "favoriteId": 21,
@@ -53,11 +43,6 @@
         "favoriteId": 23,
         "drinkId": "13214",
         "userId": "2"
-    },
-    {
-        "favoriteId": 24,
-        "drinkId": "17222",
-        "userId": "1"
     },
     {
         "favoriteId": 25,
@@ -81,17 +66,7 @@
     },
     {
         "favoriteId": 29,
-        "drinkId": "11000",
+        "drinkId": "12560",
         "userId": "3"
-    },
-    {
-        "favoriteId": 30,
-        "drinkId": "13501",
-        "userId": "5"
-    },
-    {
-        "favoriteId": 31,
-        "drinkId": "13501",
-        "userId": "5"
     }
 ]
