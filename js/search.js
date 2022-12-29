@@ -49,7 +49,7 @@ function createDrinks(rsc) {
                <div class="imgWrap">
                    <img src="${drinkImg}" class="drinkImg">
                </div>
-               <div class="text" id='${id}'>
+               <div class="text searchDiv" id='${id}'>
                    <h3>${oneDrink} </h3>
                    <div class="tags">
                        <p> ${drinkAlcoholic} </p>
@@ -82,6 +82,9 @@ function createDrinks(rsc) {
     all.forEach(div => {
         div.addEventListener('click', function() {
             buildDrinkPopUp(div.id);
+            if (div.classList.contains("searchDiv")) {
+                sessionStorage.setItem("class", "searchDiv")
+            }
         });
     });
     sessionStorage.removeItem('ingName');
@@ -436,14 +439,18 @@ function getClickedIngretidant() {
 }
 
 function getClickedDrink() {
+
     let clickedDrinkId = sessionStorage.getItem('topDrinkId');
+    console.log(clickedDrinkId)
 
     if (clickedDrinkId != null) {
         buildDrinkPopUp(clickedDrinkId);
         document.getElementById('wrapper').innerHTML = '';
     }
-
     sessionStorage.removeItem('topDrinkId');
+
+
+
 }
 
 function clearSelect() {
@@ -510,6 +517,7 @@ function backToTop() {
 
 }
 
+getClickedDrink()
 getDrinksByLetter('a');
 getsearchedDrink();
 createAlphabet();
@@ -518,6 +526,5 @@ getCategory();
 getGlass();
 getIngrediants();
 getClickedIngretidant();
-getClickedDrink();
 clearSelect();
 backToTop();
