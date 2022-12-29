@@ -161,8 +161,11 @@ html {
     border: 1px #ec6542 dashed;
 }
 
-.filterContainer h3 {
+.filterH3 {
     margin-left: 20px;
+    font-family: 'Inter';
+    font-size: x-large;
+    color: #ec6542;
 }
 
 #filterAlcohol, #filterCategory, 
@@ -170,8 +173,7 @@ html {
     padding: 10px;
 }
 
-.text,
-.filterContainer h3 {
+.text {
     font-family: 'Inter';
 }
 
