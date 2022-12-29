@@ -46,10 +46,11 @@ function getFavoriteId() {
                         let topDrinkId = rsc.drinks[0].idDrink;
                         sessionStorage.setItem("topDrinkId", topDrinkId);
                         location.href = "../html/search.html";
+
                     });
             });
         });
-    }, 1000);
+    }, 200);
 }
 
 

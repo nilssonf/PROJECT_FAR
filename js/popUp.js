@@ -230,12 +230,16 @@ function choosenDrink(rsc) {
     close.href = "#";
     overlay.append(close);
 
+    sessionStorage.getItem("class")
     close.addEventListener("click", function(event) {
-        document.getElementById("overlay").style.display = "none";
-
-
-        // history.back()
         location.href = "../html/search.html"
+        document.getElementById("overlay").style.display = "none";
+        if (sessionStorage.getItem("class") != "searchDiv") {
+            history.back()
+            sessionStorage.removeItem("class")
+
+        }
+        sessionStorage.removeItem("class")
 
 
     });
