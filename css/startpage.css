@@ -122,6 +122,9 @@
 #drinkIngredients {
   margin-top: 30vh;
   text-align: center;
+  font-family: 'BottledFontOutlined';
+  color: #ec6542bd;
+  font-size: 70px;
 }
 
 #topIngredients {
