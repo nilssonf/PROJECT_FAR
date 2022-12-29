@@ -26,6 +26,7 @@ html {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, auto);
     margin-top: 150px;
+    position: relative;
 }
 
 #backgroundDiv1{
@@ -34,6 +35,8 @@ html {
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 10%;
+    position: relative;
+    z-index: -1;
 }
 
 #backgroundDiv2{
@@ -43,6 +46,8 @@ html {
     background-size: contain;
     background-position: right;
     opacity: 10%;
+    position: relative;
+    z-index: -1;
 
 }
 
