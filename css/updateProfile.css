@@ -34,7 +34,10 @@
 }
 
 #profilePic {
-    padding-left: 120px;
+    border: 1px white dashed;
+    padding: 12px 5px 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 50px;
 }
 
 .updateDone {
