@@ -50,7 +50,7 @@ function createDrinks(rsc) {
                    <img src="${drinkImg}" class="drinkImg">
                </div>
                <div class="text searchDiv" id='${id}'>
-                   <h3>${oneDrink} </h3>
+                   <h3 class="drinkBoxH3">${oneDrink} </h3>
                    <div class="tags">
                        <p> ${drinkAlcoholic} </p>
                        <p>${drinkCategory} </p>

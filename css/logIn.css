@@ -31,7 +31,7 @@
 
 .welcomeContent {
     color: white;
-    font-family: Inter;
+    font-family: "Inter";
 }
 
 .closeButton,
@@ -44,7 +44,7 @@
     cursor: pointer;
     margin-bottom: 10px;
     opacity: 0.9;
-    font-family: Inter;
+    font-family: "Inter";
 }
 
 .createContent {

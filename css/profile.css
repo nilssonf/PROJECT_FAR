@@ -38,7 +38,7 @@ body {
     gap: 5%;
 }
 
-h1,
+.profileNameTitle,
 #info p span,
 #latest,
 #fav {
