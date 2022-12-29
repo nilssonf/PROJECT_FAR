@@ -3,21 +3,21 @@
     src: url('../fonts/Inter-Regular.ttf');
 }
 
-.updateH2{
+.updateH2 {
     font-family: "Inter";
     color: white;
 }
 
-.updateLabels{
+.updateLabels {
     font-family: "Inter";
     color: white;
 }
 
-.updateStyle{
+.updateStyle {
     padding: 10px;
 }
 
-#profilePic::file-selector-button{
+#profilePic::file-selector-button {
     background-color: rgb(230, 161, 144);
     color: white;
     padding: 10px 20px;
@@ -28,12 +28,16 @@
     margin-bottom: 10px;
 }
 
-#profilePic::file-selector-button:hover{
+#profilePic::file-selector-button:hover {
     cursor: pointer;
     background-color: rgba(230, 161, 144, 0.5);
 }
 
-.updateDone{
+#profilePic {
+    padding-left: 120px;
+}
+
+.updateDone {
     background-color: rgb(230, 161, 144);
     color: white;
     padding: 10px 20px;
@@ -43,35 +47,34 @@
     margin-bottom: 10px;
 }
 
-.updateDone:hover{
+.updateDone:hover {
     cursor: pointer;
     background-color: rgba(230, 161, 144, 0.5);
 }
 
-.updateInput{
+.updateInput {
     border: none;
     border-radius: 50px;
     padding: 5px;
 }
 
-#updateOverlay{
+#updateOverlay {
     position: absolute;
     display: none;
     overflow-y: scroll;
     width: 100%;
-    height: 100%;
+    height: 80%;
     z-index: 30000;
     justify-content: center;
 }
 
-
-.updateContainer{
+.updateContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.update-popup{
+.update-popup {
     position: fixed;
     z-index: 10000;
     background-color: rgba(236, 101, 67, 0.9);
@@ -79,13 +82,12 @@
     width: 40%;
 }
 
-.updateContent{
+.updateContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
 }
-
 
 .closeUpdateHeart {
     position: absolute;
@@ -99,7 +101,6 @@
 .closeUpdateHeart:hover {
     opacity: 0.3;
     cursor: pointer;
-
 }
 
 .closeUpdateHeart:before,
@@ -110,7 +111,6 @@
     height: 33px;
     width: 2px;
     background-color: rgb(251, 251, 251);
-
 }
 
 .closeUpdateHeart:before {
@@ -121,17 +121,17 @@
     transform: rotate(-45deg);
 }
 
-#uploadForm{
+#uploadForm {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.paddingbtm{
+.paddingbtm {
     padding-bottom: 10px;
 }
 
-.savePicture{
+.savePicture {
     background-color: rgb(230, 161, 144);
     color: white;
     padding: 10px 20px;
@@ -141,7 +141,7 @@
     margin-bottom: 10px;
 }
 
-.savePicture:hover{
+.savePicture:hover {
     cursor: pointer;
     background-color: rgba(230, 161, 144, 0.5);
 }

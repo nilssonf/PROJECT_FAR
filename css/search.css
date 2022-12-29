@@ -3,12 +3,6 @@
     src: url('../fonts/Inter-Regular.ttf');
 }
 
-<<<<<<< Updated upstream
-#searchWrapper {
-    display: flex;
-    justify-content: center;
-}
-
 html {
   scroll-behavior: smooth;
 =======
@@ -48,37 +42,42 @@ html {
     background-size: contain;
     background-position: right;
     opacity: 10%;
->>>>>>> Stashed changes
+
 }
 
-/* TODO: Fix responsive, looks wierd on smaller screen */
+#backgroundDiv2{
+    background-image: url(../images/adasdao.png);
+    grid-area: 1 / 2 / span 2 / span 1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+
+#searchTitleDiv{
+    grid-area: 1 / 1 / span 1/ span 2;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 #container {
-    display: grid;
-    grid-template-rows: 1fr min-content;
-}
-
-#topContainer {
-    padding-top: 100px;
-    grid-row: 1/1;
-    display: grid;
-    grid-template-rows: 1fr 3fr;
+    display: flex;
+    justify-content: center;
+    grid-area: 3 / 1 / span 1/ span 2;
+    
 }
 
 #wrapper {
     width: 50vw;
-    padding: 50px 0 100px 0;
-    grid-row: 2/2;
 }
 
 .drinkBox {
-    width: 100%;
-    overflow-x: clip;
     margin: 40px 0px 40px 0px;
     justify-content: space-around;
     display: grid;
     grid-template-columns: 4fr 6fr 1fr;
-    border: 0.5px solid rgb(123, 123, 123);
+    border: 1.5px #ec6542 solid;
     box-shadow: -10px 10px rgba(236, 101, 67, 0.7);
 }
 
@@ -92,9 +91,11 @@ html {
 }
 
 .searchContainer {
+    grid-area: 2 / 1 / span 1/ span 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 #drinkName {
@@ -113,31 +114,24 @@ html {
     align-items: center;
 }
 
-.alphabetOne,
-.alphabetThree {
+.alphabetOne{
     display: flex;
-    width: 400px;
     height: 60px;
-    grid-row: 2/2;
-    gap: 7px;
+    gap: 20px;
     justify-content: center;
 }
 
 .alphabetTwo {
     display: flex;
-    width: 400px;
     height: 60px;
-    grid-row: 2/2;
-    gap: 7px;
+    gap: 20px;
     justify-content: center;
 }
 
 .alphabetThree {
     display: flex;
-    width: 400px;
     height: 60px;
-    grid-row: 2/2;
-    gap: 7px;
+    gap: 20px;
     justify-content: center;
 }
 
@@ -156,11 +150,11 @@ html {
 }
 
 .filterContainer {
-    height: 280px;
-    margin-top: 440px;
+    margin-right: 50px;
+    margin-top: 50px;
+    height: fit-content;
     width: 250px;
     position: relative;
-    right: 170px;
     border: 1px #ec6542 dashed;
 }
 
@@ -168,13 +162,52 @@ html {
     margin-left: 20px;
 }
 
+#filterAlcohol, #filterCategory, 
+#filterGlass, #filterIngredient {
+    padding: 10px;
+}
+
 .text,
 .filterContainer h3 {
     font-family: 'Inter';
 }
 
+#clearFiltersDiv {
+    padding: 10px;
+
+}
+#clearFilters {
+    margin-left: 15px;
+    width: 100px;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ec6542;
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-weight: bold;
+    background-color: white;
+    color: #ec6442c1;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+#clearFilters:hover {
+    color: #ec6442c1;
+    background-color: #ec644238;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.text h3 {
+    transition: 0.5s;
+}
+
 .text:hover {
     cursor: pointer;
+}
+
+.text:hover h3 {
+    color: #ec644295;
 }
 
 .tags {
@@ -313,15 +346,16 @@ select {
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 50px;
+    width: 210px;
 }
 
 #toTop {
-  display: none;
-  height: 40px;
-  position: fixed;
-  bottom: 20px;
-  right: 30px; 
-  z-index: 99; 
-  cursor: pointer;
-  transition: 0.5s;
+    display: none;
+    height: 40px;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    cursor: pointer;
+    transition: 0.5s;
 }

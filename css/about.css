@@ -136,6 +136,11 @@ img{
     border-radius: 50%;
 }
 
+.flip-card-back p {
+    font-family: "pFont";
+    margin-top: 0;
+}
+
 .aboutCircle{
     font-family: "Inter";
 }

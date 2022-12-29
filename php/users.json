@@ -1,5 +1,4 @@
-[
-    {
+[{
         "id": "1",
         "email": "anna@gmail.com",
         "password": "blueOrange96!%%",
@@ -18,13 +17,13 @@
         "picture": "..\/profiles\/sebbe.jpeg"
     },
     {
-        "id": 3,
+        "id": "3",
         "email": "rebecca@gmail.com",
         "password": "abc1vnerue!",
         "name": "Rebecca",
-        "age": 20,
+        "age": "20",
         "occupation": "Student",
-        "picture": "profiles\/202212151317.png"
+        "picture": "..\/profiles\/dog06.jpg"
     },
     {
         "id": 4,
@@ -42,6 +41,6 @@
         "name": "Malin",
         "age": 28,
         "occupation": "Graphic designer",
-        "picture": "profiles\/standard_picture"
+        "picture": "..\/profiles\/standard_picture.png"
     }
 ]

@@ -21,8 +21,8 @@ function header(user) {
     if (user == 0) {
         let signIn = document.createElement("div");
         signIn.innerHTML = `
-        <img src="../profiles/circle.png" class="circle">
-            <p class="menuElm" id="signIn""> Sign in</p> `;
+        <p class="menuElm" id="signIn""> Sign in</p> 
+        <img src="../profiles/circle.png" class="circle">`;
 
         signIn.classList.add("signIn");
         header.append(logga, scroll, about, signIn);
@@ -34,6 +34,7 @@ function header(user) {
                 let psw = document.querySelector('[id="psw"]').value;
                 document.querySelector(".signInForm").remove();
 
+
                 header.innerHTML = "";
                 logIn(username, psw);
                 // setTimeout(() => {
@@ -42,6 +43,7 @@ function header(user) {
             });
         });
     } else {
+
 
         createSmallImage(user)
 
@@ -52,7 +54,7 @@ function header(user) {
         let signOut = document.createElement("div");
         signOut.innerHTML = `<p  class='standard'>Sign out</p>`;
         signOut.classList.add("signOut", "menuElm");
-    
+
         header.append(logga, scroll, about, favourites, signOut);
 
         favourites.onclick = function() {
@@ -83,24 +85,26 @@ function header(user) {
 
 header(sessionStorage.getItem("user"));
 
+
 function createSmallImage(user) {
     fetch('../php/users.json')
-    .then(r => r.json())
-    .then(rsc => {
-        rsc.forEach(u => {
-            if (u.id === user) {
-                let userPic = u.picture
+        .then(r => r.json())
+        .then(rsc => {
+            rsc.forEach(u => {
+                if (u.id === user) {
+                    let smallImage = document.createElement("img")
+                    let userPic = u.picture
+                    smallImage.classList.add("smallImage")
+                    smallImage.src = userPic;
 
-                let smallImage = document.createElement("img")
-                smallImage.classList.add("smallImage")
-                smallImage.src = userPic;
 
-                document.querySelector(".signOut").append(smallImage)
+                    document.querySelector(".signOut").append(smallImage)
 
-                smallImage.onclick = function () {
-                location.href = '../html/profile.html'
+                    smallImage.onclick = function() {
+                        location.href = '../html/profile.html'
+                    }
                 }
-            }
+
+            })
         })
-    })
 }

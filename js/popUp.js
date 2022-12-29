@@ -1,5 +1,6 @@
 function buildDrinkPopUp(id) {
 
+
     document.getElementById("overlay").style.display = "flex";
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -7,7 +8,7 @@ function buildDrinkPopUp(id) {
         .then(rsc => {
             choosenDrink(rsc);
             let comt = document.querySelector('textarea');
-            comt.addEventListener('keyup', function () {
+            comt.addEventListener('keyup', function() {
                 let maxLength = 120;
                 let currentLength = comt.value.length;
                 let left = maxLength - currentLength;
@@ -180,10 +181,10 @@ function choosenDrink(rsc) {
     drinkBox.classList.add("showOneDrinkDiv");
 
     drinkBox.innerHTML = `
-        <div><img class="overlayDrinkImg" src="${drinkImg}"></div>
+        <div class="drinkWrap"><img class="overlayDrinkImg" src="${drinkImg}"></div>
         <div>
             <h2 class="oneDrinkName">${drinkName}</h2>
-            <h3 class="oneDrinkH3">Ingredients:</h3>
+            <h3 class="oneDrinkH3">Ingredients</h3>
             <div class="ingredientsDiv">
                 <div class="imgContainer">${imgDiv.innerHTML}</div>
                 <div class="ingrContainer">${ingrDiv.innerHTML}</div>
@@ -194,11 +195,11 @@ function choosenDrink(rsc) {
             <img src="../images/gilla.png" class="heartImg" id="${drinkId}">
             <div id="instruct">
             <div class="steps">
-            <h3 class="oneDrinkH3">Steps:</h3>
+            <h3 class="oneDrinkH3">Steps</h3>
             <p class="align-left">${drinkInstructions}</p>
             </div>
             <div class="steps">
-            <h3 class="oneDrinkH3">Recommended glass:</h3>
+            <h3 class="oneDrinkH3">Recommended glass</h3>
             <p>${drinkGlass}</p>
             </div>
             </div>
@@ -212,10 +213,7 @@ function choosenDrink(rsc) {
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
 
-        h.addEventListener('click', function () {
-            console.log('Hej');
-
-
+        h.addEventListener('click', function() {
             if (user === 0) {
                 createLoginViaHeart();
             } else {
@@ -232,10 +230,14 @@ function choosenDrink(rsc) {
     close.href = "#";
     overlay.append(close);
 
-    close.addEventListener("click", function (event) {
+    close.addEventListener("click", function(event) {
         document.getElementById("overlay").style.display = "none";
 
-        window.location.href = "../html/search.html";
+
+        // history.back()
+        location.href = "../html/search.html"
+
+
     });
 }
 
