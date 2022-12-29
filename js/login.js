@@ -48,13 +48,13 @@ function createLogin() {
             <div class="form-popup" id="myForm">
             <div class="form-container" id="signInBtn">
             
-            <h2>Sign in</h2>
+            <h2 class ="loginH">Sign in</h2>
 
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" id="email" required>
+            <label for="username"><b>Email</b></label>
+            <input type="text" id="email" required>
         
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" required>
+            <input type="password"  id="psw" required>
         
             <p class= "wrongInlogg">Email/password is incorrect</p>
             
