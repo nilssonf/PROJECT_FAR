@@ -34,6 +34,7 @@ function header(user) {
                 let psw = document.querySelector('[id="psw"]').value;
                 document.querySelector(".signInForm").remove();
 
+
                 header.innerHTML = "";
                 logIn(username, psw);
                 // setTimeout(() => {
