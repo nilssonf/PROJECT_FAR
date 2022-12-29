@@ -104,14 +104,14 @@ function createLoginViaHeart() {
             <div class="form-popup-heart" id="myFormHeart">
             <div class="form-container-heart">
             
-            <h2>You are not logged in</h2>
-            <p>Create an account or log in on an already excisting one</p>
+            <h2 class="notH2">You are not logged in</h2>
+            <p class="createP">Create an account or log in on an already excisting one</p>
 
             <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" id="email" required>
+            <input type="text" placeholder="Enter Email" id="email" class="inputByHeart" required>
         
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" required>
+            <input type="password" placeholder="Enter Password" id="psw" class="inputByHeart" required>
         
             <button class="btn sign_in">Sign in </button>
             <button class="btn createFromHeart">Create Account</button>

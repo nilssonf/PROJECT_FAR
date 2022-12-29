@@ -76,8 +76,6 @@ function createLogin() {
         document.querySelector(".signInForm").remove();
 
         createProfilePopup()
-        closeCreateBtn()
-
     });
     return signInForm;
 
@@ -138,6 +136,8 @@ function createProfilePopup() {
     `;
     document.querySelector("body").append(createUser);
 
+    closeCreateBtn()
+
     let createUserButton = document.querySelector('.createAndSign');
     createUserButton.addEventListener("click", function(event) {
         event.preventDefault()
@@ -176,10 +176,12 @@ function createProfilePopup() {
 }
 
 function closeCreateBtn() {
+
     let close = document.createElement("a");
     close.classList.add("closeCreate");
     close.addEventListener("click", function() {
         document.querySelector(".createUser").remove();
+        location.reload();
     });
 
     document.getElementById("createClose").append(close);
