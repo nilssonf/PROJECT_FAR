@@ -387,6 +387,10 @@ select {
     width: 210px;
 }
 
+select:hover{
+    cursor: pointer;
+}
+
 #toTop {
     display: none;
     height: 40px;
