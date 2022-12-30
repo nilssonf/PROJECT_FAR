@@ -13,9 +13,9 @@
         "email": "fanny@hotmail.com",
         "password": "mastiffLover!",
         "name": "Fanny",
-        "age": "30",
+        "age": "29",
         "occupation": "Student",
-        "picture": "..\/profiles\/sebbe.jpeg"
+        "picture": "..\/profiles\/1672408285-fannysurf.JPG"
     },
     {
         "id": "3",
@@ -33,7 +33,7 @@
         "name": "Sebbe",
         "age": 34,
         "occupation": "Teacher",
-        "picture": "..\/profiles\/standard_picture.png"
+        "picture": "..\/profiles\/sebbe.jpeg"
     },
     {
         "id": "5",
