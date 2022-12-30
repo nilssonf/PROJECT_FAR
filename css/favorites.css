@@ -24,10 +24,11 @@
     min-height: 100vh;
 }
 
-h1 {
-    padding-top: 100px;
+.favoritesDrinks {
+    padding-top: 150px;
     z-index: 1;
     font-family: "Inter";
+    color: #EC6543;
 }
 
 .favoriteBox {
@@ -35,13 +36,12 @@ h1 {
     justify-content: space-around;
     display: grid;
     grid-template-columns: 4fr 6fr 1fr;
-    border: 0.5px solid rgb(123, 123, 123);
+    border: 1.5px #ec6542 solid;
     box-shadow: -10px 10px rgba(236, 101, 67, 0.7);
 }
 
 .imgWrap {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
 }
 
