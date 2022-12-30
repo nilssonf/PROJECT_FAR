@@ -180,15 +180,6 @@ function createSettingsPopUp(user) {
     `;
     document.getElementById("updateOverlay").append(updateUser);
 
-    document.querySelector(".savePicture").addEventListener("click", function() {
-        // fetch("../php/addProfilePicture.php")
-        //     .then(r => r.json)
-        //     .then(data => {
-        //         console.log(data)
-        //     })
-        document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile"
-    })
-
     const form = document.getElementById("uploadForm");
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -201,14 +192,20 @@ function createSettingsPopUp(user) {
         });
 
         fetch(request)
-            .then(r => r.json())
+            .then(r => {
+                if (r.status == 201) {
+                    document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile"
+                }
+                return r.json()
+            })
             .then(data => {
-                console.log(data);
 
 
                 let btnUpdate = document.querySelector(".updateDone");
 
                 btnUpdate.addEventListener("click", function() {
+
+
 
                     let searchPath = data.destination
 
