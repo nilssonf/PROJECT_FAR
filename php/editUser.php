@@ -22,6 +22,7 @@
     $age = $requestData["age"];
     $occupation = $requestData["occupation"];
     $picture = $requestData["picture"];
+    
 
     if(!isset($email) || !isset($password) || !isset($name) || !isset($age) || !isset($occupation) || !isset($picture)) {
         applyJSON([

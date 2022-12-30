@@ -112,6 +112,8 @@ function createLoginViaHeart() {
         
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" id="psw" class="inputByHeart" required>
+
+            <p class="wrongInlogg">Email/password is incorrect</p>
         
             <button class="btn sign_in">Sign in </button>
             <button class="btn createFromHeart">Create Account</button>
@@ -123,9 +125,12 @@ function createLoginViaHeart() {
             
             `;
 
+
     document.querySelector('body').append(signInFormByHeart);
     document.getElementById('myFormHeart').append(close);
     document.getElementById('myFormHeart').style.display = 'flex';
+    document.querySelector(".wrongInlogg").style.display = "none";
+
 
     document
         .querySelector('.createFromHeart')
@@ -138,8 +143,17 @@ function createLoginViaHeart() {
         let username = document.querySelector('[id="email"]').value;
         let psw = document.querySelector('[id="psw"]').value;
 
+        fetch("../php/users.json")
+            .then(r => r.json())
+            .then(rsc => {
+                for(let i = 0; i < rsc.length; i++){
+                    if(rsc[i].password == psw){
+                        document.querySelector(".form-popup-heart").remove();
+                    }
+                }
+            });
+
         logIn(username, psw);
-        document.querySelector(".form-popup-heart").remove();
     });
 }
 

@@ -180,10 +180,6 @@ function createSettingsPopUp(user) {
     `;
     document.getElementById("updateOverlay").append(updateUser);
 
-    document.querySelector(".savePicture").addEventListener("click", function() {
-        document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile"
-    })
-
     const form = document.getElementById("uploadForm");
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -196,44 +192,55 @@ function createSettingsPopUp(user) {
         });
 
         fetch(request)
-            .then(r => r.json())
+            .then(r => {
+                if (r.status == 201) {
+                    document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile"
+                }
+                return r.json()
+            })
             .then(data => {
-                console.log(data);
+
+
+                let btnUpdate = document.querySelector(".updateDone");
+
+                btnUpdate.addEventListener("click", function() {
+
+
+
+                    let searchPath = data.destination
+
+                    let updUser = {
+                        id: sessionStorage.getItem("user"),
+                        email: document.getElementById("mail").value,
+                        password: document.getElementById("password").value,
+                        name: document.getElementById("name").value,
+                        age: document.getElementById("age").value,
+                        occupation: document.getElementById("occupation").value,
+                        picture: searchPath
+                    };
+
+                    const addUpdUser = new Request("../php/editUser.php", {
+                        method: 'PUT',
+                        body: JSON.stringify(updUser),
+                        headers: { "Content-type": "application/json" }
+                    });
+
+                    fetch(addUpdUser)
+                        .then(r => r.json())
+                        .then(rsc => console.log(rsc));
+
+                    location.reload();
+                    document.getElementById("updateOverlay").remove();
+
+                });
+
+
             });
     });
 
-    let btnUpdate = document.querySelector(".updateDone");
-
-    btnUpdate.addEventListener("click", function() {
-
-        let searchPath = "../profiles/" + document.getElementById("profilePic").files[0].name;
-
-        let updUser = {
-            id: sessionStorage.getItem("user"),
-            email: document.getElementById("mail").value,
-            password: document.getElementById("password").value,
-            name: document.getElementById("name").value,
-            age: document.getElementById("age").value,
-            occupation: document.getElementById("occupation").value,
-            picture: searchPath
-        };
-
-        const addUpdUser = new Request("../php/editUser.php", {
-            method: 'PUT',
-            body: JSON.stringify(updUser),
-            headers: { "Content-type": "application/json" }
-        });
-
-        fetch(addUpdUser)
-            .then(r => r.json())
-            .then(rsc => console.log(rsc));
-
-        location.reload();
-        document.getElementById("updateOverlay").remove();
-
-    });
-
 }
+
+
 
 function closebtn() {
     let close = document.createElement('a');

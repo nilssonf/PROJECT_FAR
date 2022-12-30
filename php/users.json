@@ -40,17 +40,8 @@
         "email": "mallan@gmail.com",
         "password": "arug56sg!",
         "name": "Malin",
-        "age": 28,
+        "age": "28",
         "occupation": "Graphic designer",
-        "picture": "..\/profiles\/standard_picture.png"
-    },
-    {
-        "id": "6",
-        "email": "david@gmail.com",
-        "password": "\u00e4lskarkatter!",
-        "name": "David",
-        "age": "27",
-        "occupation": "Konsult",
-        "picture": "..\/profiles\/standard_picture.png"
+        "picture": "..\/profiles\/1672394994-dog01.jpg"
     }
 ]

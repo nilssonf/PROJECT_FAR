@@ -13,17 +13,22 @@
     src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
-#searchTitle{
+@font-face {
+    font-family: 'BottledFontOutlined';
+    src: url('../fonts/MinyaOutlineDemo-VGRjx.otf');
+}
+
+#searchTitle {
     font-family: 'BottledFontOutlined';
     font-size: 70px;
     color: #ec6542;
@@ -39,7 +44,7 @@ html {
     position: relative;
 }
 
-#backgroundDiv1{
+#backgroundDiv1 {
     background-image: url(../images/kdhaafafa.png);
     grid-area: 1 / 1 / span 2 / span 1;
     background-repeat: no-repeat;
@@ -49,7 +54,7 @@ html {
     z-index: -1;
 }
 
-#backgroundDiv2{
+#backgroundDiv2 {
     background-image: url(../images/adasdao.png);
     grid-area: 1 / 2 / span 2 / span 1;
     background-repeat: no-repeat;
@@ -58,10 +63,17 @@ html {
     opacity: 10%;
     position: relative;
     z-index: -1;
-
 }
 
-#searchTitleDiv{
+#backgroundDiv2 {
+    background-image: url(../images/adasdao.png);
+    grid-area: 1 / 2 / span 2 / span 1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+
+#searchTitleDiv {
     grid-area: 1 / 1 / span 1/ span 2;
 }
 
@@ -88,9 +100,17 @@ html {
     height: 200px;
 }
 
+.imgWrap {
+    height: 200px;
+}
+
 .heartImg {
     height: 50px;
     padding-top: 10px;
+}
+
+.heartImg:hover {
+    cursor: pointer;
 }
 
 .searchContainer {
@@ -117,7 +137,7 @@ html {
     align-items: center;
 }
 
-.alphabetOne{
+.alphabetOne {
     display: flex;
     height: 60px;
     gap: 20px;
@@ -153,7 +173,7 @@ html {
 }
 
 .filterContainer {
-    margin-right: 50px;
+    margin-right: 100px;
     margin-top: 50px;
     height: fit-content;
     width: 250px;
@@ -168,8 +188,10 @@ html {
     color: #ec6542;
 }
 
-#filterAlcohol, #filterCategory, 
-#filterGlass, #filterIngredient {
+#filterAlcohol,
+#filterCategory,
+#filterGlass,
+#filterIngredient {
     padding: 10px;
 }
 
@@ -179,8 +201,8 @@ html {
 
 #clearFiltersDiv {
     padding: 10px;
-
 }
+
 #clearFilters {
     margin-left: 15px;
     width: 100px;
@@ -221,7 +243,7 @@ html {
     width: 100%
 }
 
-.drinkBoxH3{
+.drinkBoxH3 {
     font-size: xx-large;
     color: #ec6542;
 }
@@ -287,17 +309,17 @@ label {
     color: white;
 }
 
-.notH2{
+.notH2 {
     font-family: "Inter";
     color: white;
 }
 
-.createP{
+.createP {
     font-family: "pFont";
     color: white;
 }
 
-.inputByHeart{
+.inputByHeart {
     border: none;
     border-radius: 50px;
     padding: 5px;
@@ -358,11 +380,15 @@ select {
     background-color: rgba(236, 101, 67, 0.7);
     color: white;
     border: none;
-    margin-left: 15px;
+    margin-left: 5px;
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 50px;
     width: 210px;
+}
+
+select:hover{
+    cursor: pointer;
 }
 
 #toTop {
