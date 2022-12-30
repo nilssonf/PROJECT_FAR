@@ -21,7 +21,6 @@ function logIn(username, pw) {
         .then(resp => {
             if (resp.status == 200) {
                 return resp.json();
-
             } else {
                 user = 0;
                 sessionStorage.setItem("user", user);
