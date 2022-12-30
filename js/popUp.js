@@ -56,7 +56,17 @@ function renderComments(id, parent) {
     fetch(new Request('../php/comments.json'))
         .then(r => r.json())
         .then(comments => {
-            comments.forEach(comment => {
+            console.log(comments);
+            let sorted = comments.sort((a, b) => {
+                if (a.commentId > b.commentId) {
+                    return -1;
+                }
+                if (a.commentId < b.commentId) {
+                    return 1;
+                }
+                return 0;
+            });
+            sorted.forEach(comment => {
                 if (comment.drinkId == id) {
                     let com = document.createElement('div');
                     com.classList.add('comment');
