@@ -54,6 +54,10 @@
     padding-top: 10px;
 }
 
+.heartImgFav:hover {
+    cursor: pointer;
+}
+
 .tags {
     display: flex;
     gap: 20px;
