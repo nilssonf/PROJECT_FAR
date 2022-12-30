@@ -8,7 +8,7 @@ function buildDrinkPopUp(id) {
         .then(rsc => {
             choosenDrink(rsc);
             let comt = document.querySelector('textarea');
-            comt.addEventListener('keyup', function() {
+            comt.addEventListener('keyup', function () {
                 let maxLength = 120;
                 let currentLength = comt.value.length;
                 let left = maxLength - currentLength;
@@ -25,7 +25,7 @@ function buildDrinkPopUp(id) {
             }, 200);
 
             let btn = document.querySelector('.postCom');
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 if (user == 0) {
                     createLoginViaHeart();
                 } else {
@@ -60,6 +60,7 @@ function renderComments(id, parent) {
                 if (comment.drinkId == id) {
                     let com = document.createElement('div');
                     com.classList.add('comment');
+                    com.id = `${comment.commentId}`;
                     commentBox.append(com);
 
                     fetch(new Request('../php/users.json'))
@@ -69,25 +70,68 @@ function renderComments(id, parent) {
                                 if (comment.userId == usr.id) {
 
                                     com.innerHTML = `
-                                <div>
+                                <div class='topWrap'>
                                     <p class='userName'>${usr.name}</p>
                                     <p class='date'>${comment.date}</p>
                                 </div>
+                                <div class='contentWrap'>
                                 <p class='content'>${comment.comment}</p>
+                                </div>
                                 `;
-                                }
-                                if (usr.id == user) {
-                                    com.innerHTML += `
-                                                <div class='removeContain'>
-                                                <img src='../images/trash-bin.png' class='remove'></img>
-                                                </div>
-                                            `;
                                 }
                             });
                         });
                 }
             });
         });
+
+    setTimeout(() => {
+        fetch('../php/users.json')
+            .then(resp => resp.json())
+            .then(users => {
+                users.forEach(usr => {
+                    if (usr.id == user) {
+                        console.log(usr);
+                        document.querySelectorAll('.comment').forEach(d => {
+                            if (d.querySelector('.userName').textContent == usr.name) {
+                                d.querySelector('.contentWrap').innerHTML += `
+                                    <div class='removeContain'>
+                                        <div class='hidden prompt'>
+                                            <p class='delete'>Delete?</p>
+                                            <p class='yes'>YES</p>
+                                            <p class='no'>NO</p>
+                                        </div>
+                                        <img src='../images/trash-bin.png' class='remove'></img>
+                                    </div>
+                                    `;
+                            }
+                        });
+                    }
+                });
+            });
+
+    }, 200);
+
+    setTimeout(() => {
+        let delBtns = document.querySelectorAll('.remove');
+        delBtns.forEach(btn => {
+            btn.addEventListener('click', function (event) {
+                let highestParent = event.target.parentNode.parentNode.parentNode;
+                console.log(highestParent.id);
+                highestParent.querySelector('.prompt').classList.remove('hidden');
+                event.target.classList.add('hidden');
+                let yes = highestParent.querySelector('.yes');
+                let no = highestParent.querySelector('.no');
+                no.addEventListener('click', function () {
+                    highestParent.querySelector('.prompt').classList.add('hidden');
+                    event.target.classList.remove('hidden');
+                });
+                yes.addEventListener('click', function () {
+                    deleteComment(id, parent, highestParent);
+                });
+            });
+        });
+    }, 300);
 }
 
 function postComment(id, user, parent) {
@@ -99,15 +143,36 @@ function postComment(id, user, parent) {
     };
 
     fetch(new Request('../php/createComment.php'), {
-            method: 'POST',
-            body: JSON.stringify(commentBody),
-            headers: { "Content-type": "application/json" }
-        })
+        method: 'POST',
+        body: JSON.stringify(commentBody),
+        headers: { "Content-type": "application/json" }
+    })
         .then(r => r.json())
         .then(rsc => {
             console.log(rsc);
             let currentList = document.querySelector('.comments');
             currentList.remove();
+            renderComments(id, parent);
+        });
+}
+
+function deleteComment(id, parent, div) {
+    let delBody = {
+        commentId: div.id
+    };
+
+    fetch(new Request('../php/deleteComment.php'), {
+        method: 'DELETE',
+        body: JSON.stringify(delBody),
+        headers: { "Content-type": "application/json" }
+    })
+        .then(r => r.json())
+        .then(rsc => {
+            console.log(rsc);
+            let currentList = document.querySelectorAll('.comments');
+            currentList.forEach(com => {
+                com.remove();
+            });
             renderComments(id, parent);
         });
 }
@@ -213,7 +278,7 @@ function choosenDrink(rsc) {
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
 
-        h.addEventListener('click', function() {
+        h.addEventListener('click', function () {
             if (user === 0) {
                 createLoginViaHeart();
             } else {
@@ -230,23 +295,17 @@ function choosenDrink(rsc) {
     close.href = "#";
     overlay.append(close);
 
-    sessionStorage.getItem("class")
-    close.addEventListener("click", function(event) {
-        location.href = "../html/search.html"
+    sessionStorage.getItem("class");
+    close.addEventListener("click", function (event) {
+        location.href = "../html/search.html";
         document.getElementById("overlay").style.display = "none";
         if (sessionStorage.getItem("class") != "searchDiv") {
-            history.back()
-            sessionStorage.removeItem("class")
+            history.back();
+            sessionStorage.removeItem("class");
 
         }
-        sessionStorage.removeItem("class")
+        sessionStorage.removeItem("class");
 
 
     });
 }
-
-// keyup(function () {
-//     var length = $(this).val().length;
-//     var length = maxLength - length;
-//     $('#chars').text(length);
-// });

@@ -1,4 +1,5 @@
-[{
+[
+    {
         "drinkId": "11000",
         "commentId": 1,
         "userId": 2,
@@ -8,27 +9,13 @@
     {
         "drinkId": "17213",
         "commentId": 2,
-        "userId": 5,
-        "comment": "worst drink ever... :(",
-        "date": "2022-12-07"
-    },
-    {
-        "drinkId": "17213",
-        "commentId": 3,
-        "userId": 5,
-        "comment": "changed my mind. it sucks.",
-        "date": "2022-12-07"
-    },
-    {
-        "drinkId": "17213",
-        "commentId": 3,
         "userId": 1,
         "comment": "I've heard about this drink soooo many times, can't believe this is the first time I'm trying it. Love love love it!!",
         "date": "2022-12-12"
     },
     {
         "drinkId": "17225",
-        "commentId": 2,
+        "commentId": 3,
         "userId": 1,
         "comment": "Not my cup of tea, but could definitely be something I stir up for a birthday party or something!",
         "date": "2022-12-19"
@@ -55,20 +42,6 @@
         "date": "2022-12-22"
     },
     {
-        "drinkId": "11004",
-        "commentId": 7,
-        "userId": 2,
-        "comment": "I want to drink this every day",
-        "date": "2022-12-22"
-    },
-    {
-        "drinkId": "178343",
-        "commentId": 6,
-        "userId": 3,
-        "comment": "Looove it!",
-        "date": "2022-12-22"
-    },
-    {
         "drinkId": "178332",
         "commentId": 7,
         "userId": 3,
@@ -81,5 +54,12 @@
         "userId": 3,
         "comment": "Don't like it..",
         "date": "2022-12-28"
+    },
+    {
+        "drinkId": "11007",
+        "commentId": 9,
+        "userId": 1,
+        "comment": "I really like this drink. Sometimes.",
+        "date": "2022-12-29"
     }
 ]
