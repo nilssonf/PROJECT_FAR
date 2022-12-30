@@ -2,14 +2,18 @@
 
 if(isset($_FILES["uploadProfilePic"])) {
         $source = $_FILES["uploadProfilePic"]["tmp_name"];
-        $destination = "../profiles/" . $_FILES["uploadProfilePic"]["name"];
+        $filename = $_FILES["uploadProfilePic"]["name"];
+        $time = time();
+
+        $destination = "../profiles/$time-$filename"; 
 
         if(move_uploaded_file($source, $destination)) {
             header("Content-Type: application/json");
             http_response_code(201);
 
             echo json_encode([
-                "message" => "The file was uploaded"
+                "message" => "The file was uploaded",
+                "destination" => $destination
             ]);
 
             exit();
