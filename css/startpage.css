@@ -42,13 +42,12 @@
 
 .drinkIndexContainer {
   z-index: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  left: 0px;
+  position: absolute;
 }
 
 .welcomeIndexContainer {
+  grid-area: 1 / 2;
   display: flex;
   flex-direction: column;
   padding-top: 200px;
@@ -144,12 +143,10 @@
   font-size: 25px;
   font-family: 'Inter';
   padding-top: 440px;
-  padding-left: 60px;
 }
 
 .ingredientName {
   color: #00000097;
   font-size: 25px;
   font-family: 'Inter';
-  padding-left: 20px;
 }
