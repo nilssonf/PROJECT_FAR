@@ -62,15 +62,14 @@ body {
     grid-column: 4/4;
 }
 
-.circle,
-.smallImage {
+.circle{
     height: 30px;
-    grid-column: 9/9;
 }
 
 .smallImage {
     height: 30px;
-    border-radius: 50%;
+    width: 30px;
+    border-radius: 50px;
 }
 
 .menuElm {
