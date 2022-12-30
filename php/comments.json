@@ -61,5 +61,12 @@
         "userId": 1,
         "comment": "I really like this drink. Sometimes.",
         "date": "2022-12-29"
+    },
+    {
+        "drinkId": "11021",
+        "commentId": 10,
+        "userId": 1,
+        "comment": "Wow, this drink was amazing! Highly recommend! A lot of ingredients, but so worth it.",
+        "date": "2022-12-30"
     }
 ]

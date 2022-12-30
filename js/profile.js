@@ -24,28 +24,41 @@ function renderComments(usr) {
     fetch(new Request('../php/comments.json'))
         .then(r => r.json())
         .then(rsc => {
-            let commentList = rsc;
+            let commentList = rsc.sort((a, b) => {
+                if (a.commentId > b.commentId) {
+                    return -1;
+                }
+                if (a.commentId < b.commentId) {
+                    return 1;
+                }
+                return 0;
+            });
             let notLiked = [];
+            let counter = 0;
             commentList.forEach(c => {
                 if (c.userId == usr) {
-                    let comment = document.createElement('div');
-                    comment.classList.add('comment');
-                    comments.append(comment);
+                    counter++;
+                    if (counter <= 3) {
 
-                    fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${Number(c.drinkId)}`))
-                        .then(r => r.json())
-                        .then(rsc => {
-                            let drinkName = rsc.drinks[0].strDrink;
+                        let comment = document.createElement('div');
+                        comment.classList.add('comment');
+                        comments.append(comment);
 
-                            comment.innerHTML = `
-                                <div>
-                                <p class='date'>${c.date}</p>
-                                <p class='drink'>${drinkName}</p>
-                                </div>
-                                <p class'content'>${c.comment}</p>
-                            `;
+                        fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${Number(c.drinkId)}`))
+                            .then(r => r.json())
+                            .then(rsc => {
+                                let drinkName = rsc.drinks[0].strDrink;
 
-                        });
+                                comment.innerHTML = `
+                                    <div>
+                                    <p class='date'>${c.date}</p>
+                                    <p class='drink'>${drinkName}</p>
+                                    </div>
+                                    <p class'content'>${c.comment}</p>
+                                `;
+
+                            });
+                    }
                 } else if (c.userId != usr) {
                     let drinkId = c.userId;
                     notLiked.push(drinkId);
@@ -108,7 +121,7 @@ function currentUser(user) {
                     renderRandomFav(user);
 
                     let settingsIcon = document.getElementById("settingsIcon");
-                    settingsIcon.addEventListener("click", function() {
+                    settingsIcon.addEventListener("click", function () {
                         document.getElementById("updateOverlay").style.display = "flex";
 
                         createSettingsPopUp(u);
@@ -126,7 +139,7 @@ setTimeout(() => {
     drinks.forEach(drink => {
         let drinkName = drink.textContent;
 
-        drink.addEventListener("click", function() {
+        drink.addEventListener("click", function () {
             fetch(new Request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`))
                 .then(r => r.json())
                 .then(rsc => {
@@ -181,7 +194,7 @@ function createSettingsPopUp(user) {
     document.getElementById("updateOverlay").append(updateUser);
 
     const form = document.getElementById("uploadForm");
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -194,20 +207,20 @@ function createSettingsPopUp(user) {
         fetch(request)
             .then(r => {
                 if (r.status == 201) {
-                    document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile"
+                    document.querySelector(".savePicture").innerHTML = "Your profile picture is saved, you can now update your profile";
                 }
-                return r.json()
+                return r.json();
             })
             .then(data => {
 
 
                 let btnUpdate = document.querySelector(".updateDone");
 
-                btnUpdate.addEventListener("click", function() {
+                btnUpdate.addEventListener("click", function () {
 
 
 
-                    let searchPath = data.destination
+                    let searchPath = data.destination;
 
                     let updUser = {
                         id: sessionStorage.getItem("user"),
@@ -245,7 +258,7 @@ function createSettingsPopUp(user) {
 function closebtn() {
     let close = document.createElement('a');
     close.classList.add('closeUpdateHeart');
-    close.addEventListener('click', function() {
+    close.addEventListener('click', function () {
         document.getElementById("updateOverlay").remove();
         location.reload();
     });
