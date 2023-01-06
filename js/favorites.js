@@ -136,7 +136,7 @@ function deleteFavorite(clickedIdRemove, user) {
                     u.forEach(usr => {
                         if (usr.id == user) {
                             fav.forEach(f => {
-                                if (clickedIdRemove == f.drinkId && f.userId == user) {
+                                if (clickedIdRemove == f.drinkId && Number(f.userId) == user) {
                                     let deleteFavorite = {
                                         favoriteId: f.favoriteId,
                                     };

@@ -63,5 +63,15 @@
         "favoriteId": 30,
         "drinkId": "11000",
         "userId": "1"
+    },
+    {
+        "favoriteId": 32,
+        "drinkId": "17222",
+        "userId": "2"
+    },
+    {
+        "favoriteId": 33,
+        "drinkId": "17837",
+        "userId": "2"
     }
 ]

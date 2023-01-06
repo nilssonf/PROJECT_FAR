@@ -401,3 +401,12 @@ select:hover{
     cursor: pointer;
     transition: 0.5s;
 }
+
+.heartImgFav {
+    height: 50px;
+    padding-top: 10px;
+}
+
+.heartImgFav:hover {
+    cursor: pointer;
+}
