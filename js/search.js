@@ -102,29 +102,25 @@ function createLoginViaHeart() {
     signInFormByHeart.classList.add('signInFormByHeart');
     signInFormByHeart.innerHTML = `
             <div class="form-popup-heart" id="myFormHeart">
-            <div class="form-container-heart">
+                <div class="form-container-heart">
             
-            <h2 class="notH2">You are not logged in</h2>
-            <p class="createP">Create an account or log in on an already excisting one</p>
+                    <h2 class="notH2">You are not logged in</h2>
+                    <p class="createP">Create an account or log in on an already excisting one</p>
 
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" id="email" class="inputByHeart" required>
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Email" id="email" class="inputByHeart" required>
         
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" class="inputByHeart" required>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" id="psw" class="inputByHeart" required>
 
-            <p class="wrongInlogg">Email/password is incorrect</p>
+                    <p class="wrongInlogg">Email/password is incorrect</p>
         
-            <button class="btn sign_in">Sign in </button>
-            <button class="btn createFromHeart">Create Account</button>
+                    <button class="btn sign_in">Sign in </button>
+                    <button class="btn createFromHeart">Create Account</button>
         
+                </div>
             </div>
-
-            </div>
-            
-            
             `;
-
 
     document.querySelector('body').append(signInFormByHeart);
     document.getElementById('myFormHeart').append(close);
@@ -271,7 +267,7 @@ function getGlass() {
 
 let sortArrayI = [];
 
-function getIngrediants() {
+function getIngredients() {
     fetch(
             new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`)
         )
@@ -280,9 +276,9 @@ function getIngrediants() {
             for (let drink of rsc.drinks) {
                 sortArrayI.push(drink.strIngredient1);
             }
-            let sortIngrediants = sortArrayI.sort();
+            let sortIngredients = sortArrayI.sort();
 
-            createFilterIngrediant(sortIngrediants);
+            createFilterIngredient(sortIngredients);
 
         });
 }
@@ -389,15 +385,15 @@ function createFilterGlass(glass) {
         });
     });
 }
-let ingrediantDrinksById = [];
+let ingredientDrinksById = [];
 
-function createFilterIngrediant(ingrediant) {
-    let chooseIngrediant = document.getElementById('chooseIngrediant');
-    ingrediant.forEach(i => {
+function createFilterIngredient(ingredient) {
+    let chooseIngredient = document.getElementById('chooseIngredient');
+    ingredient.forEach(i => {
 
         let option = document.createElement('option');
         option.text = i;
-        chooseIngrediant.append(option);
+        chooseIngredient.append(option);
         option.addEventListener('click', function() {
             fetch(
                     new Request(
@@ -415,11 +411,11 @@ function createFilterIngrediant(ingrediant) {
                             )
                             .then(r => r.json())
                             .then(rsc => {
-                                ingrediantDrinksById.push(rsc.drinks[0]);
-                                createDrinks(ingrediantDrinksById);
+                                ingredientDrinksById.push(rsc.drinks[0]);
+                                createDrinks(ingredientDrinksById);
                             });
                     });
-                    ingrediantDrinksById = [];
+                    ingredientDrinksById = [];
                 });
         });
     });
@@ -444,11 +440,11 @@ function getClickedIngretidant() {
                     )
                     .then(r => r.json())
                     .then(rsc => {
-                        ingrediantDrinksById.push(rsc.drinks[0]);
-                        createDrinks(ingrediantDrinksById);
+                        ingredientDrinksById.push(rsc.drinks[0]);
+                        createDrinks(ingredientDrinksById);
                     });
             });
-            ingrediantDrinksById = [];
+            ingredientDrinksById = [];
         });
 }
 
@@ -467,27 +463,27 @@ function clearSelect() {
     let alcohol = document.getElementById("chooseAlcohol");
     let category = document.getElementById("chooseCategory");
     let glass = document.getElementById("chooseGlass");
-    let ingrediant = document.getElementById("chooseIngrediant");
+    let ingredient = document.getElementById("chooseIngredient");
     let clearAll = document.getElementById("clearFilters");
     alcohol.addEventListener("change", function(event) {
         category.value = "";
         glass.value = "";
-        ingrediant.value = "";
+        ingredient.value = "";
     });
 
     category.addEventListener("change", function(event) {
         alcohol.value = "";
         glass.value = "";
-        ingrediant.value = "";
+        ingredient.value = "";
     });
 
     glass.addEventListener("change", function(event) {
         alcohol.value = "";
         category.value = "";
-        ingrediant.value = "";
+        ingredient.value = "";
     });
 
-    ingrediant.addEventListener("change", function(event) {
+    ingredient.addEventListener("change", function(event) {
         alcohol.value = "";
         category.value = "";
         glass.value = "";
@@ -497,7 +493,7 @@ function clearSelect() {
         alcohol.value = "";
         category.value = "";
         glass.value = "";
-        ingrediant.value = "";
+        ingredient.value = "";
         getDrinksByLetter('a');
     });
 }
@@ -532,7 +528,7 @@ createAlphabet();
 getAlcoholic();
 getCategory();
 getGlass();
-getIngrediants();
+getIngredients();
 getClickedIngretidant();
 clearSelect();
 backToTop();

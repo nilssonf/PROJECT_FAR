@@ -5,7 +5,6 @@ user = Number(sessionStorage.getItem("user"));
 
 function logIn(username, pw) {
 
-
     let userObj = {
         email: username,
         password: pw
@@ -77,7 +76,6 @@ function createLogin() {
         createProfilePopup()
     });
     return signInForm;
-
 }
 
 function closeSignInBtn() {
@@ -88,14 +86,12 @@ function closeSignInBtn() {
     });
 
     document.getElementById("signInBtn").append(close);
-
 }
 
 function logOut() {
     user = 0;
     sessionStorage.setItem("user", 0);
     header(sessionStorage.getItem("user"));
-
 }
 
 function createProfilePopup() {
@@ -146,8 +142,6 @@ function createProfilePopup() {
         let ageValue = document.getElementById("age").value
         let occupationValue = document.getElementById("occupation").value
 
-
-
         let rqst_add = new Request("../php/createUser.php", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
@@ -184,7 +178,6 @@ function closeCreateBtn() {
     });
 
     document.getElementById("createClose").append(close);
-
 }
 
 function createWelcome(nameValue) {
@@ -199,21 +192,16 @@ function createWelcome(nameValue) {
     let createWelcome = document.createElement("div");
     createWelcome.innerHTML =
         `
-<div class="welcomeContainer">
- <div class="welcome-popup">
-
-    <div class="welcomeContent" >
-
-    <h2>Welcome ${nameValue}</h2>
-
-    <p>Get started by browsing some drinks and don’t forget to add the ones you like to your favorites!</p>
-    <button class="closeButton"> Close</button>
-    <button class="profileButton"> Profile</button>
-
-    </div>
-    </div>
-    </div>
-
+        <div class="welcomeContainer">
+            <div class="welcome-popup">
+                <div class="welcomeContent" >
+                    <h2>Welcome ${nameValue}</h2>
+                    <p>Get started by browsing some drinks and don’t forget to add the ones you like to your favorites!</p>
+                    <button class="closeButton"> Close</button>
+                    <button class="profileButton"> Profile</button>
+                </div>
+            </div>
+        </div>
     `;
     createWelcome.append(close);
     document.querySelector("body").append(createWelcome);

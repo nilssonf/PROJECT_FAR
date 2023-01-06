@@ -51,8 +51,8 @@ function renderComments(usr) {
 
                                 comment.innerHTML = `
                                     <div>
-                                    <p class='date'>${c.date}</p>
-                                    <p class='drink'>${drinkName}</p>
+                                        <p class='date'>${c.date}</p>
+                                        <p class='drink'>${drinkName}</p>
                                     </div>
                                     <p class'content'>${c.comment}</p>
                                 `;
@@ -216,7 +216,6 @@ function createSettingsPopUp(user) {
             .then(data => {
                 let btnUpdate = document.querySelector(".updateDone");
                 btnUpdate.addEventListener("click", function() {
-                    console.log(data)
                     let searchPath = data.destination;
 
                     let updUser = {
@@ -243,14 +242,9 @@ function createSettingsPopUp(user) {
                     document.getElementById("updateOverlay").remove();
 
                 });
-
-
             });
     });
-
 }
-
-
 
 function closebtn() {
     let close = document.createElement('a');
