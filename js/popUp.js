@@ -56,7 +56,6 @@ function renderComments(id, parent) {
     fetch(new Request('../php/comments.json'))
         .then(r => r.json())
         .then(comments => {
-            console.log(comments);
             let sorted = comments.sort((a, b) => {
                 if (a.commentId > b.commentId) {
                     return -1;
@@ -101,7 +100,6 @@ function renderComments(id, parent) {
             .then(users => {
                 users.forEach(usr => {
                     if (usr.id == user) {
-                        console.log(usr);
                         document.querySelectorAll('.comment').forEach(d => {
                             if (d.querySelector('.userName').textContent == usr.name) {
                                 d.querySelector('.contentWrap').innerHTML += `
@@ -127,7 +125,6 @@ function renderComments(id, parent) {
         delBtns.forEach(btn => {
             btn.addEventListener('click', function (event) {
                 let highestParent = event.target.parentNode.parentNode.parentNode;
-                console.log(highestParent.id);
                 highestParent.querySelector('.prompt').classList.remove('hidden');
                 event.target.classList.add('hidden');
                 let yes = highestParent.querySelector('.yes');
@@ -159,7 +156,6 @@ function postComment(id, user, parent) {
     })
         .then(r => r.json())
         .then(rsc => {
-            console.log(rsc);
             let currentList = document.querySelector('.comments');
             currentList.remove();
             renderComments(id, parent);
@@ -178,7 +174,6 @@ function deleteComment(id, parent, div) {
     })
         .then(r => r.json())
         .then(rsc => {
-            console.log(rsc);
             let currentList = document.querySelectorAll('.comments');
             currentList.forEach(com => {
                 com.remove();
