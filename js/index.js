@@ -81,7 +81,6 @@ function showTopIngredients(ingredient3) {
     const numbers = ['One', 'Two', 'Three'];
 
     ingredient3.forEach((ingredient, index) => {
-        console.log(ingredient)
         let class_name = '.ingredient' + numbers[index];
         let topIngredientOne = document.createElement('img');
         topIngredientOne.classList.add('top');

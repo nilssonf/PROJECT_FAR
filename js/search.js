@@ -455,16 +455,12 @@ function getClickedIngretidant() {
 function getClickedDrink() {
 
     let clickedDrinkId = sessionStorage.getItem('topDrinkId');
-    console.log(clickedDrinkId)
 
     if (clickedDrinkId != null) {
         buildDrinkPopUp(clickedDrinkId);
         document.getElementById('wrapper').innerHTML = '';
     }
     sessionStorage.removeItem('topDrinkId');
-
-
-
 }
 
 function clearSelect() {
@@ -504,8 +500,6 @@ function clearSelect() {
         ingrediant.value = "";
         getDrinksByLetter('a');
     });
-
-
 }
 
 function backToTop() {
