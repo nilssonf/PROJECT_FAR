@@ -53,10 +53,6 @@ function getFavoriteId() {
     }, 200);
 }
 
-
-
-
-
 function createFavorites(drinks) {
 
     if (drinks === "empty") {
@@ -130,11 +126,6 @@ function addNewFavorite(clickedId) {
 }
 
 function deleteFavorite(clickedIdRemove, user) {
-
-    let u1 = user
-    let u2 = String(user)
-    console.log(u1)
-    console.log(u2)
 
     fetch("../php/favorites.json")
         .then(r => r.json())

@@ -1,6 +1,5 @@
 function buildDrinkPopUp(id) {
 
-
     document.getElementById("overlay").style.display = "flex";
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -84,7 +83,7 @@ function renderComments(id, parent) {
                                     <p class='date'>${comment.date}</p>
                                 </div>
                                 <div class='contentWrap'>
-                                <p class='content'>${comment.comment}</p>
+                                    <p class='content'>${comment.comment}</p>
                                 </div>
                                 `;
                                 }
@@ -264,17 +263,16 @@ function choosenDrink(rsc) {
         <div class="align-right">
             <img src="../images/gilla.png" class="heartImg" id="${drinkId}">
             <div id="instruct">
-            <div class="steps">
-            <h3 class="oneDrinkH3">Steps</h3>
-            <p class="align-left">${drinkInstructions}</p>
-            </div>
-            <div class="steps">
-            <h3 class="oneDrinkH3">Recommended glass</h3>
-            <p>${drinkGlass}</p>
-            </div>
+                <div class="steps">
+                    <h3 class="oneDrinkH3">Steps</h3>
+                    <p class="align-left">${drinkInstructions}</p>
+                </div>
+                <div class="steps">
+                    <h3 class="oneDrinkH3">Recommended glass</h3>
+                    <p>${drinkGlass}</p>
+                </div>
             </div>
         </div>
-
     `;
 
     overlay.append(drinkBox);
@@ -294,7 +292,6 @@ function choosenDrink(rsc) {
         });
     });
 
-
     let close = document.createElement("a");
     close.classList.add("close");
     close.href = "#";
@@ -310,7 +307,6 @@ function choosenDrink(rsc) {
 
         }
         sessionStorage.removeItem("class");
-
 
     });
 }
