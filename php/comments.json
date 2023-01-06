@@ -1,12 +1,5 @@
 [
     {
-        "drinkId": "11000",
-        "commentId": 1,
-        "userId": 2,
-        "comment": "Love it!",
-        "date": "2022-12-07"
-    },
-    {
         "drinkId": "17213",
         "commentId": 2,
         "userId": 1,

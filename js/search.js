@@ -34,7 +34,7 @@ function createDrinks(rsc) {
         document.querySelector('#wrapper').append(noDrinks);
         wrapper.style.paddingBottom = "200px";
     }
-
+ 
     rsc.forEach(drink => {
         let id = drink.idDrink;
         let oneDrink = drink.strDrink;
@@ -42,6 +42,7 @@ function createDrinks(rsc) {
         let drinkAlcoholic = drink.strAlcoholic;
         let drinkCategory = drink.strCategory;
         let drinkGlass = drink.strGlass;
+
 
         let drinkBox = document.createElement('div');
         drinkBox.innerHTML = `
@@ -65,6 +66,35 @@ function createDrinks(rsc) {
         document.querySelector('#wrapper').append(drinkBox);
     });
 
+    fetch("../php/favorites.json")
+        .then(r => r.json())
+        .then(favObjAll => {
+            favObjAll.forEach(favObj => {
+            
+                rsc.forEach(x => {
+                    if(Number(favObj.userId) === user && favObj.drinkId === x.idDrink){
+        
+                   let likedHeart = "../images/gillasvart.png";
+                   document.querySelector(".heartImg").src = likedHeart;
+                   document.querySelector(".heartImg").classList.add("heartImgFav");
+                   document.querySelector(".heartImgFav").classList.remove("heartImg");
+                 
+
+                }
+                })
+            })
+        })
+
+let heartBlack = document.querySelectorAll('.heartImgFav')
+setTimeout(() => {
+  heartBlack.forEach(h => {
+    h.addEventListener('click', function () {
+      let clickedIdRemove = h.id
+      deleteFavorite(clickedIdRemove, user)
+    })
+  })
+}, 3000)
+
     let heart = document.querySelectorAll('.heartImg');
     heart.forEach(h => {
         h.addEventListener('click', function() {
@@ -78,6 +108,12 @@ function createDrinks(rsc) {
         });
     });
 
+  console.log(heartBlack)
+  console.log(heart)
+
+
+   
+
     let all = document.querySelectorAll('.text');
     all.forEach(div => {
         div.addEventListener('click', function() {
@@ -89,6 +125,8 @@ function createDrinks(rsc) {
     });
     sessionStorage.removeItem('ingName');
 }
+
+
 
 function createLoginViaHeart() {
     let close = document.createElement('a');
