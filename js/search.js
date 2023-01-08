@@ -9,6 +9,7 @@ function getDrinksByLetter(letter) {
         .then(r => r.json())
         .then(rsc => {
             createDrinks(rsc.drinks);
+            checkFavorites(rsc.drinks)
         });
 }
 
@@ -21,10 +22,48 @@ function getDrinksByName(name) {
         .then(r => r.json())
         .then(rsc => {
             createDrinks(rsc.drinks);
+
         });
 }
 
-function createDrinks(rsc) {
+async function checkFavorites(rsc){
+
+    let response = await fetch("../php/favorites.json");
+    let resource = await response.json();
+
+    resource.forEach(favObj => {
+                    rsc.forEach(x => {
+
+                        if(Number(favObj.userId) === user && favObj.drinkId === x.idDrink){ 
+                        console.log(x);
+
+                        return 1;
+                        } else{
+                        return 0;
+                            
+                        }
+                    })
+                })
+}
+
+async function setFavoriteClass(rsc){
+    let getFavoriteClass = await checkFavorites(rsc);
+    console.log(getFavoriteClass);
+    let heartImgClass;
+
+    if(getFavoriteClass === 1){
+        heartImgClass = "filledHeart";
+    } else if(getFavoriteClass === 0){
+        heartImgClass = "unfilledHeart";
+    }
+
+    return heartImgClass;
+}
+
+async function createDrinks(rsc) {
+    console.log(rsc);
+    let favorites = await setFavoriteClass(rsc);
+
     document.querySelector('#wrapper').innerHTML = ' ';
 
     if (rsc === null) {
@@ -34,7 +73,7 @@ function createDrinks(rsc) {
         document.querySelector('#wrapper').append(noDrinks);
         wrapper.style.paddingBottom = "200px";
     }
- 
+
     rsc.forEach(drink => {
         let id = drink.idDrink;
         let oneDrink = drink.strDrink;
@@ -59,43 +98,23 @@ function createDrinks(rsc) {
                        <p>${drinkGlass} </p>
                    </div>
                </div>
-                <img src="../images/gilla.png" class="heartImg" id="${id}">
+                <div class="${favorites}" id="${id}"> </div>
                `;
 
         drinkBox.classList.add('drinkBox');
         document.querySelector('#wrapper').append(drinkBox);
     });
 
-    fetch("../php/favorites.json")
-        .then(r => r.json())
-        .then(favObjAll => {
-            favObjAll.forEach(favObj => {
-            
-                rsc.forEach(x => {
-                    if(Number(favObj.userId) === user && favObj.drinkId === x.idDrink){
-        
-                   let likedHeart = "../images/gillasvart.png";
-                   document.querySelector(".heartImg").src = likedHeart;
-                   document.querySelector(".heartImg").classList.add("heartImgFav");
-                   document.querySelector(".heartImgFav").classList.remove("heartImg");
-                 
-
-                }
-                })
-            })
+    let heartBlack = document.querySelectorAll('.filledHeart');
+    heartBlack.forEach(h => {
+        h.addEventListener('click', function () {
+            console.log("hej");
+            let clickedIdRemove = h.id
+            deleteFavorite(clickedIdRemove, user)
         })
-
-let heartBlack = document.querySelectorAll('.heartImgFav')
-setTimeout(() => {
-  heartBlack.forEach(h => {
-    h.addEventListener('click', function () {
-      let clickedIdRemove = h.id
-      deleteFavorite(clickedIdRemove, user)
     })
-  })
-}, 3000)
 
-    let heart = document.querySelectorAll('.heartImg');
+    let heart = document.querySelectorAll('.unfilledHeart');
     heart.forEach(h => {
         h.addEventListener('click', function() {
             if (user === 0) {
@@ -108,12 +127,6 @@ setTimeout(() => {
         });
     });
 
-  console.log(heartBlack)
-  console.log(heart)
-
-
-   
-
     let all = document.querySelectorAll('.text');
     all.forEach(div => {
         div.addEventListener('click', function() {
@@ -125,7 +138,6 @@ setTimeout(() => {
     });
     sessionStorage.removeItem('ingName');
 }
-
 
 
 function createLoginViaHeart() {
@@ -459,7 +471,7 @@ function createFilterIngredient(ingredient) {
     });
 }
 
-function getClickedIngretidant() {
+function getClickedIngredient() {
     let name = sessionStorage.getItem('ingName');
 
     fetch(
@@ -567,6 +579,6 @@ getAlcoholic();
 getCategory();
 getGlass();
 getIngredients();
-getClickedIngretidant();
+getClickedIngredient();
 clearSelect();
 backToTop();
