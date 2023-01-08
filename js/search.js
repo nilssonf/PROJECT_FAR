@@ -9,7 +9,7 @@ function getDrinksByLetter(letter) {
         .then(r => r.json())
         .then(rsc => {
             createDrinks(rsc.drinks);
-            checkFavorites(rsc.drinks)
+            checkFavorites(rsc.drinks);
         });
 }
 
@@ -21,11 +21,10 @@ function getDrinksByName(name) {
     )
         .then(r => r.json())
         .then(rsc => {
-
             if (rsc.drinks == null) {
                 createDrinks(rsc.drinks);
             } else {
-
+                console.log(rsc);
                 let sorted = rsc.drinks.sort((a, b) => {
                     const nameA = a.strDrink.toUpperCase(); // ignore upper and lowercase
                     const nameB = b.strDrink.toUpperCase(); // ignore upper and lowercase
@@ -40,48 +39,73 @@ function getDrinksByName(name) {
                     return 0;
                 });
                 createDrinks(sorted);
+                checkFavorites(sorted);
             }
 
         });
 }
 
-async function checkFavorites(rsc){
+function checkFavorites(rsc) {
 
-    let response = await fetch("../php/favorites.json");
-    let resource = await response.json();
+    fetch("../php/favorites.json")
+        .then(resp => resp.json())
+        .then(resource => {
+            console.log(rsc);
+            console.log(resource);
+            resource.forEach(favObj => {
+                rsc.forEach(x => {
 
-    resource.forEach(favObj => {
-                    rsc.forEach(x => {
-
-                        if(Number(favObj.userId) === user && favObj.drinkId === x.idDrink){ 
+                    if (Number(favObj.userId) === user && favObj.drinkId === x.idDrink) {
                         console.log(x);
+                        document.querySelectorAll('.bgImg').forEach(div => {
+                            if (div.id == x.idDrink) {
+                                div.classList.remove('unfilledHeart');
+                                div.classList.add('filledHeart');
 
-                        return 1;
-                        } else{
-                        return 0;
-                            
-                        }
-                    })
-                })
+                                div.addEventListener('click', function () {
+                                    console.log("hej");
+                                    let clickedIdRemove = div.id;
+                                    deleteFavorite(clickedIdRemove, user);
+                                });
+
+                            }
+                        });
+
+
+                    }
+                });
+            });
+        });
+
+    document.querySelectorAll('.unfilledHeart').forEach(div => {
+        div.addEventListener('click', function () {
+            if (user === 0) {
+                createLoginViaHeart();
+            } else {
+                div.classList.remove('unfilledHeart');
+                div.classList.add('filledHeart');
+                let heartId = div.id;
+                addNewFavorite(heartId);
+            }
+        });
+    });
 }
 
-async function setFavoriteClass(rsc){
-    let getFavoriteClass = await checkFavorites(rsc);
-    console.log(getFavoriteClass);
-    let heartImgClass;
+// async function setFavoriteClass(rsc) {
+//     let getFavoriteClass = await checkFavorites(rsc);
+//     console.log(getFavoriteClass);
+//     let heartImgClass;
 
-    if(getFavoriteClass === 1){
-        heartImgClass = "filledHeart";
-    } else if(getFavoriteClass === 0){
-        heartImgClass = "unfilledHeart";
-    }
-
-    return heartImgClass;
-}
+//     if (getFavoriteClass === 1) {
+//         return heartImgClass = "filledHeart";
+//     } else if (getFavoriteClass === 0) {
+//         return heartImgClass = "unfilledHeart";
+//     }
+// }
 
 async function createDrinks(rsc) {
-    console.log(rsc);
-    let favorites = await setFavoriteClass(rsc);
+    // let favorites = await checkFavorites(rsc);
+    // console.log(favorites);
 
     document.querySelector('#wrapper').innerHTML = ' ';
 
@@ -104,67 +128,50 @@ async function createDrinks(rsc) {
 
         let drinkBox = document.createElement('div');
         drinkBox.innerHTML = `
-
-               <div class="imgWrap">
-                   <img src="${drinkImg}" class="drinkImg">
-               </div>
-               <div class="text searchDiv" id='${id}'>
-                   <h3 class="drinkBoxH3">${oneDrink} </h3>
-                   <div class="tags">
-                       <p> ${drinkAlcoholic} </p>
-                       <p>${drinkCategory} </p>
-      
-                       <p>${drinkGlass} </p>
-                   </div>
-               </div>
-                <div class="${favorites}" id="${id}"> </div>
-               `;
+     
+                  <div class="imgWrap">
+                      <img src="${drinkImg}" class="drinkImg">
+                  </div>
+                  <div class="text searchDiv" id='${id}'>
+                      <h3 class="drinkBoxH3">${oneDrink} </h3>
+                      <div class="tags">
+                          <p> ${drinkAlcoholic} </p>
+                          <p>${drinkCategory} </p>
+        
+                          <p>${drinkGlass} </p>
+                      </div>
+                  </div>
+                  <div class='bgImg unfilledHeart' id="${id}"> </div>
+                  `;
 
         drinkBox.classList.add('drinkBox');
         document.querySelector('#wrapper').append(drinkBox);
+
+
     });
-    
-    fetch("../php/favorites.json")
-        .then(r => r.json())
-        .then(favObjAll => {
-            favObjAll.forEach(favObj => {
-
-                rsc.forEach(x => {
-                    if (Number(favObj.userId) === user && favObj.drinkId === x.idDrink) {
-
-                        let likedHeart = "../images/gillasvart.png";
-                        document.querySelector(".heartImg").src = likedHeart;
-                        document.querySelector(".heartImg").classList.add("heartImgFav");
-                        document.querySelector(".heartImgFav").classList.remove("heartImg");
 
 
-                    }
-                });
-            });
-        });
+    // let heartBlack = document.querySelectorAll('.filledHeart');
+    // heartBlack.forEach(h => {
+    //     h.addEventListener('click', function () {
+    //         console.log("hej");
+    //         let clickedIdRemove = h.id;
+    //         deleteFavorite(clickedIdRemove, user);
+    //     });
+    // });
 
-
-    let heartBlack = document.querySelectorAll('.filledHeart');
-    heartBlack.forEach(h => {
-        h.addEventListener('click', function () {
-            console.log("hej");
-            let clickedIdRemove = h.id
-            deleteFavorite(clickedIdRemove, user)
-        })
-    })
-
-    let heart = document.querySelectorAll('.unfilledHeart');
-    heart.forEach(h => {
-        h.addEventListener('click', function () {
-            if (user === 0) {
-                createLoginViaHeart();
-            } else {
-                h.src = '../images/gillasvart.png';
-                let heartId = h.id;
-                addNewFavorite(heartId);
-            }
-        });
-    });
+    // let heart = document.querySelectorAll('.unfilledHeart');
+    // heart.forEach(h => {
+    //     h.addEventListener('click', function () {
+    //         if (user === 0) {
+    //             createLoginViaHeart();
+    //         } else {
+    //             h.src = '../images/gillasvart.png';
+    //             let heartId = h.id;
+    //             addNewFavorite(heartId);
+    //         }
+    //     });
+    // });
 
     let all = document.querySelectorAll('.text');
     all.forEach(div => {
@@ -190,26 +197,26 @@ function createLoginViaHeart() {
     let signInFormByHeart = document.createElement('div');
     signInFormByHeart.classList.add('signInFormByHeart');
     signInFormByHeart.innerHTML = `
-            <div class="form-popup-heart" id="myFormHeart">
-                <div class="form-container-heart">
-            
-                    <h2 class="notH2">You are not logged in</h2>
-                    <p class="createP">Create an account or log in on an already excisting one</p>
-
-                    <label for="username"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Email" id="email" class="inputByHeart" required>
-        
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" id="psw" class="inputByHeart" required>
-
-                    <p class="wrongInlogg">Email/password is incorrect</p>
-        
-                    <button class="btn sign_in">Sign in </button>
-                    <button class="btn createFromHeart">Create Account</button>
-        
-                </div>
-            </div>
-            `;
+           <div class="form-popup-heart" id="myFormHeart">
+               <div class="form-container-heart">
+          
+                   <h2 class="notH2">You are not logged in</h2>
+                   <p class="createP">Create an account or log in on an already excisting one</p>
+ 
+                   <label for="username"><b>Username</b></label>
+                   <input type="text" placeholder="Enter Email" id="email" class="inputByHeart" required>
+      
+                   <label for="psw"><b>Password</b></label>
+                   <input type="password" placeholder="Enter Password" id="psw" class="inputByHeart" required>
+ 
+                   <p class="wrongInlogg">Email/password is incorrect</p>
+      
+                   <button class="btn sign_in">Sign in </button>
+                   <button class="btn createFromHeart">Create Account</button>
+      
+               </div>
+           </div>
+           `;
 
     document.querySelector('body').append(signInFormByHeart);
     document.getElementById('myFormHeart').append(close);
@@ -621,3 +628,4 @@ getIngredients();
 getClickedIngredient();
 clearSelect();
 backToTop();
+
