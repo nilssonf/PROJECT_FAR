@@ -43,5 +43,32 @@
         "age": "28",
         "occupation": "Graphic designer",
         "picture": "..\/profiles\/1672394994-dog01.jpg"
+    },
+    {
+        "id": "6",
+        "email": "annie@gmail.com",
+        "password": "abc123!Ko",
+        "name": "Annie",
+        "age": "29",
+        "occupation": "Tailor",
+        "picture": "..\/profiles\/standard_picture.png"
+    },
+    {
+        "id": "7",
+        "email": "ruby@gmail.com",
+        "password": "ILoveHorses3!",
+        "name": "Ruby",
+        "age": "19",
+        "occupation": "Student",
+        "picture": "..\/profiles\/standard_picture.png"
+    },
+    {
+        "id": "8",
+        "email": "lolli@gmail.com",
+        "password": "GermanyRocks!1995",
+        "name": "Lolli",
+        "age": "67",
+        "occupation": "Senior",
+        "picture": "..\/profiles\/standard_picture.png"
     }
 ]

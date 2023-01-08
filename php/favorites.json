@@ -1,10 +1,5 @@
 [
     {
-        "favoriteId": 1,
-        "drinkId": "11007",
-        "userId": "1"
-    },
-    {
         "favoriteId": 3,
         "drinkId": "11006",
         "userId": "1"
@@ -73,5 +68,10 @@
         "favoriteId": 33,
         "drinkId": "17837",
         "userId": "2"
+    },
+    {
+        "favoriteId": 34,
+        "drinkId": "11690",
+        "userId": "1"
     }
 ]
