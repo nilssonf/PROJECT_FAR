@@ -65,13 +65,18 @@
         "userId": "1"
     },
     {
-        "favoriteId": 32,
+        "favoriteId": 33,
+        "drinkId": "17837",
+        "userId": "2"
+    },
+    {
+        "favoriteId": 36,
         "drinkId": "17222",
         "userId": "2"
     },
     {
-        "favoriteId": 33,
-        "drinkId": "17837",
+        "favoriteId": 37,
+        "drinkId": "13501",
         "userId": "2"
     }
 ]

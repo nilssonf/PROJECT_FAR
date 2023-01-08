@@ -104,15 +104,6 @@ html {
     height: 200px;
 }
 
-.heartImg {
-    height: 50px;
-    padding-top: 10px;
-}
-
-.heartImg:hover {
-    cursor: pointer;
-}
-
 .searchContainer {
     grid-area: 2 / 1 / span 1/ span 2;
     display: flex;
@@ -402,11 +393,22 @@ select:hover{
     transition: 0.5s;
 }
 
-.heartImgFav {
+.filledHeart {
     height: 50px;
     padding-top: 10px;
+    background-image: url("../images/gillasvart.png");
 }
 
-.heartImgFav:hover {
+.filledHeart:hover {
+    cursor: pointer;
+}
+
+.unfilledHeart {
+    height: 50px;
+    padding-top: 10px;
+    background-image: url("../images/gilla.png");
+}
+
+.unfilledHeart:hover {
     cursor: pointer;
 }
