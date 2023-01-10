@@ -2,10 +2,10 @@
 
 function getDrinksByLetter(letter) {
     fetch(
-        new Request(
-            `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+            new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+            )
         )
-    )
         .then(r => r.json())
         .then(rsc => {
             createDrinks(rsc.drinks);
@@ -15,10 +15,10 @@ function getDrinksByLetter(letter) {
 
 function getDrinksByName(name) {
     fetch(
-        new Request(
-            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+            new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+            )
         )
-    )
         .then(r => r.json())
         .then(rsc => {
             if (rsc.drinks == null) {
@@ -56,57 +56,44 @@ function checkFavorites(rsc) {
                 rsc.forEach(x => {
 
                     if (Number(favObj.userId) === user && favObj.drinkId === x.idDrink) {
-                        console.log(x);
                         document.querySelectorAll('.bgImg').forEach(div => {
                             if (div.id == x.idDrink) {
                                 div.classList.remove('unfilledHeart');
-                                div.classList.add('filledHeart');
-
-                                div.addEventListener('click', function () {
-                                    console.log("hej");
-                                    let clickedIdRemove = div.id;
-                                    deleteFavorite(clickedIdRemove, user);
-                                });
+                                div.classList.add('filledHeart')
 
                             }
                         });
-
-
                     }
                 });
             });
         });
 
-    document.querySelectorAll('.unfilledHeart').forEach(div => {
-        div.addEventListener('click', function () {
-            if (user === 0) {
-                createLoginViaHeart();
-            } else {
-                div.classList.remove('unfilledHeart');
-                div.classList.add('filledHeart');
-                let heartId = div.id;
-                addNewFavorite(heartId);
+    document.querySelectorAll('.bgImg').forEach(div => {
+        div.addEventListener('click', function() {
+            if (div.classList.contains('unfilledHeart')) {
+                if (user === 0) {
+                    createLoginViaHeart();
+                } else {
+                    div.classList.remove('unfilledHeart');
+                    div.classList.add('filledHeart');
+                    let heartId = div.id;
+                    addNewFavorite(heartId);
+                }
+            } else if (div.classList.contains('filledHeart')) {
+                let clickedIdRemove = div.id;
+                deleteFavorite(clickedIdRemove, user);
+                div.classList.remove('filledHeart');
+                div.classList.add('unfilledHeart');
+
             }
         });
-    });
+    })
 }
 
-// async function setFavoriteClass(rsc) {
-//     let getFavoriteClass = await checkFavorites(rsc);
-//     console.log(getFavoriteClass);
-//     let heartImgClass;
 
-//     if (getFavoriteClass === 1) {
-//         return heartImgClass = "filledHeart";
-//     } else if (getFavoriteClass === 0) {
-//         return heartImgClass = "unfilledHeart";
-//     }
-// }
+
 
 async function createDrinks(rsc) {
-    // let favorites = await checkFavorites(rsc);
-    // console.log(favorites);
-
     document.querySelector('#wrapper').innerHTML = ' ';
 
     if (rsc === null) {
@@ -175,7 +162,7 @@ async function createDrinks(rsc) {
 
     let all = document.querySelectorAll('.text');
     all.forEach(div => {
-        div.addEventListener('click', function () {
+        div.addEventListener('click', function() {
             buildDrinkPopUp(div.id);
             if (div.classList.contains("searchDiv")) {
                 sessionStorage.setItem("class", "searchDiv");
@@ -189,7 +176,7 @@ async function createDrinks(rsc) {
 function createLoginViaHeart() {
     let close = document.createElement('a');
     close.classList.add('closeSignInHeart');
-    close.addEventListener('click', function () {
+    close.addEventListener('click', function() {
         location.href = '../html/search.html';
         document.getElementById('myForm').innerHTML = '';
     });
@@ -226,12 +213,12 @@ function createLoginViaHeart() {
 
     document
         .querySelector('.createFromHeart')
-        .addEventListener('click', function () {
+        .addEventListener('click', function() {
             document.getElementById('myFormHeart').style.display = 'none';
             createProfilePopup();
         });
 
-    document.querySelector(".sign_in").addEventListener('click', function () {
+    document.querySelector(".sign_in").addEventListener('click', function() {
         let username = document.querySelector('[id="email"]').value;
         let psw = document.querySelector('[id="psw"]').value;
 
@@ -250,7 +237,7 @@ function createLoginViaHeart() {
 }
 
 function getsearchedDrink() {
-    document.getElementById('drinkName').addEventListener('keyup', function () {
+    document.getElementById('drinkName').addEventListener('keyup', function() {
         let search = document.getElementById('drinkName').value;
         getDrinksByName(search);
 
@@ -283,7 +270,7 @@ function createAlphabet() {
         text.innerHTML = letter;
         let aDiv = document.querySelector('.alphabetOne');
         aDiv.append(text);
-        text.addEventListener('click', function (e) {
+        text.addEventListener('click', function(e) {
             let clickedLetter = e.target.innerHTML;
             clickedLetter = clickedLetter.toLowerCase();
             getDrinksByLetter(clickedLetter);
@@ -294,7 +281,7 @@ function createAlphabet() {
         text.innerHTML = letter;
         let aDiv = document.querySelector('.alphabetTwo');
         aDiv.append(text);
-        text.addEventListener('click', function (e) {
+        text.addEventListener('click', function(e) {
             let clickedLetter = e.target.innerHTML;
             clickedLetter = clickedLetter.toLowerCase();
             getDrinksByLetter(clickedLetter);
@@ -305,7 +292,7 @@ function createAlphabet() {
         text.innerHTML = letter;
         let aDiv = document.querySelector('.alphabetThree');
         aDiv.append(text);
-        text.addEventListener('click', function (e) {
+        text.addEventListener('click', function(e) {
             let clickedLetter = e.target.innerHTML;
             clickedLetter = clickedLetter.toLowerCase();
             getDrinksByLetter(clickedLetter);
@@ -317,8 +304,8 @@ let sortArrayA = [];
 
 function getAlcoholic() {
     fetch(
-        new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`)
-    )
+            new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`)
+        )
         .then(r => r.json())
         .then(rsc => {
             for (let drink of rsc.drinks) {
@@ -333,8 +320,8 @@ let sortArrayC = [];
 
 function getCategory() {
     fetch(
-        new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`)
-    )
+            new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`)
+        )
         .then(r => r.json())
         .then(rsc => {
             for (let drink of rsc.drinks) {
@@ -349,8 +336,8 @@ let sortArrayG = [];
 
 function getGlass() {
     fetch(
-        new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`)
-    )
+            new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`)
+        )
         .then(r => r.json())
         .then(rsc => {
             for (let drink of rsc.drinks) {
@@ -365,8 +352,8 @@ let sortArrayI = [];
 
 function getIngredients() {
     fetch(
-        new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`)
-    )
+            new Request(`https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`)
+        )
         .then(r => r.json())
         .then(rsc => {
             for (let drink of rsc.drinks) {
@@ -386,21 +373,21 @@ function createFilterAlcohol(alcohol) {
         let option = document.createElement('option');
         option.text = a;
         chooseAlcohol.append(option);
-        option.addEventListener('click', function () {
+        option.addEventListener('click', function() {
             fetch(
-                new Request(
-                    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${option.value}`
+                    new Request(
+                        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${option.value}`
+                    )
                 )
-            )
                 .then(r => r.json())
                 .then(rsc => {
                     rsc.drinks.forEach(drink => {
                         let id = drink.idDrink;
                         fetch(
-                            new Request(
-                                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                new Request(
+                                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                )
                             )
-                        )
                             .then(r => r.json())
                             .then(rsc => {
                                 alcoholDrinksById.push(rsc.drinks[0]);
@@ -421,21 +408,21 @@ function createFilterCategory(category) {
         let option = document.createElement('option');
         option.text = c;
         chooseCategory.append(option);
-        option.addEventListener('click', function () {
+        option.addEventListener('click', function() {
             fetch(
-                new Request(
-                    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${option.value}`
+                    new Request(
+                        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${option.value}`
+                    )
                 )
-            )
                 .then(r => r.json())
                 .then(rsc => {
                     rsc.drinks.forEach(drink => {
                         let id = drink.idDrink;
                         fetch(
-                            new Request(
-                                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                new Request(
+                                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                )
                             )
-                        )
                             .then(r => r.json())
                             .then(rsc => {
                                 categoryDrinksById.push(rsc.drinks[0]);
@@ -455,21 +442,21 @@ function createFilterGlass(glass) {
         let option = document.createElement('option');
         option.text = g;
         chooseGlass.append(option);
-        option.addEventListener('click', function () {
+        option.addEventListener('click', function() {
             fetch(
-                new Request(
-                    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${option.value}`
+                    new Request(
+                        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${option.value}`
+                    )
                 )
-            )
                 .then(r => r.json())
                 .then(rsc => {
                     rsc.drinks.forEach(drink => {
                         let id = drink.idDrink;
                         fetch(
-                            new Request(
-                                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                new Request(
+                                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                )
                             )
-                        )
                             .then(r => r.json())
                             .then(rsc => {
                                 glassDrinksById.push(rsc.drinks[0]);
@@ -490,21 +477,21 @@ function createFilterIngredient(ingredient) {
         let option = document.createElement('option');
         option.text = i;
         chooseIngredient.append(option);
-        option.addEventListener('click', function () {
+        option.addEventListener('click', function() {
             fetch(
-                new Request(
-                    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${option.value}`
+                    new Request(
+                        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${option.value}`
+                    )
                 )
-            )
                 .then(r => r.json())
                 .then(rsc => {
                     rsc.drinks.forEach(drink => {
                         let id = drink.idDrink;
                         fetch(
-                            new Request(
-                                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                new Request(
+                                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                                )
                             )
-                        )
                             .then(r => r.json())
                             .then(rsc => {
                                 ingredientDrinksById.push(rsc.drinks[0]);
@@ -521,19 +508,19 @@ function getClickedIngredient() {
     let name = sessionStorage.getItem('ingName');
 
     fetch(
-        new Request(
-            `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
+            new Request(
+                `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
+            )
         )
-    )
         .then(r => r.json())
         .then(rsc => {
             rsc.drinks.forEach(drink => {
                 let id = drink.idDrink;
                 fetch(
-                    new Request(
-                        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                        new Request(
+                            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+                        )
                     )
-                )
                     .then(r => r.json())
                     .then(rsc => {
                         ingredientDrinksById.push(rsc.drinks[0]);
@@ -561,31 +548,31 @@ function clearSelect() {
     let glass = document.getElementById("chooseGlass");
     let ingredient = document.getElementById("chooseIngredient");
     let clearAll = document.getElementById("clearFilters");
-    alcohol.addEventListener("change", function (event) {
+    alcohol.addEventListener("change", function(event) {
         category.value = "";
         glass.value = "";
         ingredient.value = "";
     });
 
-    category.addEventListener("change", function (event) {
+    category.addEventListener("change", function(event) {
         alcohol.value = "";
         glass.value = "";
         ingredient.value = "";
     });
 
-    glass.addEventListener("change", function (event) {
+    glass.addEventListener("change", function(event) {
         alcohol.value = "";
         category.value = "";
         ingredient.value = "";
     });
 
-    ingredient.addEventListener("change", function (event) {
+    ingredient.addEventListener("change", function(event) {
         alcohol.value = "";
         category.value = "";
         glass.value = "";
     });
 
-    clearAll.addEventListener("click", function () {
+    clearAll.addEventListener("click", function() {
         alcohol.value = "";
         category.value = "";
         glass.value = "";
@@ -599,7 +586,7 @@ function backToTop() {
     let toTop = document.getElementById("toTop");
 
     // When the user scrolls down 220px from the top of the document, show the button
-    window.onscroll = function () { scrollFunction(); };
+    window.onscroll = function() { scrollFunction(); };
 
     function scrollFunction() {
         if (document.body.scrollTop > 220 || document.documentElement.scrollTop > 220) {
@@ -609,7 +596,7 @@ function backToTop() {
         }
     }
 
-    toTop.addEventListener('click', function () {
+    toTop.addEventListener('click', function() {
 
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -628,4 +615,3 @@ getIngredients();
 getClickedIngredient();
 clearSelect();
 backToTop();
-

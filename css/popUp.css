@@ -63,7 +63,8 @@
     font-family: "Inter";
     color: #EC6542;
 }
-.drinkWrap{
+
+.drinkWrap {
     width: 70%;
 }
 
@@ -109,7 +110,7 @@ p {
 
 .overlayDrinkImg {
     width: 470px;
-    height: 100%; 
+    height: 100%;
     object-fit: cover;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
@@ -166,7 +167,7 @@ p {
     border-radius: 50px;
 }
 
-.postCom:hover{
+.postCom:hover {
     cursor: pointer;
     background-color: rgba(236, 101, 67);
 }
@@ -246,7 +247,7 @@ p {
     transition: 0.5s;
 }
 
-.remove:hover{
+.remove:hover {
     opacity: 50%;
     cursor: pointer;
 }
@@ -268,7 +269,7 @@ p {
     font-weight: 600;
 }
 
-.yes, 
+.yes,
 .no {
     margin: 0;
     transition: 0.3s;
@@ -290,4 +291,9 @@ p {
 
 .hidden {
     display: none;
+}
+
+.heartImg {
+    height: 60px;
+    ;
 }
