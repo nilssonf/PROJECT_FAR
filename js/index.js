@@ -96,6 +96,7 @@ function showTopIngredients(ingredient3) {
         topIngredientOne.addEventListener("click", function() {
             sessionStorage.setItem("ingName", String(ingredient.ingName));
             location.href = "./search.html";
+
         });
     });
 }
