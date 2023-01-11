@@ -90,9 +90,6 @@ function checkFavorites(rsc) {
     })
 }
 
-
-
-
 async function createDrinks(rsc) {
     document.querySelector('#wrapper').innerHTML = ' ';
 
@@ -525,6 +522,7 @@ function getClickedIngredient() {
                     .then(rsc => {
                         ingredientDrinksById.push(rsc.drinks[0]);
                         createDrinks(ingredientDrinksById);
+                        checkFavorites(rsc.drinks);
                     });
             });
             ingredientDrinksById = [];
