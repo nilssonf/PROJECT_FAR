@@ -113,6 +113,4 @@ $data = json_decode($json, true);
 
 applyJSON($newUser);
 
-
-
 ?>

@@ -33,7 +33,7 @@ $requestData = json_decode($requestJSON, true);
 
 
 $addedComment = $requestData["comment"];
-//TODO: this will be set from the active user and active drink in JS
+
 $drinkId = $requestData["drinkId"];
 $userId = $requestData["userId"];
 $date = date("Y-m-d");

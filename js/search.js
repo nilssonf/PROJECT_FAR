@@ -134,29 +134,6 @@ async function createDrinks(rsc) {
 
     });
 
-
-    // let heartBlack = document.querySelectorAll('.filledHeart');
-    // heartBlack.forEach(h => {
-    //     h.addEventListener('click', function () {
-    //         console.log("hej");
-    //         let clickedIdRemove = h.id;
-    //         deleteFavorite(clickedIdRemove, user);
-    //     });
-    // });
-
-    // let heart = document.querySelectorAll('.unfilledHeart');
-    // heart.forEach(h => {
-    //     h.addEventListener('click', function () {
-    //         if (user === 0) {
-    //             createLoginViaHeart();
-    //         } else {
-    //             h.src = '../images/gillasvart.png';
-    //             let heartId = h.id;
-    //             addNewFavorite(heartId);
-    //         }
-    //     });
-    // });
-
     let all = document.querySelectorAll('.text');
     all.forEach(div => {
         div.addEventListener('click', function() {
