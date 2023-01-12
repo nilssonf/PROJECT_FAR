@@ -34,8 +34,4 @@ applyJSON([
 ], 404
 );
 
-
-//TODO: fix handling for: 
-// - wrong username or password in JS
-
 ?> 
